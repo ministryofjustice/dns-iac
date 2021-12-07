@@ -19,3 +19,12 @@ terraform {
 provider "aws" {
   region = "eu-west-2"
 }
+
+# Configure the AWS provider for the AWS root account, to get organisation account names
+provider "aws" {
+  alias = "aws-root-account"
+  region = "eu-west-2"
+  assume_role {
+    role_arn = "arn:aws:iam::${data.aws_organizations_organization.enrolment.master_account_id}:role/AWSOrganizationsListReadOnly"
+  }
+}
