@@ -16,7 +16,7 @@ data "aws_organizations_organization" "root" {
 
 locals {
   accounts = {
-    for account in data.aws_organizations_organization.root.accounts:
+    for account in data.aws_organizations_organization.root.accounts :
     account.name => account.id
   }
 
