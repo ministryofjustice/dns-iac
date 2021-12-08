@@ -9,7 +9,10 @@ resource "aws_route53_zone" "default" {
 }
 
 resource "aws_route53_record" "default" {
-  for_each = { for record in var.records : record.name => record }
+  for_each = {
+    for record in var.records :
+    join("_", [aws_route53_zone.default.zone_id, record.name, record.type]) => record
+  }
 
   zone_id = aws_route53_zone.default.zone_id
   name    = each.value.name
