@@ -1,6 +1,11 @@
-# Get Elastic Load Balancer Hosted Zone ID
+# Get Elastic Load Balancer Hosted Zone ID (eu-west-1)
 data "aws_elb_hosted_zone_id" "eu-west-1" {
   region = "eu-west-1"
+}
+
+# Get Elastic Load Balancer Hosted Zone ID (eu-west-2)
+data "aws_elb_hosted_zone_id" "eu-west-2" {
+  region = "eu-west-2"
 }
 
 # Get Elastic Beanstalk Hosted Zone ID
