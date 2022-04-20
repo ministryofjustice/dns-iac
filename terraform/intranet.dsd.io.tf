@@ -6,6 +6,17 @@ module "intranet_dsd_io" {
 
   records = [
     {
+      name = "intranet.dsd.io."
+      type = "NS"
+      ttl  = 172800
+      records = [
+        "ns-1466.awsdns-55.org.",
+        "ns-270.awsdns-33.com.",
+        "ns-926.awsdns-51.net.",
+        "ns-1567.awsdns-03.co.uk."
+      ]
+    },
+    {
       name = "dev.intranet.dsd.io."
       type = "A"
       alias = {
@@ -17,7 +28,7 @@ module "intranet_dsd_io" {
     {
       name = "stack.2e85e497.intranet-dev.intranet.dsd.io."
       type = "TXT"
-      ttl  = 60,
+      ttl  = 60
       records = [
         "2e85e497"
       ]
@@ -25,7 +36,7 @@ module "intranet_dsd_io" {
     {
       name = "stack.a4cf60dd.intranet-dev.intranet.dsd.io."
       type = "TXT"
-      ttl  = 60,
+      ttl  = 60
       records = [
         "a4cf60dd"
       ]
@@ -33,7 +44,7 @@ module "intranet_dsd_io" {
     {
       name = "stack.active.intranet-dev.intranet.dsd.io."
       type = "TXT"
-      ttl  = 60,
+      ttl  = 60
       records = [
         "c8bede82"
       ]
@@ -41,7 +52,7 @@ module "intranet_dsd_io" {
     {
       name = "stack.c8bede82.intranet-dev.intranet.dsd.io."
       type = "TXT"
-      ttl  = 60,
+      ttl  = 60
       records = [
         "c8bede82"
       ]
@@ -49,7 +60,7 @@ module "intranet_dsd_io" {
     {
       name = "stack.d2b0e594.intranet-dev.intranet.dsd.io."
       type = "TXT"
-      ttl  = 60,
+      ttl  = 60
       records = [
         "d2b0e594"
       ]
@@ -57,7 +68,7 @@ module "intranet_dsd_io" {
     {
       name = "stack.e42a6c26.intranet-dev.intranet.dsd.io."
       type = "TXT"
-      ttl  = 60,
+      ttl  = 60
       records = [
         "e42a6c26"
       ]
@@ -65,7 +76,7 @@ module "intranet_dsd_io" {
     {
       name = "deployarn.active.dev.intranet.intranet.dsd.io."
       type = "TXT"
-      ttl  = 60,
+      ttl  = 60
       records = [
         "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/intranet-dev-c8bede82-CrossAccountRole-1KYTVME6JBZ7W"
       ]
