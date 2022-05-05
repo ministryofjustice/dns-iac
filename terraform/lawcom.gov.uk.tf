@@ -42,6 +42,14 @@ module "lawcom_gov_uk" {
       ]
     },
     {
+      name = "lawcom.gov.uk."
+      type = "TXT"
+      ttl  = 300
+      records = [
+        "v=spf1 -all"
+      ]
+    },
+    {
       name = "_769650e3afe5cd94b01ffd4bd22fe783.www.lawcom.gov.uk."
       type = "CNAME"
       ttl  = 300
