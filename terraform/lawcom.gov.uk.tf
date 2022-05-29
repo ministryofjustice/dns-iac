@@ -56,7 +56,15 @@ module "lawcom_gov_uk" {
       records = [
         "v=DMARC1\\;p=reject\\;sp=reject\\;rua=mailto:dmarc-rua@dmarc.service.gov.uk\\;"
       ]
-    }
+    },
+    {
+      name = "lawcom.gov.uk."
+      type = "TXT"
+      ttl  = 300
+      records = [
+        "v=spf1 -all"
+      ]
+    },
   ]
 
   tags = {
