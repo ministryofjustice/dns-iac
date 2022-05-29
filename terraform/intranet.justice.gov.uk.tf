@@ -163,6 +163,23 @@ module "intranet_justice_gov_uk" {
       ]
     },
     {
+      name = "_8fa1ee73e1ecbaa6751a8fae8530777f.search.hmpps.intranet.justice.gov.uk."
+      type = "CNAME"
+      ttl = 300
+      records = [
+        "_9371b8b145500ba4cb770fc29eccca0d.mybbdzzyvz.acm-validations.aws."
+      ]
+    },
+    {
+      name = "search.hmpps.intranet.justice.gov.uk."
+      type = "A"
+      alias = {
+        zone_id = "ZHURV8PSTC4K8"
+        name = "hmpps-sip-prod-web-alb-01-272041428.eu-west-2.elb.amazonaws.com"
+        evaluate_target_health = true
+      }
+    },
+    {
       name = "test3.intranet.justice.gov.uk."
       type = "A"
       alias = {
