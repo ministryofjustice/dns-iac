@@ -25,11 +25,6 @@ data "aws_organizations_organization" "root" {
 }
 
 locals {
-  accounts = {
-    for account in data.aws_organizations_organization.root.accounts :
-    account.name => account.id
-  }
-
   tags = {
     application            = "dns-iac"
     business-unit          = "Platforms"
