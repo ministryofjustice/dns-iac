@@ -48,7 +48,23 @@ module "lawcom_gov_uk" {
       records = [
         "_9161035e137135a2529c4ea8caf881f4.jhztdrwbnw.acm-validations.aws."
       ]
-    }
+    },
+    {
+      name = "_dmarc.lawcom.gov.uk."
+      type = "TXT"
+      ttl = 300
+      records = [
+        "v=DMARC1\\;p=reject\\;sp=reject\\;rua=mailto:dmarc-rua@dmarc.service.gov.uk\\;"
+      ]
+    },
+    {
+      name = "lawcom.gov.uk."
+      type = "TXT"
+      ttl  = 300
+      records = [
+        "v=spf1 -all"
+      ]
+    },
   ]
 
   tags = {
