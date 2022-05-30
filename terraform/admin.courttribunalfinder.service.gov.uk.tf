@@ -6,7 +6,7 @@ module "admin_courttribunalfinder_service_gov_uk" {
 
   records = [
     {
-      name = "admin.courttribunalfinder.service.gov.uk."
+      name = "admin.courttribunalfinder.service.gov.uk."     
       type = "NS"
       ttl  = 172800
       records = [
