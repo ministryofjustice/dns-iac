@@ -1,8 +1,16 @@
-module "intranet_justice_gov_uk" {
-  source = "./modules/route53"
+module "intranet_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "intranet.justice.gov.uk"
-  description = ""
+  name = "intranet.justice.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "intranet_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.intranet_justice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -165,7 +173,7 @@ module "intranet_justice_gov_uk" {
     {
       name = "_8fa1ee73e1ecbaa6751a8fae8530777f.search.hmpps.intranet.justice.gov.uk."
       type = "CNAME"
-      ttl = 300
+      ttl  = 300
       records = [
         "_9371b8b145500ba4cb770fc29eccca0d.mybbdzzyvz.acm-validations.aws."
       ]
@@ -174,8 +182,8 @@ module "intranet_justice_gov_uk" {
       name = "search.hmpps.intranet.justice.gov.uk."
       type = "A"
       alias = {
-        zone_id = "ZHURV8PSTC4K8"
-        name = "hmpps-sip-prod-web-alb-01-272041428.eu-west-2.elb.amazonaws.com"
+        zone_id                = "ZHURV8PSTC4K8"
+        name                   = "hmpps-sip-prod-web-alb-01-272041428.eu-west-2.elb.amazonaws.com"
         evaluate_target_health = true
       }
     },
@@ -206,8 +214,14 @@ module "intranet_justice_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.intranet_justice_gov_uk.aws_route53_record.default
+  to   = module.intranet_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.intranet_justice_gov_uk.aws_route53_zone.default
+  to   = module.intranet_justice_gov_uk_zone.aws_route53_zone.this
 }

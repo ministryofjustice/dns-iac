@@ -1,8 +1,18 @@
-module "lawcom_gov_uk" {
-  source = "./modules/route53"
+module "lawcom_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "lawcom.gov.uk"
+  name        = "lawcom.gov.uk"
   description = "Tactical Products"
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "lawcom_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.lawcom_gov_uk_zone.zone_id
 
   records = [
     {
@@ -52,7 +62,7 @@ module "lawcom_gov_uk" {
     {
       name = "_dmarc.lawcom.gov.uk."
       type = "TXT"
-      ttl = 300
+      ttl  = 300
       records = [
         "v=DMARC1\\;p=reject\\;sp=reject\\;rua=mailto:dmarc-rua@dmarc.service.gov.uk\\;"
       ]
@@ -66,8 +76,14 @@ module "lawcom_gov_uk" {
       ]
     },
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.lawcom_gov_uk.aws_route53_record.default
+  to   = module.lawcom_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.lawcom_gov_uk.aws_route53_zone.default
+  to   = module.lawcom_gov_uk_zone.aws_route53_zone.this
 }

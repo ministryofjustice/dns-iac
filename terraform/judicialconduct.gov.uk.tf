@@ -1,8 +1,18 @@
-module "judicialconduct_gov_uk" {
-  source = "./modules/route53"
+module "judicialconduct_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "judicialconduct.gov.uk"
+  name        = "judicialconduct.gov.uk"
   description = "Incl. Office 365 DNS settings"
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "judicialconduct_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.judicialconduct_gov_uk_zone.zone_id
 
   records = [
     {
@@ -243,8 +253,14 @@ module "judicialconduct_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.judicialconduct_gov_uk.aws_route53_record.default
+  to   = module.judicialconduct_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.judicialconduct_gov_uk.aws_route53_zone.default
+  to   = module.judicialconduct_gov_uk_zone.aws_route53_zone.this
 }

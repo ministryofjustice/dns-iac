@@ -1,15 +1,34 @@
-module "send_money_to_prisoner_service_gov_uk" {
-  source = "./modules/route53"
+module "send_money_to_prisoner_service_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "send-money-to-prisoner.service.gov.uk"
+  name        = "send-money-to-prisoner.service.gov.uk"
   description = "Prisoner Money"
+
+  tags = {
+    Application            = "money-to-prisoners"
+    Env                    = "prod"
+    application            = "Money To Prisoners/MTP"
+    business-unit          = "HQ"
+    component              = "send-money"
+    environment-name       = "production"
+    infrastructure-support = "Cloud Platforms platforms@digital.justice.gov.uk"
+    is-production          = "true"
+    owner                  = "Money To Prisoners  money-to-prisoners@digital.justice.gov.uk "
+    runbook                = "https://dsdmoj.atlassian.net/wiki/spaces/PLAT/pages/324141273/Money+to+Prisoners"
+  }
+}
+
+module "send_money_to_prisoner_service_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.send_money_to_prisoner_service_gov_uk_zone.zone_id
 
   records = [
     {
       name = "send-money-to-prisoner.service.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.send_money_to_prisoner_service_gov_uk_zone.zone_id
         name                   = "prod.send-money-to-prisoner.service.gov.uk."
         evaluate_target_health = false
       }
@@ -18,7 +37,7 @@ module "send_money_to_prisoner_service_gov_uk" {
       name = "send-money-to-prisoner.service.gov.uk."
       type = "AAAA"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.send_money_to_prisoner_service_gov_uk_zone.zone_id
         name                   = "prod.send-money-to-prisoner.service.gov.uk."
         evaluate_target_health = false
       }
@@ -133,17 +152,14 @@ module "send_money_to_prisoner_service_gov_uk" {
       }
     }
   ]
+}
 
-  tags = {
-    Application            = "money-to-prisoners"
-    Env                    = "prod"
-    application            = "Money To Prisoners/MTP"
-    business-unit          = "HQ"
-    component              = "send-money"
-    environment-name       = "production"
-    infrastructure-support = "Cloud Platforms platforms@digital.justice.gov.uk"
-    is-production          = "true"
-    owner                  = "Money To Prisoners  money-to-prisoners@digital.justice.gov.uk "
-    runbook                = "https://dsdmoj.atlassian.net/wiki/spaces/PLAT/pages/324141273/Money+to+Prisoners"
-  }
+moved {
+  from = module.send_money_to_prisoner_service_gov_uk.aws_route53_record.default
+  to   = module.send_money_to_prisoner_service_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.send_money_to_prisoner_service_gov_uk.aws_route53_zone.default
+  to   = module.send_money_to_prisoner_service_gov_uk_zone.aws_route53_zone.this
 }

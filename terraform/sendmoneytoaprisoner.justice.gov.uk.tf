@@ -1,8 +1,27 @@
-module "sendmoneytoaprisoner_justice_gov_uk" {
-  source = "./modules/route53"
+module "sendmoneytoaprisoner_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "sendmoneytoaprisoner.justice.gov.uk"
+  name        = "sendmoneytoaprisoner.justice.gov.uk"
   description = "Prisoner Money"
+
+  tags = {
+    Application            = "money-to-prisoners"
+    Env                    = "prod"
+    application            = "Money To Prisoners/MTP"
+    business-unit          = "HQ"
+    component              = "send-money"
+    environment-name       = "production"
+    infrastructure-support = "Cloud Platforms platforms@digital.justice.gov.uk"
+    is-production          = "true"
+    owner                  = "Money To Prisoners  money-to-prisoners@digital.justice.gov.uk "
+    runbook                = "https://dsdmoj.atlassian.net/wiki/spaces/PLAT/pages/324141273/Money+to+Prisoners"
+  }
+}
+
+module "sendmoneytoaprisoner_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.sendmoneytoaprisoner_justice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -66,17 +85,14 @@ module "sendmoneytoaprisoner_justice_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    Application            = "money-to-prisoners"
-    Env                    = "prod"
-    application            = "Money To Prisoners/MTP"
-    business-unit          = "HQ"
-    component              = "send-money"
-    environment-name       = "production"
-    infrastructure-support = "Cloud Platforms platforms@digital.justice.gov.uk"
-    is-production          = "true"
-    owner                  = "Money To Prisoners  money-to-prisoners@digital.justice.gov.uk "
-    runbook                = "https://dsdmoj.atlassian.net/wiki/spaces/PLAT/pages/324141273/Money+to+Prisoners"
-  }
+moved {
+  from = module.sendmoneytoaprisoner_justice_gov_uk.aws_route53_record.default
+  to   = module.sendmoneytoaprisoner_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.sendmoneytoaprisoner_justice_gov_uk.aws_route53_zone.default
+  to   = module.sendmoneytoaprisoner_justice_gov_uk_zone.aws_route53_zone.this
 }

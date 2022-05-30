@@ -1,8 +1,16 @@
-module "criminal_courts_review_org_uk" {
-  source = "./modules/route53"
+module "criminal_courts_review_org_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "criminal-courts-review.org.uk"
-  description = ""
+  name = "criminal-courts-review.org.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "criminal_courts_review_org_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.criminal_courts_review_org_uk_zone.zone_id
 
   records = [
     {
@@ -25,8 +33,14 @@ module "criminal_courts_review_org_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.criminal_courts_review_org_uk.aws_route53_record.default
+  to   = module.criminal_courts_review_org_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.criminal_courts_review_org_uk.aws_route53_zone.default
+  to   = module.criminal_courts_review_org_uk_zone.aws_route53_zone.this
 }

@@ -1,8 +1,18 @@
-module "cjsdigitalmodel_org" {
-  source = "./modules/route53"
+module "cjsdigitalmodel_org_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "cjsdigitalmodel.org"
+  name        = "cjsdigitalmodel.org"
   description = "Project for Eddie Shannon"
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "cjsdigitalmodel_org_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.cjsdigitalmodel_org_zone.zone_id
 
   records = [
     {
@@ -33,8 +43,14 @@ module "cjsdigitalmodel_org" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.cjsdigitalmodel_org.aws_route53_record.default
+  to   = module.cjsdigitalmodel_org_records.aws_route53_record.this
+}
+
+moved {
+  from = module.cjsdigitalmodel_org.aws_route53_zone.default
+  to   = module.cjsdigitalmodel_org_zone.aws_route53_zone.this
 }

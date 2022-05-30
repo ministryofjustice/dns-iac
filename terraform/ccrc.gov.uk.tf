@@ -1,8 +1,18 @@
-module "ccrc_gov_uk" {
-  source = "./modules/route53"
+module "ccrc_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "ccrc.gov.uk"
+  name        = "ccrc.gov.uk"
   description = "Tactical Products – mail and ftp subdomains are hosted by Seiretto. MX record is used for mail forwarding at Seiretto."
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "ccrc_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.ccrc_gov_uk_zone.zone_id
 
   records = [
     {
@@ -260,8 +270,14 @@ module "ccrc_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.ccrc_gov_uk.aws_route53_record.default
+  to   = module.ccrc_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.ccrc_gov_uk.aws_route53_zone.default
+  to   = module.ccrc_gov_uk_zone.aws_route53_zone.this
 }

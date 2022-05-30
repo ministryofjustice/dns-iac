@@ -1,8 +1,20 @@
-module "employmenttribunals_service_gov_uk" {
-  source = "./modules/route53"
+module "employmenttribunals_service_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "employmenttribunals.service.gov.uk"
-  description = ""
+  name = "employmenttribunals.service.gov.uk"
+  tags = {
+    application            = "Employment Tribunal/ET Application for Applying To an Employment Tribunal/ATET "
+    business-unit          = "HMCTS"
+    infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
+    owner                  = "HMCTS sustainingteamsupport@hmcts.net"
+    component              = "None"
+  }
+}
+
+module "employmenttribunals_service_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.employmenttribunals_service_gov_uk_zone.zone_id
 
   records = [
     {
@@ -104,8 +116,7 @@ module "employmenttribunals_service_gov_uk" {
       type = "TXT"
       ttl  = 300
       records = [
-        "L_VIWkg-CcMs3UTC2F4L0JnZ_53mth-ZE3wzJ9RyTnQ",
-        "XhQO1_ucgi6dy7E5XfO4ZwwLCwc0h_cwRAZeqSZ6iEA"
+        "phubFB6OTqqCb0Y2OwowThZppLUNJZYpOLRD3cWtqjg"
       ]
     },
     {
@@ -217,7 +228,7 @@ module "employmenttribunals_service_gov_uk" {
       type = "TXT"
       ttl  = 300
       records = [
-        "HTyNIeiB60FFnc63AgKFR_IJQpgCBdcxvTGU6HhbI2I"
+        "XeXiowDkdUvn9ZHJVj5b2_dttVgpMmXxVxS6sRvKVZc"
       ]
     },
     {
@@ -273,7 +284,7 @@ module "employmenttribunals_service_gov_uk" {
       type = "TXT"
       ttl  = 300
       records = [
-        "qcWcGrfsdGr6Rnxz9eqUKN9GU7YW7FWO6qXjrJg5qv0"
+        "kQc4rU2bVGoQGpkpGyKnDeqyGbA0SWffWdcwXoDY8ZY"
       ]
     },
     {
@@ -329,7 +340,7 @@ module "employmenttribunals_service_gov_uk" {
       type = "TXT"
       ttl  = 300
       records = [
-        "tnirt65pgtPaAKcuFaJ9Kr_PFZcvs2F7528pbKARgmA"
+        "cq2knrQw_Znp1TMI7bitGzCHRszrEON3Ab84UzM55sc"
       ]
     },
     {
@@ -602,7 +613,7 @@ module "employmenttribunals_service_gov_uk" {
       type = "TXT"
       ttl  = 300
       records = [
-        "-Iwa-a4SfWtPWsoeC7SXewbg_-zU_sYO0eINTJI3ie0"
+        "4ko0nd3tPUt3PZi0ebzNEc5XEAKr3MFxMPBqL6YiFiA"
       ]
     },
     {
@@ -614,12 +625,14 @@ module "employmenttribunals_service_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    application            = "Employment Tribunal/ET Application for Applying To an Employment Tribunal/ATET "
-    business-unit          = "HMCTS"
-    infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
-    owner                  = "HMCTS sustainingteamsupport@hmcts.net"
-    component = "None"
-  }
+moved {
+  from = module.employmenttribunals_service_gov_uk.aws_route53_record.default
+  to   = module.employmenttribunals_service_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.employmenttribunals_service_gov_uk.aws_route53_zone.default
+  to   = module.employmenttribunals_service_gov_uk_zone.aws_route53_zone.this
 }
