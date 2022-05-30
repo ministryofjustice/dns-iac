@@ -147,6 +147,30 @@ module "ukgovwales_gov_uk" {
       records = [
         "bouncer-cdn.production.govuk.service.gov.uk"
       ]
+    },
+    {
+      name = "prg._domainkey.ukgovwales.gov.uk."
+      type = "CNAME"
+      ttl = 300
+      records = [
+        "prg.domainkey.u26148741.wl242.sendgrid.net"
+      ]
+    },
+    {
+      name = "prg.ukgovwales.gov.uk."
+      type = "CNAME"
+      ttl = 300
+      records = [
+        "u26148741.wl242.sendgrid.net"
+      ]
+    },
+    {
+      name = "prg2._domainkey.ukgovwales.gov.uk."
+      type = "CNAME"
+      ttl = 300
+      records = [
+        "prg2.domainkey.u26148741.wl242.sendgrid.net"
+      ]
     }
   ]
 
