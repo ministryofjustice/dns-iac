@@ -3,11 +3,13 @@ variable "name" {
 }
 
 variable "description" {
-  type = string
+  type    = string
+  default = ""
 }
 
 variable "delegation_set_id" {
-  type = string
+  type    = string
+  default = null
 }
 
 variable "force_destroy" {
