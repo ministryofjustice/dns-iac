@@ -16,7 +16,7 @@ module "admin_courttribunalformfinder_service_gov_uk" {
       ]
     },
     {
-      name = "_dmarc.admin.courttribunalformfinder.service.gov.uk."
+      name = "_dmarc.admin.courttribunalformfinder.service.gov.uk."     
       type = "TXT"
       ttl  = 7200
       records = [
