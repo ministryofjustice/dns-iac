@@ -12,7 +12,7 @@ module "admin_courttribunalfinder_service_gov_uk" {
       records = [
         "ns-790.awsdns-34.net.",
         "ns-225.awsdns-28.com.",
-        "ns-1601.awsdns-08.co.uk.",
+        "ns-1601.awsdns-08.co.uk.",    
         "ns-1415.awsdns-48.org."
       ]
     },
