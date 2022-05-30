@@ -1,6 +1,6 @@
 resource "aws_route53_zone" "default" {
   name              = var.domain
-  comment           = trim(join(" ", [var.description, "(Managed in Terraform)"]), " ")
+  comment           = var.description
   delegation_set_id = var.delegation_set_id
   tags              = var.tags
 
@@ -25,7 +25,7 @@ resource "aws_route53_record" "default" {
 
     content {
       name                   = each.value.alias.name
-      zone_id                = each.value.alias.zone_id
+      zone_id                = each.value.alias.zone_id == "self" ? aws_route53_zone.default.zone_id : each.value.alias.zone_id
       evaluate_target_health = each.value.alias.evaluate_target_health
     }
   }
