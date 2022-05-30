@@ -4,7 +4,7 @@ module "admin_courttribunalformfinder_service_gov_uk" {
   domain      = "admin.courttribunalformfinder.service.gov.uk"
   description = ""
 
-  records = [
+  records = [ 
     {
       name = "admin.courttribunalformfinder.service.gov.uk."
       type = "NS"
