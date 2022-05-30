@@ -54,7 +54,7 @@ module "justice_uk" {
       type = "TXT"
       ttl  = 300
       records = [
-        "v=DKIM1; p="
+        "v=DKIM1\\; p="
       ]
     }
   ]
