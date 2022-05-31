@@ -1,8 +1,16 @@
-module "judiciary_gov_uk" {
-  source = "./modules/route53"
+module "judiciary_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "judiciary.gov.uk"
-  description = ""
+  name = "judiciary.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "judiciary_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.judiciary_gov_uk_zone.zone_id
 
   records = [
     {
@@ -181,7 +189,7 @@ module "judiciary_gov_uk" {
       type = "TXT"
       ttl  = 600
       records = [
-        "v=spf1 a mx ip4:92.63.137.91 ip6:fe80::d6ae:52ff:fec4:bbab ~all"
+        "v=spf1 ip4:92.63.137.91 ip6:fe80::d6ae:52ff:fec4:bbab ~all"
       ]
     },
     {
@@ -296,8 +304,14 @@ module "judiciary_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.judiciary_gov_uk.aws_route53_record.default
+  to   = module.judiciary_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.judiciary_gov_uk.aws_route53_zone.default
+  to   = module.judiciary_gov_uk_zone.aws_route53_zone.this
 }

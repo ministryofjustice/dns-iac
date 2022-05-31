@@ -1,8 +1,16 @@
-module "criminal_justice_royal_commission_uk" {
-  source = "./modules/route53"
+module "criminal_justice_royal_commission_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "criminal-justice.royal-commission.uk"
+  name        = "criminal-justice.royal-commission.uk"
   description = "Royal Commission for Criminal Justice"
+
+  tags = {}
+}
+
+module "criminal_justice_royal_commission_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.criminal_justice_royal_commission_uk_zone.zone_id
 
   records = [
     {
@@ -17,4 +25,14 @@ module "criminal_justice_royal_commission_uk" {
       ]
     }
   ]
+}
+
+moved {
+  from = module.criminal_justice_royal_commission_uk.aws_route53_record.default
+  to   = module.criminal_justice_royal_commission_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.criminal_justice_royal_commission_uk.aws_route53_zone.default
+  to   = module.criminal_justice_royal_commission_uk_zone.aws_route53_zone.this
 }

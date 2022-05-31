@@ -1,8 +1,20 @@
-module "employmenttribunals_gov_uk" {
-  source = "./modules/route53"
+module "employmenttribunals_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "employmenttribunals.gov.uk"
-  description = ""
+  name = "employmenttribunals.gov.uk"
+  tags = {
+    application            = "Employment Tribunal/ET Application for Applying To an Employment Tribunal/ATET "
+    business-unit          = "HMCTS"
+    infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
+    owner                  = "HMCTS sustainingteamsupport@hmcts.net"
+    component              = "None"
+  }
+}
+
+module "employmenttribunals_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.employmenttribunals_gov_uk_zone.zone_id
 
   records = [
     {
@@ -25,12 +37,14 @@ module "employmenttribunals_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    application            = "Employment Tribunal/ET Application for Applying To an Employment Tribunal/ATET "
-    business-unit          = "HMCTS"
-    infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
-    owner                  = "HMCTS sustainingteamsupport@hmcts.net"
-    component = "None"
-  }
+moved {
+  from = module.employmenttribunals_gov_uk.aws_route53_record.default
+  to   = module.employmenttribunals_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.employmenttribunals_gov_uk.aws_route53_zone.default
+  to   = module.employmenttribunals_gov_uk_zone.aws_route53_zone.this
 }

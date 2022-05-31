@@ -1,8 +1,14 @@
-module "helpwithchildarrangements_service_justice_gov_uk" {
-  source = "./modules/route53"
+module "helpwithchildarrangements_service_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "helpwithchildarrangements.service.justice.gov.uk"
-  description = ""
+  name = "helpwithchildarrangements.service.justice.gov.uk"
+  tags = {}
+}
+
+module "helpwithchildarrangements_service_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.helpwithchildarrangements_service_justice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -74,4 +80,14 @@ module "helpwithchildarrangements_service_justice_gov_uk" {
       ]
     }
   ]
+}
+
+moved {
+  from = module.helpwithchildarrangements_service_justice_gov_uk.aws_route53_record.default
+  to   = module.helpwithchildarrangements_service_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.helpwithchildarrangements_service_justice_gov_uk.aws_route53_zone.default
+  to   = module.helpwithchildarrangements_service_justice_gov_uk_zone.aws_route53_zone.this
 }

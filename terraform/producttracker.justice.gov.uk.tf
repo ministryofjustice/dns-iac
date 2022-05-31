@@ -1,8 +1,18 @@
-module "producttracker_justice_gov_uk" {
-  source = "./modules/route53"
+module "producttracker_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "producttracker.justice.gov.uk"
-  description = ""
+  name = "producttracker.justice.gov.uk"
+  tags = {
+    environment-name = "production"
+    is-production    = "true"
+    component        = "None"
+  }
+}
+
+module "producttracker_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.producttracker_justice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -90,10 +100,14 @@ module "producttracker_justice_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    environment-name = "production"
-    is-production    = "true"
-    component        = "None"
-  }
+moved {
+  from = module.producttracker_justice_gov_uk.aws_route53_record.default
+  to   = module.producttracker_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.producttracker_justice_gov_uk.aws_route53_zone.default
+  to   = module.producttracker_justice_gov_uk_zone.aws_route53_zone.this
 }

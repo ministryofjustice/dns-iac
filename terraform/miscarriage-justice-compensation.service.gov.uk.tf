@@ -1,8 +1,16 @@
-module "miscarriage_justice_compensation_service_gov_uk" {
-  source = "./modules/route53"
+module "miscarriage_justice_compensation_service_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "miscarriage-justice-compensation.service.gov.uk"
-  description = ""
+  name = "miscarriage-justice-compensation.service.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "miscarriage_justice_compensation_service_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.miscarriage_justice_compensation_service_gov_uk_zone.zone_id
 
   records = [
     {
@@ -130,8 +138,14 @@ module "miscarriage_justice_compensation_service_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.miscarriage_justice_compensation_service_gov_uk.aws_route53_record.default
+  to   = module.miscarriage_justice_compensation_service_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.miscarriage_justice_compensation_service_gov_uk.aws_route53_zone.default
+  to   = module.miscarriage_justice_compensation_service_gov_uk_zone.aws_route53_zone.this
 }

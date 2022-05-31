@@ -1,8 +1,18 @@
-module "cicap_gov_uk" {
-  source = "./modules/route53"
+module "cicap_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "cicap.gov.uk"
+  name        = "cicap.gov.uk"
   description = "Tribunals decisions database"
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "cicap_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.cicap_gov_uk_zone.zone_id
 
   records = [
     {
@@ -60,14 +70,20 @@ module "cicap_gov_uk" {
       name = "www.cicap.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.cicap_gov_uk_zone.zone_id
         name                   = "cicap.gov.uk."
         evaluate_target_health = false
       }
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.cicap_gov_uk.aws_route53_record.default
+  to   = module.cicap_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.cicap_gov_uk.aws_route53_zone.default
+  to   = module.cicap_gov_uk_zone.aws_route53_zone.this
 }

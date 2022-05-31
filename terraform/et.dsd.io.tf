@@ -1,8 +1,16 @@
-module "et_dsd_io" {
-  source = "./modules/route53"
+module "et_dsd_io_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "et.dsd.io"
-  description = ""
+  name = "et.dsd.io"
+  tags = {
+    component = "None"
+  }
+}
+
+module "et_dsd_io_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.et_dsd_io_zone.zone_id
 
   records = [
     {
@@ -759,8 +767,14 @@ module "et_dsd_io" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.et_dsd_io.aws_route53_record.default
+  to   = module.et_dsd_io_records.aws_route53_record.this
+}
+
+moved {
+  from = module.et_dsd_io.aws_route53_zone.default
+  to   = module.et_dsd_io_zone.aws_route53_zone.this
 }

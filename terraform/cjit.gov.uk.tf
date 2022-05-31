@@ -1,8 +1,16 @@
-module "cjit_gov_uk" {
-  source = "./modules/route53"
+module "cjit_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "cjit.gov.uk"
-  description = ""
+  name = "cjit.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "cjit_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.cjit_gov_uk_zone.zone_id
 
   records = [
     {
@@ -18,7 +26,7 @@ module "cjit_gov_uk" {
       type = "MX"
       ttl  = 300
       records = [
-        "0 	cjit-gov-uk.mail.protection.outlook.com"
+        "0 \tcjit-gov-uk.mail.protection.outlook.com"
       ]
     },
     {
@@ -244,8 +252,14 @@ module "cjit_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.cjit_gov_uk.aws_route53_record.default
+  to   = module.cjit_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.cjit_gov_uk.aws_route53_zone.default
+  to   = module.cjit_gov_uk_zone.aws_route53_zone.this
 }

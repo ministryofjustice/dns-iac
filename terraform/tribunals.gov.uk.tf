@@ -1,8 +1,18 @@
-module "tribunals_gov_uk" {
-  source = "./modules/route53"
+module "tribunals_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "tribunals.gov.uk"
+  name        = "tribunals.gov.uk"
   description = "Tribunals decisions database"
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "tribunals_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.tribunals_gov_uk_zone.zone_id
 
   records = [
     {
@@ -36,7 +46,7 @@ module "tribunals_gov_uk" {
       name = "www.adjudicationpanel.tribunals.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.tribunals_gov_uk_zone.zone_id
         name                   = "adjudicationpanel.tribunals.gov.uk."
         evaluate_target_health = false
       }
@@ -53,7 +63,7 @@ module "tribunals_gov_uk" {
       name = "www.administrativeappeals.tribunals.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.tribunals_gov_uk_zone.zone_id
         name                   = "administrativeappeals.tribunals.gov.uk."
         evaluate_target_health = false
       }
@@ -62,7 +72,7 @@ module "tribunals_gov_uk" {
       name = "www.charity.tribunals.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.tribunals_gov_uk_zone.zone_id
         name                   = "charity.tribunals.gov.uk."
         evaluate_target_health = false
       }
@@ -79,7 +89,7 @@ module "tribunals_gov_uk" {
       name = "www.consumercreditappeals.tribunals.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.tribunals_gov_uk_zone.zone_id
         name                   = "consumercreditappeals.tribunals.gov.uk."
         evaluate_target_health = false
       }
@@ -424,7 +434,7 @@ module "tribunals_gov_uk" {
       name = "www.estateagentappeals.tribunals.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.tribunals_gov_uk_zone.zone_id
         name                   = "estateagentappeals.tribunals.gov.uk."
         evaluate_target_health = false
       }
@@ -441,7 +451,7 @@ module "tribunals_gov_uk" {
       name = "www.fhsaa.tribunals.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.tribunals_gov_uk_zone.zone_id
         name                   = "fhsaa.tribunals.gov.uk."
         evaluate_target_health = false
       }
@@ -466,7 +476,7 @@ module "tribunals_gov_uk" {
       name = "www.siac.tribunals.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.tribunals_gov_uk_zone.zone_id
         name                   = "siac.tribunals.gov.uk."
         evaluate_target_health = false
       }
@@ -483,14 +493,20 @@ module "tribunals_gov_uk" {
       name = "www.tribunals.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.tribunals_gov_uk_zone.zone_id
         name                   = "tribunals.gov.uk."
         evaluate_target_health = false
       }
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.tribunals_gov_uk.aws_route53_record.default
+  to   = module.tribunals_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.tribunals_gov_uk.aws_route53_zone.default
+  to   = module.tribunals_gov_uk_zone.aws_route53_zone.this
 }

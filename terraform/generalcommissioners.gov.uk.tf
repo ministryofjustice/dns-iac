@@ -1,8 +1,16 @@
-module "generalcommissioners_gov_uk" {
-  source = "./modules/route53"
+module "generalcommissioners_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "generalcommissioners.gov.uk"
-  description = ""
+  name = "generalcommissioners.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "generalcommissioners_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.generalcommissioners_gov_uk_zone.zone_id
 
   records = [
     {
@@ -41,8 +49,14 @@ module "generalcommissioners_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.generalcommissioners_gov_uk.aws_route53_record.default
+  to   = module.generalcommissioners_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.generalcommissioners_gov_uk.aws_route53_zone.default
+  to   = module.generalcommissioners_gov_uk_zone.aws_route53_zone.this
 }

@@ -1,8 +1,19 @@
-module "immigrationappealsonline_justice_gov_uk" {
-  source = "./modules/route53"
+module "immigrationappealsonline_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "immigrationappealsonline.justice.gov.uk"
+  name        = "immigrationappealsonline.justice.gov.uk"
   description = "Tactical Products"
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "immigrationappealsonline_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.immigrationappealsonline_justice_gov_uk_zone.zone_id
+
 
   records = [
     {
@@ -19,10 +30,10 @@ module "immigrationappealsonline_justice_gov_uk" {
       type = "NS"
       ttl  = 172800
       records = [
+        "ns-1040.awsdns-02.org.",
         "ns-1990.awsdns-56.co.uk.",
         "ns-345.awsdns-43.com.",
-        "ns-1040.awsdns-02.org.",
-        "ns-682.awsdns-21.net."
+        "ns-682.awsdns-21.net.",
       ]
     },
     {
@@ -107,8 +118,14 @@ module "immigrationappealsonline_justice_gov_uk" {
       }
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.immigrationappealsonline_justice_gov_uk.aws_route53_record.default
+  to   = module.immigrationappealsonline_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.immigrationappealsonline_justice_gov_uk.aws_route53_zone.default
+  to   = module.immigrationappealsonline_justice_gov_uk_zone.aws_route53_zone.this
 }
