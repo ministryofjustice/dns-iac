@@ -1,8 +1,18 @@
-module "moneyclaim_gov_uk" {
-  source = "./modules/route53"
+module "moneyclaim_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "moneyclaim.gov.uk"
-  description = ""
+  name = "moneyclaim.gov.uk"
+  tags = {
+    Application   = "moneyclaim.gov.uk"
+    business-unit = "HMCTS"
+    owner         = "HMCTS"
+  }
+}
+
+module "moneyclaim_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.moneyclaim_gov_uk_zone.zone_id
 
   records = [
     {
@@ -34,10 +44,14 @@ module "moneyclaim_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    Application   = "moneyclaim.gov.uk"
-    business-unit = "HMCTS"
-    owner         = "HMCTS"
-  }
+moved {
+  from = module.moneyclaim_gov_uk.aws_route53_record.default
+  to   = module.moneyclaim_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.moneyclaim_gov_uk.aws_route53_zone.default
+  to   = module.moneyclaim_gov_uk_zone.aws_route53_zone.this
 }

@@ -1,8 +1,16 @@
-module "courttribunalfinder_service_gov_uk" {
-  source = "./modules/route53"
+module "courttribunalfinder_service_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "courttribunalfinder.service.gov.uk"
-  description = ""
+  name = "courttribunalfinder.service.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "courttribunalfinder_service_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.courttribunalfinder_service_gov_uk_zone.zone_id
 
   records = [
     {
@@ -334,8 +342,14 @@ module "courttribunalfinder_service_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.courttribunalfinder_service_gov_uk.aws_route53_record.default
+  to   = module.courttribunalfinder_service_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.courttribunalfinder_service_gov_uk.aws_route53_zone.default
+  to   = module.courttribunalfinder_service_gov_uk_zone.aws_route53_zone.this
 }

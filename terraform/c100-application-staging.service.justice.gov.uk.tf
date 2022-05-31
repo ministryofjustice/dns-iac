@@ -1,8 +1,14 @@
-module "c100_application_staging_service_justice_gov_uk" {
-  source = "./modules/route53"
+module "c100_application_staging_service_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "c100-application-staging.service.justice.gov.uk"
-  description = ""
+  name = "c100-application-staging.service.justice.gov.uk"
+  tags = {}
+}
+
+module "c100_application_staging_service_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.c100_application_staging_service_justice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -17,4 +23,14 @@ module "c100_application_staging_service_justice_gov_uk" {
       ]
     }
   ]
+}
+
+moved {
+  from = module.c100_application_staging_service_justice_gov_uk.aws_route53_record.default
+  to   = module.c100_application_staging_service_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.c100_application_staging_service_justice_gov_uk.aws_route53_zone.default
+  to   = module.c100_application_staging_service_justice_gov_uk_zone.aws_route53_zone.this
 }

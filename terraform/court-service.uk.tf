@@ -1,8 +1,14 @@
-module "court_service_uk" {
-  source = "./modules/route53"
+module "court_service_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "court-service.uk"
-  description = ""
+  name = "court-service.uk"
+  tags = {}
+}
+
+module "court_service_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.court_service_uk_zone.zone_id
 
   records = [
     {
@@ -58,4 +64,14 @@ module "court_service_uk" {
       ]
     }
   ]
+}
+
+moved {
+  from = module.court_service_uk.aws_route53_record.default
+  to   = module.court_service_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.court_service_uk.aws_route53_zone.default
+  to   = module.court_service_uk_zone.aws_route53_zone.this
 }

@@ -1,8 +1,18 @@
-module "intranet_dsd_io" {
-  source = "./modules/route53"
+module "intranet_dsd_io_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "intranet.dsd.io"
+  name        = "intranet.dsd.io"
   description = "Domain used by MoJ Intranet (confirmed 30 March 2021)"
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "intranet_dsd_io_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.intranet_dsd_io_zone.zone_id
 
   records = [
     {
@@ -82,8 +92,14 @@ module "intranet_dsd_io" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.intranet_dsd_io.aws_route53_record.default
+  to   = module.intranet_dsd_io_records.aws_route53_record.this
+}
+
+moved {
+  from = module.intranet_dsd_io.aws_route53_zone.default
+  to   = module.intranet_dsd_io_zone.aws_route53_zone.this
 }

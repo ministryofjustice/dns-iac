@@ -1,8 +1,16 @@
-module "pensionsappealtribunals_gov_uk" {
-  source = "./modules/route53"
+module "pensionsappealtribunals_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "pensionsappealtribunals.gov.uk"
-  description = ""
+  name = "pensionsappealtribunals.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "pensionsappealtribunals_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.pensionsappealtribunals_gov_uk_zone.zone_id
 
   records = [
     {
@@ -33,8 +41,14 @@ module "pensionsappealtribunals_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.pensionsappealtribunals_gov_uk.aws_route53_record.default
+  to   = module.pensionsappealtribunals_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.pensionsappealtribunals_gov_uk.aws_route53_zone.default
+  to   = module.pensionsappealtribunals_gov_uk_zone.aws_route53_zone.this
 }

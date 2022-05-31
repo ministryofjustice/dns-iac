@@ -1,8 +1,20 @@
-module "civillegaladvice_service_gov_uk" {
-  source = "./modules/route53"
+module "civillegaladvice_service_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "civillegaladvice.service.gov.uk"
-  description = ""
+  name = "civillegaladvice.service.gov.uk"
+  tags = {
+    application            = "Civil Legal Advice/CLA"
+    business-unit          = "HQ"
+    component              = "None"
+    infrastructure-support = "Cloud Platforms platforms@digital.justice.gov.uk"
+    owner                  = "None"
+  }
+}
+
+module "civillegaladvice_service_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.civillegaladvice_service_gov_uk_zone.zone_id
 
   records = [
     {
@@ -160,12 +172,14 @@ module "civillegaladvice_service_gov_uk" {
       }
     }
   ]
+}
 
-  tags = {
-    application            = "Civil Legal Advice/CLA"
-    business-unit          = "HQ"
-    component              = "None"
-    infrastructure-support = "Cloud Platforms platforms@digital.justice.gov.uk"
-    owner                  = "None"
-  }
+moved {
+  from = module.civillegaladvice_service_gov_uk.aws_route53_record.default
+  to   = module.civillegaladvice_service_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.civillegaladvice_service_gov_uk.aws_route53_zone.default
+  to   = module.civillegaladvice_service_gov_uk_zone.aws_route53_zone.this
 }

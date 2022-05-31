@@ -1,5 +1,5 @@
-module "admin_courttribunalformfinder_service_gov_uk" {
-  source = "./modules/route53"
+module "admin_courttribunalformfinder_service_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
   domain      = "admin.courttribunalformfinder.service.gov.uk"
   description = ""
@@ -32,8 +32,4 @@ module "admin_courttribunalformfinder_service_gov_uk" {
       ]
     }
   ]
-
-  tags = {
-    component = "None"
-  }
 }

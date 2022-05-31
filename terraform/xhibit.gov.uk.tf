@@ -1,8 +1,16 @@
-module "xhibit_gov_uk" {
-  source = "./modules/route53"
+module "xhibit_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "xhibit.gov.uk"
-  description = ""
+  name = "xhibit.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "xhibit_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.xhibit_gov_uk_zone.zone_id
 
   records = [
     {
@@ -28,14 +36,20 @@ module "xhibit_gov_uk" {
       name = "www.xhibit.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.xhibit_gov_uk_zone.zone_id
         name                   = "xhibit.gov.uk."
         evaluate_target_health = false
       }
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.xhibit_gov_uk.aws_route53_record.default
+  to   = module.xhibit_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.xhibit_gov_uk.aws_route53_zone.default
+  to   = module.xhibit_gov_uk_zone.aws_route53_zone.this
 }

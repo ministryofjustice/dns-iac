@@ -1,8 +1,16 @@
-module "yjb_gov_uk" {
-  source = "./modules/route53"
+module "yjb_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "yjb.gov.uk"
-  description = ""
+  name = "yjb.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "yjb_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.yjb_gov_uk_zone.zone_id
 
   records = [
     {
@@ -812,8 +820,14 @@ module "yjb_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.yjb_gov_uk.aws_route53_record.default
+  to   = module.yjb_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.yjb_gov_uk.aws_route53_zone.default
+  to   = module.yjb_gov_uk_zone.aws_route53_zone.this
 }

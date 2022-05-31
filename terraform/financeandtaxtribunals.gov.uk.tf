@@ -1,8 +1,22 @@
-module "financeandtaxtribunals_gov_uk" {
-  source = "./modules/route53"
+module "financeandtaxtribunals_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "financeandtaxtribunals.gov.uk"
+  name        = "financeandtaxtribunals.gov.uk"
   description = "Tribunals decisions database"
+
+  tags = {
+    application            = "Tax Tribunals"
+    business-unit          = "HMCTS"
+    infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
+    owner                  = "HMCTS sustainingteamsupport@hmcts.net"
+    component              = "None"
+  }
+}
+
+module "financeandtaxtribunals_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.financeandtaxtribunals_gov_uk_zone.zone_id
 
   records = [
     {
@@ -222,18 +236,20 @@ module "financeandtaxtribunals_gov_uk" {
       name = "www.financeandtaxtribunals.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.financeandtaxtribunals_gov_uk_zone.zone_id
         name                   = "financeandtaxtribunals.gov.uk."
         evaluate_target_health = false
       }
     }
   ]
+}
 
-  tags = {
-    application = "Tax Tribunals"
-    business-unit = "HMCTS"
-    infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
-    owner = "HMCTS sustainingteamsupport@hmcts.net"
-    component = "None"
-  }
+moved {
+  from = module.financeandtaxtribunals_gov_uk.aws_route53_record.default
+  to   = module.financeandtaxtribunals_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.financeandtaxtribunals_gov_uk.aws_route53_zone.default
+  to   = module.financeandtaxtribunals_gov_uk_zone.aws_route53_zone.this
 }

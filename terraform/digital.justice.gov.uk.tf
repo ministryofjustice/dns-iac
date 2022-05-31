@@ -1,8 +1,16 @@
-module "digital_justice_gov_uk" {
-  source = "./modules/route53"
+module "digital_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "digital.justice.gov.uk"
-  description = ""
+  name = "digital.justice.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "digital_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.digital_justice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -647,8 +655,14 @@ module "digital_justice_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.digital_justice_gov_uk.aws_route53_record.default
+  to   = module.digital_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.digital_justice_gov_uk.aws_route53_zone.default
+  to   = module.digital_justice_gov_uk_zone.aws_route53_zone.this
 }

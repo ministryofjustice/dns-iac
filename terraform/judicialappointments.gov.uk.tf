@@ -1,8 +1,18 @@
-module "judicialappointments_gov_uk" {
-  source = "./modules/route53"
+module "judicialappointments_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "judicialappointments.gov.uk"
+  name        = "judicialappointments.gov.uk"
   description = "Incl. Office 365 DNS records"
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "judicialappointments_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.judicialappointments_gov_uk_zone.zone_id
 
   records = [
     {
@@ -204,8 +214,14 @@ module "judicialappointments_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.judicialappointments_gov_uk.aws_route53_record.default
+  to   = module.judicialappointments_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.judicialappointments_gov_uk.aws_route53_zone.default
+  to   = module.judicialappointments_gov_uk_zone.aws_route53_zone.this
 }

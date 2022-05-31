@@ -1,8 +1,14 @@
-module "publicguardian_gov_uk" {
-  source = "./modules/route53"
+module "publicguardian_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "publicguardian.gov.uk"
-  description = ""
+  name = "publicguardian.gov.uk"
+  tags = {}
+}
+
+module "publicguardian_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.publicguardian_gov_uk_zone.zone_id
 
   records = [
     {
@@ -168,4 +174,14 @@ module "publicguardian_gov_uk" {
       }
     }
   ]
+}
+
+moved {
+  from = module.publicguardian_gov_uk.aws_route53_record.default
+  to   = module.publicguardian_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.publicguardian_gov_uk.aws_route53_zone.default
+  to   = module.publicguardian_gov_uk_zone.aws_route53_zone.this
 }

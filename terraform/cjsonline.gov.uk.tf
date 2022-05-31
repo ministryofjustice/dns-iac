@@ -1,8 +1,16 @@
-module "cjsonline_gov_uk" {
-  source = "./modules/route53"
+module "cjsonline_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "cjsonline.gov.uk"
-  description = ""
+  name = "cjsonline.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "cjsonline_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.cjsonline_gov_uk_zone.zone_id
 
   records = [
     {
@@ -213,8 +221,14 @@ module "cjsonline_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.cjsonline_gov_uk.aws_route53_record.default
+  to   = module.cjsonline_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.cjsonline_gov_uk.aws_route53_zone.default
+  to   = module.cjsonline_gov_uk_zone.aws_route53_zone.this
 }

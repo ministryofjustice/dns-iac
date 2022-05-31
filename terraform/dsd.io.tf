@@ -1,8 +1,17 @@
-module "dsd_io" {
-  source = "./modules/route53"
+module "dsd_io_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "dsd.io"
-  description = "Used for Digital Service Department (deprecated domain)"
+  name = "dsd.io"
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "dsd_io_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.dsd_io_zone.zone_id
 
   records = [
     {
@@ -4270,8 +4279,14 @@ module "dsd_io" {
       }
     },
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.dsd_io.aws_route53_record.default
+  to   = module.dsd_io_records.aws_route53_record.this
+}
+
+moved {
+  from = module.dsd_io.aws_route53_zone.default
+  to   = module.dsd_io_zone.aws_route53_zone.this
 }
