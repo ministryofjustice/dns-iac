@@ -1,8 +1,18 @@
-module "transporttribunal_gov_uk" {
-  source = "./modules/route53"
+module "transporttribunal_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "transporttribunal.gov.uk"
+  name        = "transporttribunal.gov.uk"
   description = "Tribunals decisions database"
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "transporttribunal_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.transporttribunal_gov_uk_zone.zone_id
 
   records = [
     {
@@ -28,14 +38,20 @@ module "transporttribunal_gov_uk" {
       name = "www.transporttribunal.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.transporttribunal_gov_uk_zone.zone_id
         name                   = "transporttribunal.gov.uk."
         evaluate_target_health = false
       }
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.transporttribunal_gov_uk.aws_route53_record.default
+  to   = module.transporttribunal_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.transporttribunal_gov_uk.aws_route53_zone.default
+  to   = module.transporttribunal_gov_uk_zone.aws_route53_zone.this
 }

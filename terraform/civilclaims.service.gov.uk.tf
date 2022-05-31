@@ -1,8 +1,20 @@
-module "civilclaims_service_gov_uk" {
-  source = "./modules/route53"
+module "civilclaims_service_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "civilclaims.service.gov.uk"
-  description = ""
+  name = "civilclaims.service.gov.uk"
+  tags = {
+    application            = "Accelerated Possession/AP aka Accelerated Claims aka Civil Claims"
+    business-unit          = "HMCTS"
+    component              = "None"
+    infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
+    owner                  = "HMCTS sustainingteamsupport@hmcts.net"
+  }
+}
+
+module "civilclaims_service_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.civilclaims_service_gov_uk_zone.zone_id
 
   records = [
     {
@@ -75,12 +87,14 @@ module "civilclaims_service_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    application            = "Accelerated Possession/AP aka Accelerated Claims aka Civil Claims"
-    business-unit          = "HMCTS"
-    component           = "None"
-    infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
-    owner                  = "HMCTS sustainingteamsupport@hmcts.net"
-  }
+moved {
+  from = module.civilclaims_service_gov_uk.aws_route53_record.default
+  to   = module.civilclaims_service_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.civilclaims_service_gov_uk.aws_route53_zone.default
+  to   = module.civilclaims_service_gov_uk_zone.aws_route53_zone.this
 }

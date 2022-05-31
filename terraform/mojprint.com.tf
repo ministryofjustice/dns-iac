@@ -1,8 +1,16 @@
-module "mojprint_com" {
-  source = "./modules/route53"
+module "mojprint_com_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "mojprint.com"
-  description = ""
+  name = "mojprint.com"
+  tags = {
+    component = "None"
+  }
+}
+
+module "mojprint_com_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.mojprint_com_zone.zone_id
 
   records = [
     {
@@ -97,8 +105,14 @@ module "mojprint_com" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.mojprint_com.aws_route53_record.default
+  to   = module.mojprint_com_records.aws_route53_record.this
+}
+
+moved {
+  from = module.mojprint_com.aws_route53_zone.default
+  to   = module.mojprint_com_zone.aws_route53_zone.this
 }

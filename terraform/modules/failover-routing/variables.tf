@@ -11,11 +11,11 @@ variable "ttl" {
 }
 
 variable "primary_records" {
-  type = list
+  type = list(any)
 }
 
 variable "secondary_records" {
-  type = list
+  type = list(any)
 }
 
 variable "primary_health_check_id" {

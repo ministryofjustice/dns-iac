@@ -1,8 +1,14 @@
-module "devl_justice_gov_uk" {
-  source = "./modules/route53"
+module "devl_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "devl.justice.gov.uk"
-  description = ""
+  name = "devl.justice.gov.uk"
+  tags = {}
+}
+
+module "devl_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.devl_justice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -138,4 +144,14 @@ module "devl_justice_gov_uk" {
       ]
     }
   ]
+}
+
+moved {
+  from = module.devl_justice_gov_uk.aws_route53_record.default
+  to   = module.devl_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.devl_justice_gov_uk.aws_route53_zone.default
+  to   = module.devl_justice_gov_uk_zone.aws_route53_zone.this
 }

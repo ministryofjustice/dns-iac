@@ -1,8 +1,16 @@
-module "prisonandprobationjobs_gov_uk" {
-  source = "./modules/route53"
+module "prisonandprobationjobs_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "prisonandprobationjobs.gov.uk"
-  description = ""
+  name = "prisonandprobationjobs.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "prisonandprobationjobs_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.prisonandprobationjobs_gov_uk_zone.zone_id
 
   records = [
     {
@@ -81,7 +89,7 @@ module "prisonandprobationjobs_gov_uk" {
       name = "www.prisonandprobationjobs.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "self"
+        zone_id                = module.prisonandprobationjobs_gov_uk_zone.zone_id
         name                   = "prisonandprobationjobs.gov.uk."
         evaluate_target_health = false
       }
@@ -95,8 +103,14 @@ module "prisonandprobationjobs_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.prisonandprobationjobs_gov_uk.aws_route53_record.default
+  to   = module.prisonandprobationjobs_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.prisonandprobationjobs_gov_uk.aws_route53_zone.default
+  to   = module.prisonandprobationjobs_gov_uk_zone.aws_route53_zone.this
 }

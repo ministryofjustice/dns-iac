@@ -1,8 +1,16 @@
-module "admin_courttribunalformfinder_service_gov_uk" {
-  source = "./modules/route53"
+module "admin_courttribunalformfinder_service_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "admin.courttribunalformfinder.service.gov.uk"
-  description = ""
+  name = "admin.courttribunalformfinder.service.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "admin_courttribunalformfinder_service_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.admin_courttribunalformfinder_service_gov_uk_zone.zone_id
 
   records = [
     {
@@ -36,8 +44,4 @@ module "admin_courttribunalformfinder_service_gov_uk" {
       ]
     },
   ]
-
-  tags = {
-    component = "None"
-  }
 }

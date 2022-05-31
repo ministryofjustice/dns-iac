@@ -1,8 +1,16 @@
-module "courtfunds_gov_uk" {
-  source = "./modules/route53"
+module "courtfunds_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "courtfunds.gov.uk"
-  description = ""
+  name = "courtfunds.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "courtfunds_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.courtfunds_gov_uk_zone.zone_id
 
   records = [
     {
@@ -44,8 +52,14 @@ module "courtfunds_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.courtfunds_gov_uk.aws_route53_record.default
+  to   = module.courtfunds_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.courtfunds_gov_uk.aws_route53_zone.default
+  to   = module.courtfunds_gov_uk_zone.aws_route53_zone.this
 }

@@ -1,8 +1,20 @@
-module "find_legal_advice_justice_gov_uk" {
-  source = "./modules/route53"
+module "find_legal_advice_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "find-legal-advice.justice.gov.uk"
-  description = ""
+  name = "find-legal-advice.justice.gov.uk"
+  tags = {
+    application            = "Find a Legal Adviser/fala"
+    business-unit          = "HMCTS"
+    infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
+    owner                  = "HMCTS sustainingteamsupport@hmcts.net"
+    component              = "None"
+  }
+}
+
+module "find_legal_advice_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.find_legal_advice_justice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -108,12 +120,14 @@ module "find_legal_advice_justice_gov_uk" {
       }
     }
   ]
+}
 
-  tags = {
-    application = "Find a Legal Adviser/fala"
-    business-unit = "HMCTS"
-    infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
-    owner = "HMCTS sustainingteamsupport@hmcts.net"
-    component = "None"
-  }
+moved {
+  from = module.find_legal_advice_justice_gov_uk.aws_route53_record.default
+  to   = module.find_legal_advice_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.find_legal_advice_justice_gov_uk.aws_route53_zone.default
+  to   = module.find_legal_advice_justice_gov_uk_zone.aws_route53_zone.this
 }

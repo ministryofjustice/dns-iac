@@ -1,8 +1,20 @@
-module "familymediators_service_justice_gov_uk" {
-  source = "./modules/route53"
+module "familymediators_service_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "familymediators.service.justice.gov.uk"
-  description = ""
+  name = "familymediators.service.justice.gov.uk"
+  tags = {
+    application            = "Family Mediators/FM"
+    business-unit          = "HQ"
+    infrastructure-support = "Cloud Platforms platforms@digital.justice.gov.uk"
+    owner                  = "None"
+    component              = "None"
+  }
+}
+
+module "familymediators_service_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.familymediators_service_justice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -42,12 +54,14 @@ module "familymediators_service_justice_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    application = "Family Mediators/FM"
-    business-unit = "HQ"
-    infrastructure-support = "Cloud Platforms platforms@digital.justice.gov.uk"
-    owner = "None"
-    component = "None"
-  }
+moved {
+  from = module.familymediators_service_justice_gov_uk.aws_route53_record.default
+  to   = module.familymediators_service_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.familymediators_service_justice_gov_uk.aws_route53_zone.default
+  to   = module.familymediators_service_justice_gov_uk_zone.aws_route53_zone.this
 }

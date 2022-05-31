@@ -1,8 +1,15 @@
-module "brookhouseinvestigation_independent_gov_uk" {
-  source = "./modules/route53"
+module "brookhouseinvestigation_independent_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "brookhouseinvestigation.independent.gov.uk"
+  name        = "brookhouseinvestigation.independent.gov.uk"
   description = "Brook house investigation"
+  tags        = {}
+}
+
+module "brookhouseinvestigation_independent_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.brookhouseinvestigation_independent_gov_uk_zone.zone_id
 
   records = [
     {
@@ -17,4 +24,14 @@ module "brookhouseinvestigation_independent_gov_uk" {
       ]
     }
   ]
+}
+
+moved {
+  from = module.brookhouseinvestigation_independent_gov_uk.aws_route53_record.default
+  to   = module.brookhouseinvestigation_independent_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.brookhouseinvestigation_independent_gov_uk.aws_route53_zone.default
+  to   = module.brookhouseinvestigation_independent_gov_uk_zone.aws_route53_zone.this
 }

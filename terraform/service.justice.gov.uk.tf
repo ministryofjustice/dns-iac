@@ -1,8 +1,16 @@
-module "service_justice_gov_uk" {
-  source = "./modules/route53"
+module "service_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "service.justice.gov.uk"
-  description = ""
+  name = "service.justice.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "service_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.service_justice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -2061,10 +2069,16 @@ module "service_justice_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.service_justice_gov_uk.aws_route53_record.default
+  to   = module.service_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.service_justice_gov_uk.aws_route53_zone.default
+  to   = module.service_justice_gov_uk_zone.aws_route53_zone.this
 }
 
 ######################
@@ -2121,7 +2135,7 @@ resource "aws_route53_health_check" "courts_video_link_service_justice_gov_uk_mu
 module "courts_video_link_service_justice_gov_uk_multivalue" {
   source = "./modules/multivalue-routing"
 
-  zone_id = module.service_justice_gov_uk.zone_id
+  zone_id = module.service_justice_gov_uk_zone.zone_id
   name    = "courts-video-link.service.justice.gov.uk"
 
   multivalue_answers = [

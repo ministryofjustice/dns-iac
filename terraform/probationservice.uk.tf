@@ -1,8 +1,14 @@
-module "probationservice_uk" {
-  source = "./modules/route53"
+module "probationservice_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "probationservice.uk"
-  description = ""
+  name = "probationservice.uk"
+  tags = {}
+}
+
+module "probationservice_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.probationservice_uk_zone.zone_id
 
   records = [
     {
@@ -58,4 +64,14 @@ module "probationservice_uk" {
       ]
     }
   ]
+}
+
+moved {
+  from = module.probationservice_uk.aws_route53_record.default
+  to   = module.probationservice_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.probationservice_uk.aws_route53_zone.default
+  to   = module.probationservice_uk_zone.aws_route53_zone.this
 }

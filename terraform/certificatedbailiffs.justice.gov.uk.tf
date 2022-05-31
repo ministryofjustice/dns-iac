@@ -1,8 +1,18 @@
-module "certificatedbailiffs_justice_gov_uk" {
-  source = "./modules/route53"
+module "certificatedbailiffs_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "certificatedbailiffs.justice.gov.uk"
+  name        = "certificatedbailiffs.justice.gov.uk"
   description = "Tactical Products"
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "certificatedbailiffs_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.certificatedbailiffs_justice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -154,8 +164,14 @@ module "certificatedbailiffs_justice_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.certificatedbailiffs_justice_gov_uk.aws_route53_record.default
+  to   = module.certificatedbailiffs_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.certificatedbailiffs_justice_gov_uk.aws_route53_zone.default
+  to   = module.certificatedbailiffs_justice_gov_uk_zone.aws_route53_zone.this
 }

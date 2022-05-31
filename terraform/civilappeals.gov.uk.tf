@@ -1,8 +1,17 @@
-module "civilappeals_gov_uk" {
-  source = "./modules/route53"
+module "civilappeals_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "civilappeals.gov.uk"
-  description = ""
+  name = "civilappeals.gov.uk"
+
+  tags = {
+    component = "None"
+  }
+}
+
+module "civilappeals_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.civilappeals_gov_uk_zone.zone_id
 
   records = [
     {
@@ -33,8 +42,14 @@ module "civilappeals_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.civilappeals_gov_uk.aws_route53_record.default
+  to   = module.civilappeals_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.civilappeals_gov_uk.aws_route53_zone.default
+  to   = module.civilappeals_gov_uk_zone.aws_route53_zone.this
 }

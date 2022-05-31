@@ -1,8 +1,16 @@
-module "ukgovwales_gov_uk" {
-  source = "./modules/route53"
+module "ukgovwales_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "ukgovwales.gov.uk"
-  description = ""
+  name = "ukgovwales.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "ukgovwales_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.ukgovwales_gov_uk_zone.zone_id
 
   records = [
     {
@@ -151,7 +159,7 @@ module "ukgovwales_gov_uk" {
     {
       name = "prg._domainkey.ukgovwales.gov.uk."
       type = "CNAME"
-      ttl = 300
+      ttl  = 300
       records = [
         "prg.domainkey.u26148741.wl242.sendgrid.net"
       ]
@@ -159,7 +167,7 @@ module "ukgovwales_gov_uk" {
     {
       name = "prg.ukgovwales.gov.uk."
       type = "CNAME"
-      ttl = 300
+      ttl  = 300
       records = [
         "u26148741.wl242.sendgrid.net"
       ]
@@ -167,14 +175,20 @@ module "ukgovwales_gov_uk" {
     {
       name = "prg2._domainkey.ukgovwales.gov.uk."
       type = "CNAME"
-      ttl = 300
+      ttl  = 300
       records = [
         "prg2.domainkey.u26148741.wl242.sendgrid.net"
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.ukgovwales_gov_uk.aws_route53_record.default
+  to   = module.ukgovwales_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.ukgovwales_gov_uk.aws_route53_zone.default
+  to   = module.ukgovwales_gov_uk_zone.aws_route53_zone.this
 }

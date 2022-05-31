@@ -1,8 +1,16 @@
-module "tribunalsservice_gov_uk" {
-  source = "./modules/route53"
+module "tribunalsservice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "tribunalsservice.gov.uk"
-  description = ""
+  name = "tribunalsservice.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "tribunalsservice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.tribunalsservice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -49,8 +57,14 @@ module "tribunalsservice_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.tribunalsservice_gov_uk.aws_route53_record.default
+  to   = module.tribunalsservice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.tribunalsservice_gov_uk.aws_route53_zone.default
+  to   = module.tribunalsservice_gov_uk_zone.aws_route53_zone.this
 }

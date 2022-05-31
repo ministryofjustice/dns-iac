@@ -1,8 +1,16 @@
-module "video_service_justice_gov_uk" {
-  source = "./modules/route53"
+module "video_service_justice_gov_uk_zone" {
+  source = "./modules/route53/zone"
 
-  domain      = "video.service.justice.gov.uk"
-  description = ""
+  name = "video.service.justice.gov.uk"
+  tags = {
+    component = "None"
+  }
+}
+
+module "video_service_justice_gov_uk_records" {
+  source = "./modules/route53/records"
+
+  zone_id = module.video_service_justice_gov_uk_zone.zone_id
 
   records = [
     {
@@ -97,10 +105,16 @@ module "video_service_justice_gov_uk" {
       ]
     }
   ]
+}
 
-  tags = {
-    component = "None"
-  }
+moved {
+  from = module.video_service_justice_gov_uk.aws_route53_record.default
+  to   = module.video_service_justice_gov_uk_records.aws_route53_record.this
+}
+
+moved {
+  from = module.video_service_justice_gov_uk.aws_route53_zone.default
+  to   = module.video_service_justice_gov_uk_zone.aws_route53_zone.this
 }
 
 ####################
@@ -134,16 +148,16 @@ resource "aws_route53_health_check" "playback_video_service_justice_gov_uk_failo
 module "playback_video_service_justice_gov_uk_failover" {
   source = "./modules/failover-routing"
 
-  zone_id = module.video_service_justice_gov_uk.zone_id
-  name = "playback.video.service.justice.gov.uk"
-  ttl = 60
+  zone_id = module.video_service_justice_gov_uk_zone.zone_id
+  name    = "playback.video.service.justice.gov.uk"
+  ttl     = 60
 
-  primary_records = ["217.135.104.158"]
+  primary_records   = ["217.135.104.158"]
   secondary_records = ["213.216.136.30"]
 
-  primary_health_check_id = aws_route53_health_check.playback_video_service_justice_gov_uk_failover_primary.id
+  primary_health_check_id   = aws_route53_health_check.playback_video_service_justice_gov_uk_failover_primary.id
   secondary_health_check_id = null # The secondary health check isn't set in the original configuration
 
-  primary_identifier = "playback-Primary"
+  primary_identifier   = "playback-Primary"
   secondary_identifier = "playback-Secondary"
 }
