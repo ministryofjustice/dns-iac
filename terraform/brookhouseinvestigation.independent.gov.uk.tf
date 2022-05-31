@@ -7,7 +7,7 @@ module "brookhouseinvestigation_independent_gov_uk_zone" {
 }
 
 module "brookhouseinvestigation_independent_gov_uk_records" {
-  source = "./modules/route53/records"            
+  source = "./modules/route53/records"
 
   zone_id = module.brookhouseinvestigation_independent_gov_uk_zone.zone_id
 
