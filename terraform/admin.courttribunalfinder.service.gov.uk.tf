@@ -7,7 +7,7 @@ module "admin_courttribunalfinder_service_gov_uk" {
   records = [
     {
       name = "admin.courttribunalfinder.service.gov.uk."     
-      type = "NS"
+      type = "NS"  
       ttl  = 172800
       records = [
         "ns-790.awsdns-34.net.",    
