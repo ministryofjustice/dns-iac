@@ -9,7 +9,7 @@ resource "aws_route53_zone" "this" {
 resource "aws_shield_protection" "this" {
   for_each = var.enable_shield_protection ? toset(["true"]) : toset([])
 
-  name = "${var.name}-shield"
+  name         = "${var.name}-shield"
   resource_arn = aws_route53_zone.this.arn
-  tags = var.tags
+  tags         = var.tags
 }
