@@ -19,7 +19,7 @@ module "brookhouseinvestigation_independent_gov_uk_records" {
       records = [
         "ns-360.awsdns-45.com.",
         "ns-538.awsdns-03.net.",
-        "ns-1361.awsdns-42.org.",
+        "ns-1361.awsdns-42.org.",         
         "ns-1704.awsdns-21.co.uk."
       ]
     }
