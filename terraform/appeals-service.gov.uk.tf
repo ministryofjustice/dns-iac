@@ -27,10 +27,10 @@ module "appeals_service_gov_uk_records" {
       type = "NS"
       ttl  = 172800
       records = [
-        "ns-806.awsdns-36.net.",    
+        "ns-806.awsdns-36.net.",
         "ns-1039.awsdns-01.org.",
         "ns-1728.awsdns-24.co.uk.",
-        "ns-470.awsdns-58.com."   
+        "ns-470.awsdns-58.com."
       ]
     },
     {

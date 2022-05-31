@@ -3,20 +3,20 @@ module "admin_courttribunalformfinder_service_gov_uk_zone" {
 
   domain      = "admin.courttribunalformfinder.service.gov.uk"
   description = ""
-  records = [     
+  records = [
     {
       name = "admin.courttribunalformfinder.service.gov.uk."
       type = "NS"
       ttl  = 172800
       records = [
-        "ns-812.awsdns-37.net.",    
-        "ns-252.awsdns-31.com.",  
+        "ns-812.awsdns-37.net.",
+        "ns-252.awsdns-31.com.",
         "ns-1415.awsdns-48.org.",
-        "ns-1564.awsdns-03.co.uk."     
+        "ns-1564.awsdns-03.co.uk."
       ]
     },
     {
-      name = "_dmarc.admin.courttribunalformfinder.service.gov.uk."     
+      name = "_dmarc.admin.courttribunalformfinder.service.gov.uk."
       type = "TXT"
       ttl  = 7200
       records = [
