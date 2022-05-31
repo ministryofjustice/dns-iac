@@ -27,8 +27,8 @@ locals {
     infrastructure-support = "Operations Engineering: operations-engineering@digital.justice.gov.uk"
     is-production          = true
     owner                  = "Operations Engineering: operations-engineering@digital.justice.gov.uk"
-    runbook                = "https://operations-engineering.service.justice.gov.uk/documentation/runbooks.html#runbooks"
-    source-code            = "https://github.com/ministryofjustice/dns-iac"
+    runbook                = "operations-engineering.service.justice.gov.uk/documentation/runbooks.html"
+    source-code            = "github.com/ministryofjustice/dns-iac"
     terraform              = true
   }
 }
