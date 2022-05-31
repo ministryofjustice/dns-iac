@@ -129,7 +129,7 @@ module "appeal_tax_tribunal_service_gov_uk_records" {
       alias = {
         zone_id                = data.aws_elb_hosted_zone_id.eu-west-1.id
         name                   = "tax-tribu-elbtaxtr-brikcvpnyvct-1698472806.eu-west-1.elb.amazonaws.com."
-        evaluate_target_health = false
+        evaluate_target_health = false      
       }
     },
     {
