@@ -19,11 +19,6 @@ data "aws_caller_identity" "current" {}
 # Get AWS Organizations enrolment details, to get the root account ID
 data "aws_organizations_organization" "enrolment" {}
 
-# Get AWS Organizations accounts itself
-data "aws_organizations_organization" "root" {
-  provider = aws.aws-root-account
-}
-
 locals {
   tags = {
     application            = "dns-iac"
