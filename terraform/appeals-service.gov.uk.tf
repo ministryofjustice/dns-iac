@@ -36,7 +36,7 @@ module "appeals_service_gov_uk_records" {
     {
       name = "www.appeals-service.gov.uk."
       type = "A"
-      alias = {
+      alias = {       
         zone_id                = module.appeals_service_gov_uk_zone.zone_id
         name                   = "appeals-service.gov.uk."
         evaluate_target_health = false
