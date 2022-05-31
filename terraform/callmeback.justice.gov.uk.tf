@@ -10,7 +10,7 @@ module "callmeback_justice_gov_uk_zone" {
 module "callmeback_justice_gov_uk_records" {
   source = "./modules/route53/records"
 
-  zone_id = module.callmeback_justice_gov_uk_zone.zone_id
+  zone_id = module.callmeback_justice_gov_uk_zone.zone_id    
 
   records = [
     {
