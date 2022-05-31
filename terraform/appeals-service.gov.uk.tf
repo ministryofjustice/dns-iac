@@ -2,7 +2,7 @@ module "appeals_service_gov_uk_zone" {
   source = "./modules/route53/zone"
 
   name        = "appeals-service.gov.uk"
-  description = "Tribunals decisions database"
+  description = "Tribunals decisions database"      
   tags = {
     component = "None"
   }
