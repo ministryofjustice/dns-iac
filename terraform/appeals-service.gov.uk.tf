@@ -14,7 +14,7 @@ module "appeals_service_gov_uk_records" {
   zone_id = module.appeals_service_gov_uk_zone.zone_id
 
   records = [
-    {         
+    {
       name = "appeals-service.gov.uk."
       type = "A"
       ttl  = 300
