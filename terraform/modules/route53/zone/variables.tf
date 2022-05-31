@@ -21,3 +21,9 @@ variable "force_destroy" {
 variable "tags" {
   type = map(any)
 }
+
+variable "enable_shield_protection" {
+  type = bool
+  default = false
+  description = "Whether to enable Shield Advanced protection on this hosted zone"
+}
