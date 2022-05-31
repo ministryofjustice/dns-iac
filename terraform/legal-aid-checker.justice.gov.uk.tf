@@ -47,11 +47,12 @@ module "legal_aid_checker_justice_gov_uk_records" {
     },
     {
       name = "www.legal-aid-checker.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "www.legal-aid-checker.justice.gov.uk.s3-website-eu-west-1.amazonaws.com"
-      ]
+      type = "A"
+      alias = {
+        zone_id                = "Z1BKCTXD74EZPE"
+        name                   = "s3-website-eu-west-1.amazonaws.com."
+        evaluate_target_health = true
+      }
     }
   ]
 }
