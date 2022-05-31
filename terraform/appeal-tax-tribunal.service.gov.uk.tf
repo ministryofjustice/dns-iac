@@ -16,7 +16,7 @@ module "appeal_tax_tribunal_service_gov_uk_records" {
   records = [
     {
       name = "appeal-tax-tribunal.service.gov.uk."
-      type = "A"
+      type = "A"   
       ttl  = 60
       records = [
         "51.140.165.14"
