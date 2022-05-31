@@ -32,6 +32,6 @@ moved {
 }
 
 moved {
-  from = module.brookhouseinvestigation_independent_gov_uk.aws_route53_zone.default         
+  from = module.brookhouseinvestigation_independent_gov_uk.aws_route53_zone.default
   to   = module.brookhouseinvestigation_independent_gov_uk_zone.aws_route53_zone.this
 }
