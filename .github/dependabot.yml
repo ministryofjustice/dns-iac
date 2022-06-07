@@ -9,6 +9,10 @@ updates:
     directory: "/terraform"
     schedule:
       interval: "daily"
+  - package-ecosystem: "terraform"
+    directory: "/terraform/defensive-domains"
+    schedule:
+      interval: "daily"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
