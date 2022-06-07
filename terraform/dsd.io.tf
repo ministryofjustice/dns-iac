@@ -1647,15 +1647,6 @@ module "dsd_io_records" {
       ]
     },
     {
-      name = "one3one.dsd.io.",
-      type = "A",
-      alias = {
-        zone_id                = "Z1BKCTXD74EZPE"
-        name                   = "s3-website-eu-west-1.amazonaws.com."
-        evaluate_target_health = false
-      }
-    },
-    {
       name = "openjustice.dsd.io.",
       type = "CNAME",
       ttl  = 300,
