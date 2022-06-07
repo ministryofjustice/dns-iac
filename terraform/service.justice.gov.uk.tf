@@ -1987,6 +1987,42 @@ module "service_justice_gov_uk_records" {
       records = [
         "google-site-verification=8nQHRQ-Z2NxNUcSmlpH-rOZytJpVYqW4g9et7HnojPA"
       ]
+    },
+    {
+      name                             = "courts-video-link.service.justice.gov.uk"
+      type                             = "A"
+      ttl                              = 300,
+      records                          = ["213.216.136.71"]
+      health_check_id                  = aws_route53_health_check.courts_video_link_service_justice_gov_uk_multivalue_primary.id
+      set_identifier                   = "Primary"
+      multivalue_answer_routing_policy = true
+    },
+    {
+      name                             = "courts-video-link.service.justice.gov.uk"
+      type                             = "A"
+      ttl                              = 300,
+      records                          = ["217.135.104.201"]
+      health_check_id                  = aws_route53_health_check.courts_video_link_service_justice_gov_uk_multivalue_secondary.id
+      set_identifier                   = "Secondary"
+      multivalue_answer_routing_policy = true
+    },
+    {
+      name                             = "courts-video-link.service.justice.gov.uk"
+      type                             = "A"
+      ttl                              = 300,
+      records                          = ["213.216.136.72"]
+      health_check_id                  = aws_route53_health_check.courts_video_link_service_justice_gov_uk_multivalue_tertiary.id
+      set_identifier                   = "courts-video-link-tertiary"
+      multivalue_answer_routing_policy = true
+    },
+    {
+      name                             = "courts-video-link.service.justice.gov.uk"
+      type                             = "A"
+      ttl                              = 300,
+      records                          = ["217.135.104.202"]
+      health_check_id                  = aws_route53_health_check.courts_video_link_service_justice_gov_uk_multivalue_quarternary.id
+      set_identifier                   = "courts-video-link-quarternary"
+      multivalue_answer_routing_policy = true
     }
   ]
 }
@@ -2001,9 +2037,9 @@ moved {
   to   = module.service_justice_gov_uk_zone.aws_route53_zone.this
 }
 
-######################
-# Multivalue routing #
-######################
+################
+# Healthchecks #
+################
 resource "aws_route53_health_check" "courts_video_link_service_justice_gov_uk_multivalue_primary" {
   ip_address        = "213.216.136.71"
   port              = 443
@@ -2052,36 +2088,22 @@ resource "aws_route53_health_check" "courts_video_link_service_justice_gov_uk_mu
   }
 }
 
-module "courts_video_link_service_justice_gov_uk_multivalue" {
-  source = "./modules/multivalue-routing"
+moved {
+  from = module.courts_video_link_service_justice_gov_uk_multivalue.aws_route53_record.multivalue["Primary"]
+  to   = module.service_justice_gov_uk_records.aws_route53_record.this["courts-video-link.service.justice.gov.uk_A_Primary"]
+}
 
-  zone_id = module.service_justice_gov_uk_zone.zone_id
-  name    = "courts-video-link.service.justice.gov.uk"
+moved {
+  from = module.courts_video_link_service_justice_gov_uk_multivalue.aws_route53_record.multivalue["Secondary"]
+  to   = module.service_justice_gov_uk_records.aws_route53_record.this["courts-video-link.service.justice.gov.uk_A_Secondary"]
+}
 
-  multivalue_answers = [
-    {
-      ttl             = 300
-      records         = ["213.216.136.71"]
-      health_check_id = aws_route53_health_check.courts_video_link_service_justice_gov_uk_multivalue_primary.id
-      set_identifier  = "Primary"
-    },
-    {
-      ttl             = 300
-      records         = ["217.135.104.201"]
-      health_check_id = aws_route53_health_check.courts_video_link_service_justice_gov_uk_multivalue_secondary.id
-      set_identifier  = "Secondary"
-    },
-    {
-      ttl             = 300
-      records         = ["213.216.136.72"]
-      health_check_id = aws_route53_health_check.courts_video_link_service_justice_gov_uk_multivalue_tertiary.id
-      set_identifier  = "courts-video-link-tertiary"
-    },
-    {
-      ttl             = 300
-      records         = ["217.135.104.202"]
-      health_check_id = aws_route53_health_check.courts_video_link_service_justice_gov_uk_multivalue_quarternary.id
-      set_identifier  = "courts-video-link-quarternary"
-    }
-  ]
+moved {
+  from = module.courts_video_link_service_justice_gov_uk_multivalue.aws_route53_record.multivalue["courts-video-link-tertiary"]
+  to   = module.service_justice_gov_uk_records.aws_route53_record.this["courts-video-link.service.justice.gov.uk_A_courts-video-link-tertiary"]
+}
+
+moved {
+  from = module.courts_video_link_service_justice_gov_uk_multivalue.aws_route53_record.multivalue["courts-video-link-quarternary"]
+  to   = module.service_justice_gov_uk_records.aws_route53_record.this["courts-video-link.service.justice.gov.uk_A_courts-video-link-quarternary"]
 }

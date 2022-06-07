@@ -4,13 +4,14 @@ resource "aws_route53_record" "this" {
     join("_", compact([record.name, record.type, lookup(record, "set_identifier", "")])) => record
   }
 
-  zone_id         = var.zone_id
-  name            = each.value.name
-  type            = each.value.type
-  ttl             = lookup(each.value, "ttl", null)
-  records         = lookup(each.value, "records", null)
-  set_identifier  = lookup(each.value, "set_identifier", null)
-  health_check_id = lookup(each.value, "health_check_id", null)
+  zone_id                          = var.zone_id
+  name                             = each.value.name
+  type                             = each.value.type
+  ttl                              = lookup(each.value, "ttl", null)
+  records                          = lookup(each.value, "records", null)
+  set_identifier                   = lookup(each.value, "set_identifier", null)
+  health_check_id                  = lookup(each.value, "health_check_id", null)
+  multivalue_answer_routing_policy = lookup(each.value, "multivalue_answer_routing_policy", null)
 
   dynamic "alias" {
     for_each = length(keys(lookup(each.value, "alias", {}))) == 0 ? [] : [true]
