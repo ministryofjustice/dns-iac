@@ -2,9 +2,10 @@ module "yjb_gov_uk_zone" {
   source = "./modules/route53/zone"
 
   name = "yjb.gov.uk"
-  tags = {
-    component = "None"
-  }
+  tags = merge(local.yjb_tags, {
+    is-production = true
+    application   = "Youth Justice Board root domain"
+  })
 }
 
 module "yjb_gov_uk_records" {

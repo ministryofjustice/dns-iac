@@ -31,4 +31,16 @@ locals {
     source-code            = "github.com/ministryofjustice/dns-iac"
     terraform              = true
   }
+  default_hosted_zone_tags = {
+    is-production = false
+    source-code   = "github.com/ministryofjustice/dns-iac"
+    terraform     = true
+  }
+}
+
+locals {
+  yjb_tags = merge(locals.default_hosted_zone_tags, {
+    business-unit = "YJB"
+    owner         = "Youth Justice Board ICT: ict@yjb.gov.uk"
+  })
 }

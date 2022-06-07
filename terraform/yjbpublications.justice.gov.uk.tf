@@ -2,10 +2,10 @@ module "yjbpublications_justice_gov_uk_zone" {
   source = "./modules/route53/zone"
 
   name = "yjbpublications.justice.gov.uk"
-
-  tags = {
-    component = "None"
-  }
+  tags = merge(local.yjb_tags, {
+    is-production = true
+    application   = "Youth Justice Board Publications: Redirect to GOV.UK"
+  })
 }
 
 module "yjbpublications_justice_gov_uk_records" {
