@@ -244,11 +244,12 @@ module "dsd_io_records" {
     },
     {
       name = "can-you-get-legal-aid.dsd.io.",
-      type = "CNAME",
-      ttl  = 300,
-      records = [
-        "can-you-get-legal-aid.dsd.io.s3-website-eu-west-1.amazonaws.com"
-      ]
+      type = "A",
+      alias = {
+        zone_id                = "Z1BKCTXD74EZPE"
+        name                   = "s3-website-eu-west-1.amazonaws.com."
+        evaluate_target_health = false
+      }
     },
     {
       name = "carestandardstribunal.dsd.io.",
@@ -629,11 +630,12 @@ module "dsd_io_records" {
     },
     {
       name = "ctf.dsd.io.",
-      type = "CNAME",
-      ttl  = 300,
-      records = [
-        "ctf.dsd.io.s3-website-eu-west-1.amazonaws.com"
-      ]
+      type = "A",
+      alias = {
+        zone_id                = "Z1BKCTXD74EZPE"
+        name                   = "s3-website-eu-west-1.amazonaws.com."
+        evaluate_target_health = false
+      }
     },
     {
       name = "dacp.dsd.io.",
@@ -645,11 +647,12 @@ module "dsd_io_records" {
     },
     {
       name = "et.dashboard.dsd.io.",
-      type = "CNAME",
-      ttl  = 300,
-      records = [
-        "et.dashboard.dsd.io.s3-website-eu-west-1.amazonaws.com"
-      ]
+      type = "A",
+      alias = {
+        zone_id                = "Z1BKCTXD74EZPE"
+        name                   = "s3-website-eu-west-1.amazonaws.com."
+        evaluate_target_health = false
+      }
     },
     {
       name = "defence-request.dsd.io.",
@@ -1645,11 +1648,12 @@ module "dsd_io_records" {
     },
     {
       name = "one3one.dsd.io.",
-      type = "CNAME",
-      ttl  = 300,
-      records = [
-        "one3one.dsd.io.s3-website-eu-west-1.amazonaws.com."
-      ]
+      type = "A",
+      alias = {
+        zone_id                = "Z1BKCTXD74EZPE"
+        name                   = "s3-website-eu-west-1.amazonaws.com."
+        evaluate_target_health = false
+      }
     },
     {
       name = "openjustice.dsd.io.",
@@ -2915,11 +2919,12 @@ module "dsd_io_records" {
     },
     {
       name = "static.dsd.io.",
-      type = "CNAME",
-      ttl  = 300,
-      records = [
-        "static.dsd.io.s3-website-eu-west-1.amazonaws.com"
-      ]
+      type = "A",
+      alias = {
+        zone_id                = "Z1BKCTXD74EZPE"
+        name                   = "s3-website-eu-west-1.amazonaws.com."
+        evaluate_target_health = false
+      }
     },
     {
       name = "deployarn.active.dev.status.dsd.io.",
