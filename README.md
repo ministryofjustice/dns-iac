@@ -6,7 +6,7 @@ This repository holds most of the Ministry of Justice's DNS estate.
 
 This repository currently manages:
 
-| Domain name | Managed by |
+| Domain name |
 |-|
 | [admin.courttribunalformfinder.service.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/admin.courttribunalformfinder.service.gov.uk.tf) |
 | [admin.tribunalsdecisions.service.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/admin.tribunalsdecisions.service.gov.uk.tf) |
