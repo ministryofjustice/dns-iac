@@ -103,6 +103,32 @@ module "video_service_justice_gov_uk_records" {
       records = [
         "217.135.104.150"
       ]
+    },
+    {
+      name            = "playback.video.service.justice.gov.uk"
+      type            = "A"
+      ttl             = 60
+      health_check_id = aws_route53_health_check.playback_video_service_justice_gov_uk_failover_primary.id
+      set_identifier  = "playback-Primary"
+      records = [
+        "217.135.104.158"
+      ]
+      failover_routing_policy = {
+        type = "PRIMARY"
+      }
+    },
+    {
+      # NOTE: The secondary health check isn't set in the original configuration
+      name           = "playback.video.service.justice.gov.uk"
+      type           = "A"
+      ttl            = 60
+      set_identifier = "playback-Secondary"
+      records = [
+        "213.216.136.30"
+      ]
+      failover_routing_policy = {
+        type = "SECONDARY"
+      }
     }
   ]
 }
@@ -117,9 +143,9 @@ moved {
   to   = module.video_service_justice_gov_uk_zone.aws_route53_zone.this
 }
 
-####################
-# Failover routing #
-####################
+#################
+# Health checks #
+#################
 resource "aws_route53_health_check" "playback_video_service_justice_gov_uk_failover_primary" {
   fqdn              = "playback.video.service.justice.gov.uk"
   ip_address        = "217.135.104.158"
@@ -145,19 +171,12 @@ resource "aws_route53_health_check" "playback_video_service_justice_gov_uk_failo
   }
 }
 
-module "playback_video_service_justice_gov_uk_failover" {
-  source = "./modules/failover-routing"
+moved {
+  from = module.playback_video_service_justice_gov_uk_failover.aws_route53_record.primary
+  to   = module.video_service_justice_gov_uk_records.aws_route53_record.this["playback.video.service.justice.gov.uk_A_playback-Primary"]
+}
 
-  zone_id = module.video_service_justice_gov_uk_zone.zone_id
-  name    = "playback.video.service.justice.gov.uk"
-  ttl     = 60
-
-  primary_records   = ["217.135.104.158"]
-  secondary_records = ["213.216.136.30"]
-
-  primary_health_check_id   = aws_route53_health_check.playback_video_service_justice_gov_uk_failover_primary.id
-  secondary_health_check_id = null # The secondary health check isn't set in the original configuration
-
-  primary_identifier   = "playback-Primary"
-  secondary_identifier = "playback-Secondary"
+moved {
+  from = module.playback_video_service_justice_gov_uk_failover.aws_route53_record.secondary
+  to   = module.video_service_justice_gov_uk_records.aws_route53_record.this["playback.video.service.justice.gov.uk_A_playback-Secondary"]
 }
