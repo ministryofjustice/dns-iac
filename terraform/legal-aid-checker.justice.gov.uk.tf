@@ -2,6 +2,9 @@ module "legal_aid_checker_justice_gov_uk_zone" {
   source = "./modules/route53/zone"
 
   name = "legal-aid-checker.justice.gov.uk"
+
+  enable_shield_protection = true
+
   tags = {
     application            = "Legal Aid Agency/LAA"
     business-unit          = "HQ"
