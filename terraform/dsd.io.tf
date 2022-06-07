@@ -3,6 +3,8 @@ module "dsd_io_zone" {
 
   name = "dsd.io"
 
+  enable_shield_protection = true
+
   tags = {
     component = "None"
   }
