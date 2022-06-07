@@ -2,9 +2,10 @@ module "yjils_justice_gov_uk_zone" {
   source = "./modules/route53/zone"
 
   name = "yjils.justice.gov.uk"
-  tags = {
-    component = "None"
-  }
+  tags = merge(local.yjb_tags, {
+    is-production = true
+    application   = "Youth Justice Interactive Learning Space"
+  })
 }
 
 module "yjils_justice_gov_uk_records" {
