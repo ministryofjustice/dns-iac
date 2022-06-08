@@ -39,7 +39,7 @@ locals {
 }
 
 locals {
-  yjb_tags = merge(locals.default_hosted_zone_tags, {
+  yjb_tags = merge(local.default_hosted_zone_tags, {
     business-unit = "YJB"
     owner         = "Youth Justice Board ICT: ict@yjb.gov.uk"
   })
