@@ -138,7 +138,7 @@ module "publicguardian_gov_uk_records" {
       ttl  = 300
       records = [
         "MS=ms49968440",
-        "v=spf1 ip4:194.33.196.8/32 ip4:194.33.192.8/32  include:spf.protection.outlook.com -all"
+        "v=spf1 ip4:194.33.196.8/32 ip4:194.33.192.8/32 include:spf.protection.outlook.com -all"
       ]
     },
     {
