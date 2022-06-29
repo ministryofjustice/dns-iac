@@ -62,8 +62,8 @@ module "appeal_tax_tribunal_service_gov_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
-        "UPTlANXnn5-EVudKy2VqaX22S6NQk0mrKMPN6jKGuVc",
-        "sQGUQOxKnGYs9eKxHF0g9_Yn8g33cEIlbpmxmCJgY68"
+        "yP1b2fyuHqZ_RcXDYV8nbH1FhYQuCt5KHusTAONwgg0",
+        "gKRej2crvHAATtd_CsnGtsC0loWhIBJg3z3USUV_7MA"
       ]
     },
     {
