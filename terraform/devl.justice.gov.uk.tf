@@ -59,7 +59,7 @@ module "devl_justice_gov_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
-        "v=STSv1; id=9dff2abf74d878fca409eae56208db91"
+        "v=STSv1; id=4adfca9f114c6d7c82119b69fa97fece"
       ]
     },
     {

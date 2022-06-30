@@ -13,7 +13,7 @@ module "publicguardian_gov_uk_records" {
   records = [
     {
       name = "_dmarc.publicguardian.gov.uk"
-      type = "TXT"
+      type = "CNAME"
       ttl  = 300
       records = [
         "_dmarc_ttp_policy.justice.gov.uk"
@@ -137,7 +137,8 @@ module "publicguardian_gov_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
-        "MS=ms49968440\\\",\\\"v=spf1 ip4:194.33.196.8/32 ip4:194.33.192.8/32  include:spf.protection.outlook.com -all"
+        "MS=ms49968440",
+        "v=spf1 ip4:194.33.196.8/32 ip4:194.33.192.8/32 include:spf.protection.outlook.com -all"
       ]
     },
     {
