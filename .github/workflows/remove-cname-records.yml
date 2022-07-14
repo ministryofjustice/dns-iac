@@ -6,7 +6,7 @@ on:
     - cron: "0 0 1 1-12 *"
 
 jobs:
-  archive-repos:
+  remove-Gandi-cname-records:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
