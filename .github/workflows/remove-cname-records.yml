@@ -1,0 +1,23 @@
+name: Remove Gandi CNAME records
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 1 1-12 *"
+
+jobs:
+  archive-repos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: python scripts/remove-cnames.py
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: remove Gandi cname records
+          title: Clean up Gandi cnames from terraform files
+          body: These Gandi cname records have exceed the four week grace period
+          branch: automation-remove-gandi-cnames
