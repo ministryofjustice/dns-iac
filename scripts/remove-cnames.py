@@ -98,14 +98,14 @@ def get_cname_record(filepath) -> tuple:
         output = check_output(
             ["grep", "-n", "comodoca", filepath]).decode("utf-8")
     except Exception as e:
-        if 'non-zero' not in e:
+        if 'non-zero' not in str(e):
             print(e)
         else:
             try:
                 output = check_output(
                     ["grep", "-n", "sectigo", filepath]).decode("utf-8")
             except Exception as e:
-                if 'non-zero' not in e:
+                if 'non-zero' not in str(e):
                     print(e)
     # use re to read first four digits of the grep result
     re_result = re.findall(r'\d+', output[:4])
