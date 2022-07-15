@@ -94,11 +94,11 @@ def get_cname_position(filepath) -> int:
     try:
         output = check_output(
             ["grep", "-n", "comodoca", filepath]).decode("utf-8")
-    except:
+    except Exception:
         try:
             output = check_output(
                 ["grep", "-n", "sectigo", filepath]).decode("utf-8")
-        except:
+        except Exception:
             pass
 
     # use re to read first four digits of the grep result
