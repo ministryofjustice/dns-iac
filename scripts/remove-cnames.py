@@ -122,16 +122,16 @@ def is_cname_record_valid(filepath, cname_position) -> tuple:
     """
     with open(filepath) as f:
         data_blob = f.readlines()
-    if "{" in data_blob[cname_position - 5]:
-        if "name = \"" in data_blob[cname_position - 4]:
-            if "type = \"CNAME\"" in data_blob[cname_position - 3]:
-                if "ttl  =" in data_blob[cname_position - 2]:
-                    if "records =" in data_blob[cname_position - 1]:
-                        if "]" in data_blob[cname_position + 1]:
-                            if "}" in data_blob[cname_position + 2]:
-                                record_start = cname_position - 4
-                                record_end = cname_position + 3
-                                return True, record_start, record_end
+    if "{" in data_blob[cname_position - 5] \
+            and "name = \"" in data_blob[cname_position - 4] \
+            and "type = \"CNAME\"" in data_blob[cname_position - 3] \
+            and "ttl  =" in data_blob[cname_position - 2] \
+            and "records =" in data_blob[cname_position - 1] \
+            and "]" in data_blob[cname_position + 1] \
+            and "}" in data_blob[cname_position + 2]:
+        record_start = cname_position - 4
+        record_end = cname_position + 3
+        return True, record_start, record_end
     return False, 0, 0
 
 
