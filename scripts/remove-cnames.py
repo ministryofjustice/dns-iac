@@ -1,11 +1,12 @@
 import os
+import pathlib
 import re
 import sys
 from datetime import datetime, timedelta
 from subprocess import check_output
 
 
-class Cname_File:
+class CnameFile:
     """A struct to store terraform file/s that have cname record/s"""
 
     filepath: str
@@ -48,7 +49,7 @@ def parse_terraform_files() -> list:
     """Read the Terraform files to find cname records
 
     Returns:
-        list: Cname_File objects
+        list: CnameFile objects
     """
     cname_files = []
     # Do not parse the Terraform build files.
@@ -61,20 +62,77 @@ def parse_terraform_files() -> list:
         files[:] = [f for f in files if f not in exclude_files]
         for filename in files:
             count = 0
-            filepath = "terraform/" + filename
+            folder_path = pathlib.Path(__file__).parent.resolve()
+            filepath = folder_path.as_posix() + "/../terraform/" + filename
             with open(filepath) as f:
                 data = f.readlines()
             # Look for the Gandi keywords that describe a cname record
             # Some files can have multiple cname records
             for line in data:
-                if 'comodoca' in line:
+                if 'comodoca' in line or 'sectigo' in line:
                     count += 1
-                elif 'sectigo' in line:
-                    count += 1
-            cname_file = Cname_File(filepath, count)
+            cname_file = CnameFile(filepath, count)
             if count != 0:
                 cname_files.append(cname_file)
     return cname_files
+
+
+def get_cname_position(filepath) -> int:
+    """Look within the file to find the position of a cname record
+
+    Args:
+        filepath (string): full path to file
+
+    Returns:
+        int: line number of cname within the file
+    """
+    # Use grep to find which line number the cname is on
+    # check_output() raises an exception if the command return a non okay result
+    # grep returns a non okay result if the keyword is not found in the file
+    # thus the nested try except block below
+    output = 0
+    try:
+        output = check_output(
+            ["grep", "-n", "comodoca", filepath]).decode("utf-8")
+    except Exception:
+        try:
+            output = check_output(
+                ["grep", "-n", "sectigo", filepath]).decode("utf-8")
+        except Exception:
+            pass
+
+    # use re to read first four digits of the grep result
+    re_result = re.findall(r'\d+', output[:4])
+
+    # change grep result to an int and offset by one to work with python array
+    cname_position = int(re_result[0]) - 1
+
+    return cname_position
+
+
+def is_cname_record_valid(filepath, cname_position) -> tuple:
+    """Check either side of cname position to check if a valid cname record
+
+    Args:
+        filepath (string): full path to file
+        cname_position (int): line number of cname within the file
+
+    Returns:
+        Tuple: True if cname record is valid with start and end position of the record
+    """
+    with open(filepath) as f:
+        data_blob = f.readlines()
+    if "{" in data_blob[cname_position - 5] \
+            and "name = \"" in data_blob[cname_position - 4] \
+            and "type = \"CNAME\"" in data_blob[cname_position - 3] \
+            and "ttl  =" in data_blob[cname_position - 2] \
+            and "records =" in data_blob[cname_position - 1] \
+            and "]" in data_blob[cname_position + 1] \
+            and "}" in data_blob[cname_position + 2]:
+        record_start = cname_position - 4
+        record_end = cname_position + 3
+        return True, record_start, record_end
+    return False, 0, 0
 
 
 def get_cname_record(filepath) -> tuple:
@@ -86,45 +144,8 @@ def get_cname_record(filepath) -> tuple:
     Returns:
         tuple: True if cname record is discovered with start and end position of the record
     """
-    is_cname_record = False
-    record_start = 0
-    record_end = 0
-    output = 0
-    # Use grep to find which line number the cname is on
-    # check_output() raises an exception if the command return a non okay result
-    # grep returns a non okay result if the keyword is not found in the file
-    # thus the nested try except block below
-    try:
-        output = check_output(
-            ["grep", "-n", "comodoca", filepath]).decode("utf-8")
-    except Exception as e:
-        if 'non-zero' not in e:
-            print(e)
-        else:
-            try:
-                output = check_output(
-                    ["grep", "-n", "sectigo", filepath]).decode("utf-8")
-            except Exception as e:
-                if 'non-zero' not in e:
-                    print(e)
-    # use re to read first four digits of the grep result
-    re_result = re.findall(r'\d+', output[:4])
-    # change grep result to an int and offset by one to work with python array
-    cname_position = int(re_result[0]) - 1
-    with open(filepath) as f:
-        data_blob = f.readlines()
-    # Check the lines before and after the cname to check it is a valid cname record
-    if "{" in data_blob[cname_position - 5]:
-        if "name = \"" in data_blob[cname_position - 4]:
-            record_start = cname_position - 4
-            if "type = \"CNAME\"" in data_blob[cname_position - 3]:
-                if "ttl  =" in data_blob[cname_position - 2]:
-                    if "records =" in data_blob[cname_position - 1]:
-                        if "]" in data_blob[cname_position + 1]:
-                            if "}" in data_blob[cname_position + 2]:
-                                record_end = cname_position + 3
-                                is_cname_record = True
-    return is_cname_record, record_start, record_end
+    cname_position = get_cname_position(filepath)
+    return is_cname_record_valid(filepath, cname_position)
 
 
 def remove_cnames_records():
@@ -142,8 +163,11 @@ def remove_cnames_records():
                 if is_cname_record:
                     # Use sed command to delete the record from the file
                     delete_range = "{0},{1}d".format(record_start, record_end)
-                    check_output(
-                        ["sed", "-i", "", delete_range, cname.filepath])
+                    # GH Action Ubuntu Linux
+                    check_output(["sed", "-i", delete_range, cname.filepath])
+                    # MacOS Linux
+                    # check_output(["sed", "-i", "", delete_range, cname.filepath])
+                    print("Removed cname record from: " + cname.filepath)
 
 
 print("Start")
