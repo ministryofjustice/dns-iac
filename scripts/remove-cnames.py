@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from subprocess import check_output
 
 
-class Cname_file:
+class CnameFile:
     """A struct to store terraform file/s that have cname record/s"""
 
     filepath: str
@@ -49,7 +49,7 @@ def parse_terraform_files() -> list:
     """Read the Terraform files to find cname records
 
     Returns:
-        list: Cname_file objects
+        list: CnameFile objects
     """
     cname_files = []
     # Do not parse the Terraform build files.
@@ -71,7 +71,7 @@ def parse_terraform_files() -> list:
             for line in data:
                 if 'comodoca' in line or 'sectigo' in line:
                     count += 1
-            cname_file = Cname_file(filepath, count)
+            cname_file = CnameFile(filepath, count)
             if count != 0:
                 cname_files.append(cname_file)
     return cname_files
