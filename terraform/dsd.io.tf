@@ -1255,10 +1255,10 @@ module "dsd_io_records" {
       type = "NS",
       ttl  = 300,
       records = [
-        "ns-1646.awsdns-13.co.uk.",
-        "ns-686.awsdns-21.net.",
-        "ns-1373.awsdns-43.org.",
-        "ns-473.awsdns-59.com."
+        "ns-1378.awsdns-44.org.",
+        "ns-1991.awsdns-56.co.uk.",
+        "ns-39.awsdns-04.com.",
+        "ns-619.awsdns-13.net."
       ]
     },
     {
