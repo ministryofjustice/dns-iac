@@ -178,6 +178,7 @@ def remove_cnames_records():
 
 
 print("Start")
+check_output(["git", "fetch", "origin", "main", "--depth=50"])
 remove_cnames_records()
 print("Finished")
 sys.exit(0)
