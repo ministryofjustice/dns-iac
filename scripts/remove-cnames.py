@@ -33,7 +33,7 @@ def has_grace_period_expired(filepath) -> bool:
     output = check_output(["pwd"]).decode("utf-8")
     print(output)
     print(filepath)
-    print(filepath.find("terraform"):])
+    print(filepath[filepath.find("terraform"):])
     output = check_output(["git", "log", filepath[filepath.find("terraform"):]]).decode("utf-8")
     print(output)
     # Extract the date from the git log command
