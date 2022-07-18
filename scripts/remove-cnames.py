@@ -40,6 +40,8 @@ def has_grace_period_expired(filepath) -> bool:
     # Today date minus four weeks
     grace_period = datetime.now() - timedelta(weeks=(4))
     if file_last_commit_date < grace_period:
+        print(file_last_commit_date)
+        print(grace_period)
         return True
     else:
         return False
@@ -164,7 +166,7 @@ def remove_cnames_records():
                     # Use sed command to delete the record from the file
                     delete_range = "{0},{1}d".format(record_start, record_end)
                     # GH Action Ubuntu Linux
-                    check_output(["sed", "-i", delete_range, cname.filepath])
+#                     check_output(["sed", "-i", delete_range, cname.filepath])
                     # MacOS Linux
                     # check_output(["sed", "-i", "", delete_range, cname.filepath])
                     print("Removed cname record from: " + cname.filepath)
