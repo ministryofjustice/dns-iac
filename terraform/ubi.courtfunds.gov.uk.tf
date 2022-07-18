@@ -36,14 +36,6 @@ module "ubi_courtfunds_gov_uk_records" {
       ]
     },
     {
-      name = "306b2fa1154738c0782a75d206f56212.ubi.courtfunds.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "5132DE01FEF918E0767262968F209FBA361E9793.comodoca.com"
-      ]
-    },
-    {
       name = "_441c14c094878cfc289b7f1806119e16.ubi.courtfunds.gov.uk."
       type = "CNAME"
       ttl  = 60

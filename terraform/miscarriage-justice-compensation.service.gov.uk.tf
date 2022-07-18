@@ -50,14 +50,6 @@ module "miscarriage_justice_compensation_service_gov_uk_records" {
       ]
     },
     {
-      name = "7ec8abbb758a28b6d85043a567531287.miscarriage-justice-compensation.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "5DAB6779F65B9B622C81936BC8439BFEF801B364.comodoca.com"
-      ]
-    },
-    {
       name = "_72571bf3b2535189122fdfab23b80f04.miscarriage-justice-compensation.service.gov.uk."
       type = "CNAME"
       ttl  = 60

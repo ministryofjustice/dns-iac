@@ -173,14 +173,6 @@ module "judicialappointments_gov_uk_records" {
       ]
     },
     {
-      name = "_620f03c9e0a8ca3bf354272ffb9693e9.jars.judicialappointments.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "9744EE47245BB3D76F6EC5710FF7B577.AB4A31E19AD27B00BB5CA782CE4C2FF1.5b60ca121d83d7d.comodoca.com"
-      ]
-    },
-    {
       name = "lyncdiscover.judicialappointments.gov.uk."
       type = "CNAME"
       ttl  = 3600

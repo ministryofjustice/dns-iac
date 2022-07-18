@@ -594,14 +594,6 @@ module "yjb_gov_uk_records" {
       ]
     },
     {
-      name = "_080a768c188449b5ebcdfe42a1883bbc.remoteaccess.yjaf.yjb.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "E6F997A87F4F338085CA4A91DB25EB54.D608E8C3B89B52DD2B228FCEA78C5BED.79ed69cea0c5acff725c.sectigo.com."
-      ]
-    },
-    {
       name = "yjbservices.yjb.gov.uk."
       type = "MX"
       ttl  = 300
@@ -674,22 +666,6 @@ module "yjb_gov_uk_records" {
       ttl  = 3600
       records = [
         "51.179.197.141"
-      ]
-    },
-    {
-      name = "_4fc74a2037e3f30a6a8844ce8134c86d.training.yjbservices.yjb.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "C7F924E87D1161708B790295CC2D7D52.5EF743CFFEBBF567E76E1ED6EBD3EE99.b704ea2c39778f07c617.comodoca.com."
-      ]
-    },
-    {
-      name = "_7b5c01ff763881f051a03f439e546372.training.yjbservices.yjb.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "FD390E28F1F53B094298B973E4201B84.B26ED9645C96BF5AEAA026792CBF7C1E.fd9042c9b077fe393b18.comodoca.com."
       ]
     },
     {

@@ -42,14 +42,6 @@ module "hillsboroughinquests_independent_gov_uk_records" {
       ]
     },
     {
-      name = "c442256c2ebd5bfabd87a3c4ba80f08d.hillsboroughinquests.independent.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "CAF8E8CE41E0DDD519D4E2312FA315331EF0FF77.comodoca.com."
-      ]
-    },
-    {
       name = "www.hillsboroughinquests.independent.gov.uk."
       type = "A"
       alias = {

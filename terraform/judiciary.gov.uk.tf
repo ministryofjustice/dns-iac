@@ -89,22 +89,6 @@ module "judiciary_gov_uk_records" {
       ]
     },
     {
-      name = "b4f72ad226d66a9f38cee9113d1199e8.judiciary.gov.uk."
-      type = "CNAME"
-      ttl  = 600
-      records = [
-        "a5a8a7d4d457ae239a965eba005be3cecc488ca0.comodoca.com."
-      ]
-    },
-    {
-      name = "bd1b10f8b4635390d7bc59f3ba2e4f06.judiciary.gov.uk."
-      type = "CNAME"
-      ttl  = 600
-      records = [
-        "3a21db7d70da3efa742fad3358850edadeb98637.comodoca.com."
-      ]
-    },
-    {
       name = "civiljusticecouncil.judiciary.gov.uk."
       type = "A"
       ttl  = 600
@@ -145,27 +129,11 @@ module "judiciary_gov_uk_records" {
       ]
     },
     {
-      name = "5b41c404e841313cec196432b4840c20.jac.judiciary.gov.uk."
-      type = "CNAME"
-      ttl  = 600
-      records = [
-        "B95F02FF98260A11C1A8BA319FF4ECF16D9E07AD.comodoca.com."
-      ]
-    },
-    {
       name = "jars.jac.judiciary.gov.uk."
       type = "A"
       ttl  = 600
       records = [
         "185.40.8.147"
-      ]
-    },
-    {
-      name = "5b41c404e841313cec196432b4840c20.jars.jac.judiciary.gov.uk."
-      type = "CNAME"
-      ttl  = 600
-      records = [
-        "B95F02FF98260A11C1A8BA319FF4ECF16D9E07AD.comodoca.com."
       ]
     },
     {

@@ -54,14 +54,6 @@ module "civilclaims_service_gov_uk_records" {
       ]
     },
     {
-      name = "f4cc3751333a9dd566ebe63c9a6adda0.civilclaims.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "EC0C38C49995B7CDA03A7ED9B6F9A6BBD4DA5BC9.comodoca.com."
-      ]
-    },
-    {
       name = "holding.civilclaims.service.gov.uk."
       type = "A"
       ttl  = 300

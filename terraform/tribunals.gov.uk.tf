@@ -103,27 +103,11 @@ module "tribunals_gov_uk_records" {
       ]
     },
     {
-      name = "_37e3262a11ec2693b0aba5c341e70f27.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "900B72C230551A691158CD1F9C7ED973.550A08C0FF9EE4BEC3F203DF229DBE0C.cef72d1b410815463290.comodoca.com."
-      ]
-    },
-    {
       name = "administrativeappeals.decisions.tribunals.gov.uk."
       type = "CNAME"
       ttl  = 300
       records = [
         "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "_37e3262a11ec2693b0aba5c341e70f27.administrativeappeals.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "900B72C230551A691158CD1F9C7ED973.550A08C0FF9EE4BEC3F203DF229DBE0C.cef72d1b410815463290.comodoca.com."
       ]
     },
     {
@@ -151,14 +135,6 @@ module "tribunals_gov_uk_records" {
       ]
     },
     {
-      name = "_37e3262a11ec2693b0aba5c341e70f27.carestandards.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "900B72C230551A691158CD1F9C7ED973.550A08C0FF9EE4BEC3F203DF229DBE0C.cef72d1b410815463290.comodoca.com."
-      ]
-    },
-    {
       name = "afdverify.carestandards.decisions.tribunals.gov.uk."
       type = "CNAME"
       ttl  = 300
@@ -180,14 +156,6 @@ module "tribunals_gov_uk_records" {
       ttl  = 300
       records = [
         "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "_37e3262a11ec2693b0aba5c341e70f27.cicap.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "900B72C230551A691158CD1F9C7ED973.550A08C0FF9EE4BEC3F203DF229DBE0C.cef72d1b410815463290.comodoca.com."
       ]
     },
     {
@@ -223,14 +191,6 @@ module "tribunals_gov_uk_records" {
       ]
     },
     {
-      name = "_37e3262a11ec2693b0aba5c341e70f27.employmentappeals.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "900B72C230551A691158CD1F9C7ED973.550A08C0FF9EE4BEC3F203DF229DBE0C.cef72d1b410815463290.comodoca.com."
-      ]
-    },
-    {
       name = "afdverify.employmentappeals.decisions.tribunals.gov.uk."
       type = "CNAME"
       ttl  = 300
@@ -255,14 +215,6 @@ module "tribunals_gov_uk_records" {
       ]
     },
     {
-      name = "_37e3262a11ec2693b0aba5c341e70f27.financeandtax.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "900B72C230551A691158CD1F9C7ED973.550A08C0FF9EE4BEC3F203DF229DBE0C.cef72d1b410815463290.comodoca.com."
-      ]
-    },
-    {
       name = "afdverify.financeandtax.decisions.tribunals.gov.uk."
       type = "CNAME"
       ttl  = 300
@@ -276,14 +228,6 @@ module "tribunals_gov_uk_records" {
       ttl  = 300
       records = [
         "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "_37e3262a11ec2693b0aba5c341e70f27.immigrationservices.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "900B72C230551A691158CD1F9C7ED973.550A08C0FF9EE4BEC3F203DF229DBE0C.cef72d1b410815463290.comodoca.com."
       ]
     },
     {
@@ -303,14 +247,6 @@ module "tribunals_gov_uk_records" {
       ]
     },
     {
-      name = "_37e3262a11ec2693b0aba5c341e70f27.informationrights.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "900B72C230551A691158CD1F9C7ED973.550A08C0FF9EE4BEC3F203DF229DBE0C.cef72d1b410815463290.comodoca.com."
-      ]
-    },
-    {
       name = "afdverify.informationrights.decisions.tribunals.gov.uk."
       type = "CNAME"
       ttl  = 300
@@ -327,14 +263,6 @@ module "tribunals_gov_uk_records" {
       ]
     },
     {
-      name = "_37e3262a11ec2693b0aba5c341e70f27.landregistrationdivision.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "900B72C230551A691158CD1F9C7ED973.550A08C0FF9EE4BEC3F203DF229DBE0C.cef72d1b410815463290.comodoca.com."
-      ]
-    },
-    {
       name = "afdverify.landregistrationdivision.decisions.tribunals.gov.uk."
       type = "CNAME"
       ttl  = 300
@@ -348,14 +276,6 @@ module "tribunals_gov_uk_records" {
       ttl  = 300
       records = [
         "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "_37e3262a11ec2693b0aba5c341e70f27.landschamber.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "900B72C230551A691158CD1F9C7ED973.550A08C0FF9EE4BEC3F203DF229DBE0C.cef72d1b410815463290.comodoca.com."
       ]
     },
     {
@@ -404,14 +324,6 @@ module "tribunals_gov_uk_records" {
       ttl  = 300
       records = [
         "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "_37e3262a11ec2693b0aba5c341e70f27.transportappeals.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "900B72C230551A691158CD1F9C7ED973.550A08C0FF9EE4BEC3F203DF229DBE0C.cef72d1b410815463290.comodoca.com."
       ]
     },
     {

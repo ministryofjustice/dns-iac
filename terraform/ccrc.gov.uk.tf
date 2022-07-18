@@ -158,14 +158,6 @@ module "ccrc_gov_uk_records" {
       ]
     },
     {
-      name = "_002811ddbd26edae64c652f60eb8e477.autodiscover.ccrc.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "0FDEC3FA1E15EF7513265A38E95B7F0D.BCA690D612DBFDAA756F84CABB2DC844.e18fc2ff0554e41167fe.comodoca.com."
-      ]
-    },
-    {
       name = "connect.ccrc.gov.uk."
       type = "A"
       ttl  = 300
@@ -235,14 +227,6 @@ module "ccrc_gov_uk_records" {
       ttl  = 300
       records = [
         "20.49.250.153"
-      ]
-    },
-    {
-      name = "_002811ddbd26edae64c652f60eb8e477.mail2.ccrc.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "0FDEC3FA1E15EF7513265A38E95B7F0D.BCA690D612DBFDAA756F84CABB2DC844.e18fc2ff0554e41167fe.comodoca.com."
       ]
     },
     {
