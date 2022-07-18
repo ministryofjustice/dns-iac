@@ -31,11 +31,6 @@ def has_grace_period_expired(filepath) -> bool:
     month = 0
     day = 0
     print(filepath)
-#     check_output(["cd", "temp"])
-    output = check_output(["ls"])
-    print(output)
-    output = check_output(["pwd"]).decode("utf-8")
-    print(output)
     print(filepath[filepath.find("terraform"):])
     output = check_output(["git", "log", filepath[filepath.find("terraform"):]]).decode("utf-8")
     print(output)
@@ -184,8 +179,6 @@ def remove_cnames_records():
 
 
 print("Start")
-check_output(["git", "clone", "https://github.com/ministryofjustice/dns-iac.git", "temp"])
-check_output(["git", "fetch", "--depth=50"])
 remove_cnames_records()
 print("Finished")
 sys.exit(0)
