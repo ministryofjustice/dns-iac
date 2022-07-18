@@ -39,9 +39,9 @@ def has_grace_period_expired(filepath) -> bool:
     file_last_commit_date = datetime(year, month, day)
     # Today date minus four weeks
     grace_period = datetime.now() - timedelta(weeks=(4))
+    print(file_last_commit_date)
+    print(grace_period)
     if file_last_commit_date < grace_period:
-        print(file_last_commit_date)
-        print(grace_period)
         return True
     else:
         return False
