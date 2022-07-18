@@ -60,7 +60,8 @@ module "employmenttribunals_service_gov_uk_records" {
       type = "TXT"
       ttl  = 3600
       records = [
-        "v=spf1 include:sendgrid.net ~all"
+        "v=spf1 include:sendgrid.net ~all",
+        "Test1"
       ]
     },
     {
