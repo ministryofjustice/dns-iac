@@ -91,14 +91,6 @@ module "producttracker_justice_gov_uk_records" {
         "xlvio4g54tcwne2o7xp644bgwkydfdh7.dkim.amazonses.com"
       ]
     },
-    {
-      name = "db3ed81ffca7e0cdbb78bb12ce18383b.producttracker.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "F4EAD090047608AF7D1FC1B2F10CCDAD82168C41.comodoca.com."
-      ]
-    }
   ]
 }
 

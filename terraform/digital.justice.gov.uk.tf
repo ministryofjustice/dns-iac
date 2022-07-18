@@ -58,14 +58,6 @@ module "digital_justice_gov_uk_records" {
       ]
     },
     {
-      name = "_90f7fdab2ba87aa8817da6f9d7cc670c.digital.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "A5332DB7C8A6A27BC6F831E6E01975AC.7B3B45B533DA00D98A43507FDD4970BE.9efbafef9f85fd9caa78.comodoca.com."
-      ]
-    },
-    {
       name = "_amazonses.digital.justice.gov.uk."
       type = "TXT"
       ttl  = 1800
@@ -283,14 +275,6 @@ module "digital_justice_gov_uk_records" {
       ]
     },
     {
-      name = "d4f760ddbc229e3df2f5c8e72746c775.mobile.digital.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "9425EA3FEDDBF967B1893D44215C4B3EF7F708E8.comodoca.com."
-      ]
-    },
-    {
       name = "mam.mobile.digital.justice.gov.uk."
       type = "A"
       ttl  = 300
@@ -352,22 +336,6 @@ module "digital_justice_gov_uk_records" {
       ttl  = 600
       records = [
         "pki.digital.justice.gov.uk.s3-website.eu-west-2.amazonaws.com"
-      ]
-    },
-    {
-      name = "_b6be01406a54f2b2c6660c99e3da9b5f.print.digital.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "7B3C6A46BB271FA259D963D5E3BA7D2E.41E5900365F55422F8EF223640E2B346.63d37ad90673f036d66e.comodoca.com."
-      ]
-    },
-    {
-      name = "_e83a47184fbe83358c15e2a892590168.print.digital.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "419D8277A52322BD8018D590E0770568.F9C09CF2B74229CF4F9946A1097D666F.59a973ad71b92166aedc.comodoca.com."
       ]
     },
     {
@@ -447,14 +415,6 @@ module "digital_justice_gov_uk_records" {
         "v=spf1 include:spf.protection.outlook.com include:_spf.google.com ip4:18.130.205.7 ~all",
         "google-site-verification=eKrQOC2iPS1lEVnT_dPfGq4GGfEiWkICwBIQKDMK24s",
         "GFTBshQ/pI5XCTq5DxCKe9CZzVNocf4/9yYGIcqmLJKHduGUWltgiAack/3zTznC1VsFu0poNqbwPWZoZUIDuQ=="
-      ]
-    },
-    {
-      name = "_ad37fff10adeffe8653a0b4ad6f79914.test.digital.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "D5DEB9261FDAB6B607539072F31B4BB1.5F0C7048962F6FE48ED0AE5A9E82B6E1.c732e4cb57268226f297.comodoca.com."
       ]
     },
     {
@@ -547,14 +507,6 @@ module "digital_justice_gov_uk_records" {
       ttl  = 300
       records = [
         "v=spf1 include:spf.protection.outlook.com include:_spf.google.com ip4:18.130.205.7 ~all"
-      ]
-    },
-    {
-      name = "_c0bbbbd09cb8097ede6366f24a740d80.g.test.digital.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "13C497876BB25E55A3AA9EBFF7D1FD7E.AC471AC6B8CBC0E35265CC439AFECCDD.698a2826fe9b85734ee6.comodoca.com."
       ]
     },
     {

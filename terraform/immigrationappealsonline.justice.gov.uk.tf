@@ -37,22 +37,6 @@ module "immigrationappealsonline_justice_gov_uk_records" {
       ]
     },
     {
-      name = "7a8f57e8e37ab7aa8c12938d93685652.immigrationappealsonline.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "003DB0B28DB7F070093DC4241DAD0D6640D02836.comodoca.com"
-      ]
-    },
-    {
-      name = "_371f1f3d8945f4bfa19274f8ceab31f4.immigrationappealsonline.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "CA4023FEA98228C4EDB091E2BB56CD90.480DDAE2D6792732A2DAD213E567D6C8.456c9caa8ade0846892f.sectigo.com."
-      ]
-    },
-    {
       name = "_bbde749af95f9db428c5643e2a4bb710.immigrationappealsonline.justice.gov.uk."
       type = "CNAME"
       ttl  = 300
