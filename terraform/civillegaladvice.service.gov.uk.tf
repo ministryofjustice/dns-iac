@@ -37,14 +37,6 @@ module "civillegaladvice_service_gov_uk_records" {
       ]
     },
     {
-      name = "0b6faaacd63ca4518fb6e74af2618e07.civillegaladvice.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "551D3A33D1CAAFB524ABC83466B24BCA57F68C26.comodoca.com."
-      ]
-    },
-    {
       name = "_dmarc.civillegaladvice.service.gov.uk."
       type = "TXT"
       ttl  = 300
@@ -72,43 +64,11 @@ module "civillegaladvice_service_gov_uk_records" {
       ]
     },
     {
-      name = "_0f4a314921413bc63301bd822fae7e95.cases.civillegaladvice.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "DD4EC4BAB27D4D3D15DEC8FBF6E6B19A.C20092BD7B5C33D1FEC5EBF96CE9036D.d0741765bc4b0480823a.comodoca.com."
-      ]
-    },
-    {
-      name = "_2470b14a919a1ec7342a7ec89734ffef.cases.civillegaladvice.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "3A5DC212EBBD5E36454930ACD2DE7640.2B658224E3E2C9FFB6F12A1A800EAF8B.comodoca.com"
-      ]
-    },
-    {
       name = "_a1fd4d292d772692a54d0137560e3592.cases.civillegaladvice.service.gov.uk."
       type = "CNAME"
       ttl  = 300
       records = [
         "_d786b333b4660a3e4a1733a220b4d292.acm-validations.aws."
-      ]
-    },
-    {
-      name = "_d0f7e3842148a577c24b6ee653170f99.cases.civillegaladvice.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "69B4ADC2CC50B858F922115395E81692.4C08800806EC177583E3E8A11C82E96D.4b0c6b58fb9b42eaace2.comodoca.com."
-      ]
-    },
-    {
-      name = "b076bad7eb2b199d0621d9a215435171.cases.civillegaladvice.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "6BCD677C24A2D2EDEFCC34A2B9060B794F5FD3C6.comodoca.com"
       ]
     },
     {
@@ -144,22 +104,6 @@ module "civillegaladvice_service_gov_uk_records" {
         "ns-473.awsdns-59.com.",
         "ns-1129.awsdns-13.org.",
         "ns-673.awsdns-20.net."
-      ]
-    },
-    {
-      name = "361fb2b7bee6f5f1c665f45ebc77cf2c.fox.civillegaladvice.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "A167E0DC9690C4A2C54B6E0F0153385BFE119B5D.comodoca.com."
-      ]
-    },
-    {
-      name = "67dbfada734e0d84350dd458d70d41b8.fox.civillegaladvice.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "BBC8F4A8328AFF24AF73B4A03C8D0ABAF3CCA216.comodoca.com."
       ]
     },
     {

@@ -64,22 +64,6 @@ module "employmenttribunals_service_gov_uk_records" {
       ]
     },
     {
-      name = "_189994288a5c50db8b62be3d3a1752d0.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "ecaa92b78488be8cccca480e8143cff5.d90e067e8c7df1cdd0f9dc9be0d0847c.ea81a3d20bf98ef2c9be.comodoca.com"
-      ]
-    },
-    {
-      name = "_2670a4cfbb3737e1201c25cbf3fadcfb.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "4D0A08849F2859B551718330B17607A4.D369437E19644C20FCE26EE8C5C7336B.1671f1468c94ff1c45e2.comodoca.com."
-      ]
-    },
-    {
       name = "_287de52247331a1c82ec0d7a17d23062.employmenttribunals.service.gov.uk."
       type = "CNAME"
       ttl  = 300
@@ -96,51 +80,11 @@ module "employmenttribunals_service_gov_uk_records" {
       ]
     },
     {
-      name = "_81740bb2795447b478d551ea02fbda2e.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "BA3DA5E405E4D178F047AB37CC39A25B.D689B524D9B3017A36CC2CCD1FDFE81C.4d17ee846b4ff7813f91.comodoca.com."
-      ]
-    },
-    {
-      name = "_a9a2f656ca886584bb4d3083bcd8c199.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "1342A260D36F76CD5AB0A9E848A28806.5091A430766EC46216DC45970C9B76AC.24bea84d52e6a1f8025e.comodoca.com."
-      ]
-    },
-    {
       name = "_acme-challenge.employmenttribunals.service.gov.uk."
       type = "TXT"
       ttl  = 300
       records = [
         "phubFB6OTqqCb0Y2OwowThZppLUNJZYpOLRD3cWtqjg"
-      ]
-    },
-    {
-      name = "_c03dcba2827217dda997587cdb33af13.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "E3CC540FF75AF5DF348C72CD1488AE91.02B21A4A40E02F9980D7AC99050E63C3.a7ce4026f43a4491f128.comodoca.com."
-      ]
-    },
-    {
-      name = "_cb8f466d7b645419b9cde6457b714262.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "496688DC0026248AF4D940E6308EAC60.B61ED3927462F7C32F79D1C36B2D9E43.c204279c20924695877f.comodoca.com."
-      ]
-    },
-    {
-      name = "_cd02e2d23e2478cb2eb858140af56408.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "97C349059B90ECE2B59C454853390F16.DA3E0A917CFD5F063A386542FDE12336.ce627bf900500eaedade.comodoca.com."
       ]
     },
     {
@@ -176,27 +120,11 @@ module "employmenttribunals_service_gov_uk_records" {
       ]
     },
     {
-      name = "abac9d59ee3da2cd1d0dfad3d84b8e4d.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "E271C403E72807CC04ECB2DC4994D0C053782FB8.comodoca.com"
-      ]
-    },
-    {
       name = "admin.employmenttribunals.service.gov.uk."
       type = "A"
       ttl  = 300
       records = [
         "51.140.1.205"
-      ]
-    },
-    {
-      name = "_189994288a5c50db8b62be3d3a1752d0.admin.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "ecaa92b78488be8cccca480e8143cff5.d90e067e8c7df1cdd0f9dc9be0d0847c.ea81a3d20bf98ef2c9be.comodoca.com"
       ]
     },
     {
@@ -208,35 +136,11 @@ module "employmenttribunals_service_gov_uk_records" {
       ]
     },
     {
-      name = "_2670a4cfbb3737e1201c25cbf3fadcfb.admin.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "4D0A08849F2859B551718330B17607A4.D369437E19644C20FCE26EE8C5C7336B.1671f1468c94ff1c45e2.comodoca.com."
-      ]
-    },
-    {
-      name = "_a9a2f656ca886584bb4d3083bcd8c199.admin.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "1342A260D36F76CD5AB0A9E848A28806.5091A430766EC46216DC45970C9B76AC.24bea84d52e6a1f8025e.comodoca.com."
-      ]
-    },
-    {
       name = "_acme-challenge.admin.employmenttribunals.service.gov.uk."
       type = "TXT"
       ttl  = 300
       records = [
         "XeXiowDkdUvn9ZHJVj5b2_dttVgpMmXxVxS6sRvKVZc"
-      ]
-    },
-    {
-      name = "_c03dcba2827217dda997587cdb33af13.admin.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "E3CC540FF75AF5DF348C72CD1488AE91.02B21A4A40E02F9980D7AC99050E63C3.a7ce4026f43a4491f128.comodoca.com."
       ]
     },
     {
@@ -248,35 +152,11 @@ module "employmenttribunals_service_gov_uk_records" {
       ]
     },
     {
-      name = "_189994288a5c50db8b62be3d3a1752d0.api.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "ecaa92b78488be8cccca480e8143cff5.d90e067e8c7df1cdd0f9dc9be0d0847c.ea81a3d20bf98ef2c9be.comodoca.com"
-      ]
-    },
-    {
       name = "_24bd320e3235fd4b51138ea6e5b6516c.api.employmenttribunals.service.gov.uk."
       type = "CNAME"
       ttl  = 300
       records = [
         "_d012d64ecacc89c76f40d96e17a1d404.acm-validations.aws."
-      ]
-    },
-    {
-      name = "_2670a4cfbb3737e1201c25cbf3fadcfb.api.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "4D0A08849F2859B551718330B17607A4.D369437E19644C20FCE26EE8C5C7336B.1671f1468c94ff1c45e2.comodoca.com."
-      ]
-    },
-    {
-      name = "_a9a2f656ca886584bb4d3083bcd8c199.api.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "1342A260D36F76CD5AB0A9E848A28806.5091A430766EC46216DC45970C9B76AC.24bea84d52e6a1f8025e.comodoca.com."
       ]
     },
     {
@@ -296,43 +176,11 @@ module "employmenttribunals_service_gov_uk_records" {
       ]
     },
     {
-      name = "189994288a5c50db8b62be3d3a1752d0.atos-api.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "ecaa92b78488be8cccca480e8143cff5.d90e067e8c7df1cdd0f9dc9be0d0847c.ea81a3d20bf98ef2c9be.comodoca.com"
-      ]
-    },
-    {
-      name = "_189994288a5c50db8b62be3d3a1752d0.atos-api.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "ecaa92b78488be8cccca480e8143cff5.d90e067e8c7df1cdd0f9dc9be0d0847c.ea81a3d20bf98ef2c9be.comodoca.com"
-      ]
-    },
-    {
-      name = "_2670a4cfbb3737e1201c25cbf3fadcfb.atos-api.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "4D0A08849F2859B551718330B17607A4.D369437E19644C20FCE26EE8C5C7336B.1671f1468c94ff1c45e2.comodoca.com."
-      ]
-    },
-    {
       name = "_66615b4245e4b2ed78417e73da81e5a6.atos-api.employmenttribunals.service.gov.uk."
       type = "CNAME"
       ttl  = 300
       records = [
         "_eba3937c1c49c69e1885d9e2c75343bc.acm-validations.aws."
-      ]
-    },
-    {
-      name = "_a9a2f656ca886584bb4d3083bcd8c199.atos-api.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "1342A260D36F76CD5AB0A9E848A28806.5091A430766EC46216DC45970C9B76AC.24bea84d52e6a1f8025e.comodoca.com."
       ]
     },
     {
@@ -344,35 +192,11 @@ module "employmenttribunals_service_gov_uk_records" {
       ]
     },
     {
-      name = "_c03dcba2827217dda997587cdb33af13.atos-api.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "E3CC540FF75AF5DF348C72CD1488AE91.02B21A4A40E02F9980D7AC99050E63C3.a7ce4026f43a4491f128.comodoca.com."
-      ]
-    },
-    {
-      name = "c2559693e68adeb01b9b827fea2d9e38.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "57A634F0EBA1EEDAE562DC869F43F28D64C3012F.comodoca.com."
-      ]
-    },
-    {
       name = "cc.employmenttribunals.service.gov.uk."
       type = "A"
       ttl  = 300
       records = [
         "208.50.51.117"
-      ]
-    },
-    {
-      name = "b9c7d51a82c811444624da605137f649.cc.employmenttribunals.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "04bd48226e2cf1cfaa888fae400e341775d94126.comodoca.com."
       ]
     },
     {

@@ -25,14 +25,6 @@ module "et_dsd_io_records" {
       ]
     },
     {
-      name = "_883097431ea9025095236ab1cd064ca1.et.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "018E26388B04EC5C860092916FD6B10C.32BA8DA5CD67CA35B898BF7C1FE46271.6eda0403281df4b9a24d.comodoca.com."
-      ]
-    },
-    {
       name = "_acme-challenge.et.dsd.io."
       type = "TXT"
       ttl  = 300
@@ -276,14 +268,6 @@ module "et_dsd_io_records" {
       ttl  = 300
       records = [
         "ec2-54-77-110-234.eu-west-1.compute.amazonaws.com"
-      ]
-    },
-    {
-      name = "_a70a7a99f9cade27b2bceceed7f842f9.dev.et.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "3285F9C5F9445E8A87B647484E18685E.F7BF5F91263037EAE8FB82824427B22A.effffa8deef3c927fefc.comodoca.com"
       ]
     },
     {

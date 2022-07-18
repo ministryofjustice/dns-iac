@@ -51,35 +51,11 @@ module "tribunalsdecisions_service_gov_uk_records" {
       ]
     },
     {
-      name = "24bfb31c2c4515664acaa83026308ac9.tribunalsdecisions.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "21f22933f34f706097a921237e044c23d82696ad.comodoca.com."
-      ]
-    },
-    {
       name = "3qq2upma3prq.tribunalsdecisions.service.gov.uk."
       type = "CNAME"
       ttl  = 300
       records = [
         "gv-A5CANG52DJ6RZH.dv.googlehosted.com."
-      ]
-    },
-    {
-      name = "72559f43db69c1b3522722022a4e88ac.tribunalsdecisions.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "7514F5875B8843D2F9D2B73354CF06FBEB05113E.comodoca.com."
-      ]
-    },
-    {
-      name = "_082d7cf8ec8daac31a088ca6b34a1491.tribunalsdecisions.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "9FFEFB0F7F268AFB1043D7AAB73D903A.C97BD4529863BB11F5BAB717DA15780F.d8f7af3c0b3c87365093.sectigo.com."
       ]
     },
     {
@@ -139,14 +115,6 @@ module "tribunalsdecisions_service_gov_uk_records" {
       ttl  = 300
       records = [
         "afdverify.sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "d1ca871e86e439faf6aea60e908f1b26.tribunalsdecisions.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "EF3C36152DB8BD7CB79A7B5468BC8131213A66B7.comodoca.com"
       ]
     },
     {

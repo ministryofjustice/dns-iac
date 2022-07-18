@@ -35,14 +35,6 @@ module "webapps_judiciary_gov_uk_records" {
         "ns-653.awsdns-17.net."
       ]
     },
-    {
-      name = "bc3b5b5307c9219b7467a33ce18706a2.webapps.judiciary.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "49495F3E6B0DF23D461129F7448BF6B0986C199C.comodoca.com"
-      ]
-    }
   ]
 }
 

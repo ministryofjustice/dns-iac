@@ -38,22 +38,6 @@ module "prisonvisits_service_gov_uk_records" {
       ]
     },
     {
-      name = "082e8f4d4e6e4c78de31359bd1e8e657.prisonvisits.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "n952C2ADE761EF01613C13B609F9D7B25A4C9A92D.comodoca.com."
-      ]
-    },
-    {
-      name = "11e2e5102decaea4248cea56c7cf667e.prisonvisits.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "nC3AD2FC5729E314E883FB93B76E21C915C2A847D.comodoca.com."
-      ]
-    },
-    {
       name = "_560b1b59639b34a1ad68b8f9e3df3e05.prisonvisits.service.gov.uk."
       type = "CNAME"
       ttl  = 300
@@ -118,14 +102,6 @@ module "prisonvisits_service_gov_uk_records" {
       ]
     },
     {
-      name = "f18a3ccc137de5c8f9de9df90b5e71af.prisonvisits.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "n2D1B36B07160B6DD7C9556930F3384A29719808C.comodoca.com."
-      ]
-    },
-    {
       name = "n.prisonvisits.service.gov.uk."
       type = "A"
       alias = {
@@ -133,14 +109,6 @@ module "prisonvisits_service_gov_uk_records" {
         name                   = "aef1937c1a95711e98cdd0aaafbe3d46-9b185ef26eadab0b.elb.eu-west-2.amazonaws.com."
         evaluate_target_health = false
       }
-    },
-    {
-      name = "1f8a3adcf2fb6634cbee575014d993e5.staff.prisonvisits.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "n57C05091E14DCE58B589B037A444F7EEDA34A529.comodoca.com"
-      ]
     },
     {
       name = "_0662eebf2c8887eb3d140983f08c864e.staff.prisonvisits.service.gov.uk."

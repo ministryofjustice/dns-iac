@@ -46,22 +46,6 @@ module "checklegalaid_service_gov_uk_records" {
       ]
     },
     {
-      name = "2969e7609b4d20b8525a155a7a571b40.checklegalaid.service.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "6B61987181EA587DA12CC2D260047F30AE8422B5.comodoca.com"
-      ]
-    },
-    {
-      name = "_43d98eda8a1e8510c752414b473800e9.checklegalaid.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "E285F6B3908C742BAE9B8498E1DFEA01.8CC2D03F6D2C7E06C8E3F08D5B121CBB.7d37940a0260eac65b7a.comodoca.com."
-      ]
-    },
-    {
       name = "_amazonses.checklegalaid.service.gov.uk."
       type = "TXT"
       ttl  = 1800

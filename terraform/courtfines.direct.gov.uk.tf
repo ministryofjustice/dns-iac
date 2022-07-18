@@ -34,27 +34,11 @@ module "courtfines_direct_gov_uk_records" {
       ]
     },
     {
-      name = "5db40439763068346b20d34fedc31a86.courtfines.direct.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "6859784BBBC3B49A80943DC6C5C86D5EE3539675.comodoca.com"
-      ]
-    },
-    {
       name = "_975286e3bc1ca6804128ccd7c48c89ac.courtfines.direct.gov.uk."
       type = "CNAME"
       ttl  = 60
       records = [
         "_308970e3209ac38b43bc563e49f2ccfc.hkvuiqjoua.acm-validations.aws."
-      ]
-    },
-    {
-      name = "_b4ea623315964a50a23f187bd334f9d9.courtfines.direct.gov.uk."
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "C7F1910064BE0BA04A12C876149B10F0.2F52114FFC00B0A8C8AA4BAE25E0E83E.d4151b70cc2dec1acf2b.sectigo.com."
       ]
     },
     {
