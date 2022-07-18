@@ -31,7 +31,8 @@ def has_grace_period_expired(filepath) -> bool:
     month = 0
     day = 0
     print(filepath)
-    check_output(["cd", "temp"])
+#     check_output(["cd", "temp"])
+    check_output(["ls"])
     output = check_output(["pwd"]).decode("utf-8")
     print(output)
     print(filepath[filepath.find("terraform"):])
