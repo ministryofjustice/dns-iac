@@ -30,6 +30,8 @@ def has_grace_period_expired(filepath) -> bool:
     year = 0
     month = 0
     day = 0
+    output = check_output(["pwd"]).decode("utf-8")
+    print(output)
     print(filepath)
     output = check_output(["git", "log", filepath[filepath.find("terraform"):]]).decode("utf-8")
     print(output)
