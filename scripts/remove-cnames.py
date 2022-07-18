@@ -30,6 +30,8 @@ def has_grace_period_expired(filepath) -> bool:
     year = 0
     month = 0
     day = 0
+    output = check_output(["git", "log", filepath]).decode("utf-8")
+    print(output)
     # Extract the date from the git log command
     output = check_output(
         ["git", "log", "-1", "--pretty=\"%ci\"", filepath]).decode("utf-8")
