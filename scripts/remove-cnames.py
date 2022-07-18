@@ -30,23 +30,23 @@ def has_grace_period_expired(filepath) -> bool:
     year = 0
     month = 0
     day = 0
-    print(filepath)
-    filepath = filepath[filepath.find("terraform"):]
-    print(filepath)
-    output = check_output(["git", "log", filepath]).decode("utf-8")
-    print(output)
+#     print(filepath)
+#     filepath = filepath[filepath.find("terraform"):]
+#     print(filepath)
+#     output = check_output(["git", "log", filepath]).decode("utf-8")
+#     print(output)
     # Extract the date from the git log command
     output = check_output(
         ["git", "log", "-1", "--pretty=\"%ci\"", filepath]).decode("utf-8")
-    print(output)
+#     print(output)
     year = int(output[1:5])
     month = int(output[6:8])
     day = int(output[9:12])
     file_last_commit_date = datetime(year, month, day)
     # Today date minus four weeks
     grace_period = datetime.now() - timedelta(weeks=(4))
-    print(file_last_commit_date)
-    print(grace_period)
+#     print(file_last_commit_date)
+#     print(grace_period)
     if file_last_commit_date < grace_period:
         return True
     else:
@@ -180,7 +180,7 @@ def remove_cnames_records():
 
 
 print("Start")
-check_output(["git", "fetch"])
+# check_output(["git", "fetch"])
 remove_cnames_records()
 print("Finished")
 sys.exit(0)
