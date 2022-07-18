@@ -173,7 +173,7 @@ def remove_cnames_records():
                     # Use sed command to delete the record from the file
                     delete_range = "{0},{1}d".format(record_start, record_end)
                     # GH Action Ubuntu Linux
-#                     check_output(["sed", "-i", delete_range, cname.filepath])
+                    check_output(["sed", "-i", delete_range, cname.filepath])
                     # MacOS Linux
                     # check_output(["sed", "-i", "", delete_range, cname.filepath])
                     print("Removed cname record from: " + cname.filepath)
