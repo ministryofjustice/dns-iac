@@ -50,14 +50,6 @@ module "appeal_tax_tribunal_service_gov_uk_records" {
       ]
     },
     {
-      name = "_a4d1c79e07d254f42554e177169a67ef.appeal-tax-tribunal.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "78FD839CEF99EACF39155B98A287D581.145FF1BECB4321D9C6C8E6F3535C77A8.0d43f5cbdcf4166b6d53.comodoca.com."
-      ]
-    },
-    {
       name = "_acme-challenge.appeal-tax-tribunal.service.gov.uk."
       type = "TXT"
       ttl  = 300
