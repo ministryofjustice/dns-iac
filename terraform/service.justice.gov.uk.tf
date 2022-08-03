@@ -722,7 +722,7 @@ module "service_justice_gov_uk_records" {
       type = "CNAME"
       ttl  = 60
       records = [
-        "_06c52dec40633865541b0ff381d9eeb1.chvvfdvqrj.acm-validations.aws."
+        "_06c52dec40633865541b0ff381d9eeb1.chvvfdvqrj.acm-validations.aws"
       ]
     },
     {

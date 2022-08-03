@@ -1099,18 +1099,11 @@ module "dsd_io_records" {
       type = "NS",
       ttl  = 300,
       records = [
-        "ns-293.awsdns-36.com.",
-        "ns-518.awsdns-00.net.",
-        "ns-1474.awsdns-56.org.",
-        "ns-1733.awsdns-24.co.uk."
-      ]
-    },
-    {
-      name = "helpwithcourtfees.dsd.io.",
-      type = "TXT",
-      ttl  = 300,
-      records = [
-        "v=spf1 include:sendgrid.net ~all"
+
+        "ns-1145.awsdns-15.org.",
+        "ns-2005.awsdns-58.co.uk.",
+        "ns-41.awsdns-05.com.",
+        "ns-864.awsdns-44.net.",
       ]
     },
     {
@@ -1177,18 +1170,10 @@ module "dsd_io_records" {
       type = "NS",
       ttl  = 300,
       records = [
-        "ns-1940.awsdns-50.co.uk.",
-        "ns-658.awsdns-18.net.",
-        "ns-13.awsdns-01.com.",
-        "ns-1346.awsdns-40.org."
-      ]
-    },
-    {
-      name = "hwf.dsd.io.",
-      type = "TXT",
-      ttl  = 300,
-      records = [
-        "v=spf1 include:sendgrid.net ~all"
+        "ns-1173.awsdns-18.org.",
+        "ns-191.awsdns-23.com.",
+        "ns-2004.awsdns-58.co.uk.",
+        "ns-685.awsdns-21.net.",
       ]
     },
     {
