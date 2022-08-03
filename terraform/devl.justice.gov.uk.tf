@@ -39,22 +39,6 @@ module "devl_justice_gov_uk_records" {
       ]
     },
     {
-      name = "_39c3e0d576c3073fd87ed59ac43af7f8.devl.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "503BB827E41C6DD6B5A36B701232FEAE.62AA69D6905697E71E371DDB418097BC.af78d7d94d0057616051.comodoca.com."
-      ]
-    },
-    {
-      name = "_ca90ba812fdd337d0d0d7b15e6eba86e.devl.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "CCB11B8C24AAA41FC15A30DCAEF284F3.DA4B9F1D2D86AFCB05328BA797CC3035.4eab60e55fe4c7dd567a.comodoca.com."
-      ]
-    },
-    {
       name = "_mta-sts.devl.justice.gov.uk."
       type = "TXT"
       ttl  = 300
