@@ -66,6 +66,33 @@ module "cjsonline_gov_uk_records" {
       ]
     },
     {
+      name = "monitoring.pportal.cjsonline.gov.uk."
+      type = "A"
+      alias = {
+        zone_id                = "ZHURV8PSTC4K8"
+        name                   = "prtg-lb-xhibit-portal-1382021580.eu-west-2.elb.amazonaws.com."
+        evaluate_target_health = false
+      }
+    },
+    {
+      name = "monitoring.prepportal.cjsonline.gov.uk."
+      type = "A"
+      alias = {
+        zone_id                = "ZHURV8PSTC4K8"
+        name                   = "prtg-lb-xhibit-portal-1640285449.eu-west-2.elb.amazonaws.com."
+        evaluate_target_health = false
+      }
+    },
+    {
+      name = "monitoring.dev-pportal.cjsonline.gov.uk."
+      type = "A"
+      alias = {
+        zone_id                = "ZHURV8PSTC4K8"
+        name                   = "prtg-lb-xhibit-portal-2000054797.eu-west-2.elb.amazonaws.com."
+        evaluate_target_health = false
+      }
+    },
+    {
       name = "dev-ingest.cjsonline.gov.uk."
       type = "A"
       alias = {
