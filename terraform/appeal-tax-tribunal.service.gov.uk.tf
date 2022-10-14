@@ -54,8 +54,7 @@ module "appeal_tax_tribunal_service_gov_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
-        "yP1b2fyuHqZ_RcXDYV8nbH1FhYQuCt5KHusTAONwgg0",
-        "gKRej2crvHAATtd_CsnGtsC0loWhIBJg3z3USUV_7MA"
+        "fvEIAQudRIH1AnGwpY7y4iWKPfWuYFF2MrJqf6lzl3w"
       ]
     },
     {

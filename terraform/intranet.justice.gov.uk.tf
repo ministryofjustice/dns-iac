@@ -117,8 +117,8 @@ module "intranet_justice_gov_uk_records" {
       name = "hmpps.intranet.justice.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "hmpps-sip-prod-web-alb-01-272041428.eu-west-2.elb.amazonaws.com."
+        zone_id                = "ZD4D7Y8KGAS4G"
+        name                   = "nlb-for-squiz-app-access-26c183f334afe45b.elb.eu-west-2.amazonaws.com"
         evaluate_target_health = true
       }
     },
@@ -182,8 +182,8 @@ module "intranet_justice_gov_uk_records" {
       name = "search.hmpps.intranet.justice.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "hmpps-sip-prod-web-alb-01-272041428.eu-west-2.elb.amazonaws.com"
+        zone_id                = "ZD4D7Y8KGAS4G"
+        name                   = "nlb-for-squiz-app-access-26c183f334afe45b.elb.eu-west-2.amazonaws.com"
         evaluate_target_health = true
       }
     },
