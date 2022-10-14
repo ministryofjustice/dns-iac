@@ -51,7 +51,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
-        "8Q_DwBrX8FGQgK-Ww52crBvWsZxDreNKRmfxs2QyVpw"
+        "34mHuX5NRtDjyh3OZWNdwrCTY2lai0ueyzccvzA5Gbc"
       ]
     },
     {

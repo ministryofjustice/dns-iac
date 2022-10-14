@@ -702,7 +702,7 @@ module "service_justice_gov_uk_records" {
       type = "A"
       alias = {
         zone_id                = "ZHURV8PSTC4K8"
-        name                   = "ubi-p-loadb-1rk7d55h8z4t3-1469044134.eu-west-2.elb.amazonaws.com"
+        name                   = "dualstack.ubi-p-loadb-1rk7d55h8z4t3-1469044134.eu-west-2.elb.amazonaws.com"
         evaluate_target_health = true
       }
     },
@@ -1202,7 +1202,7 @@ module "service_justice_gov_uk_records" {
       type = "A"
       alias = {
         zone_id                = "Z32O12XQLNTSW2"
-        name                   = "nomsapi-prod-apigateway-133650463.eu-west-1.elb.amazonaws.com"
+        name                   = "dualstack.nomsapi-prod-apigateway-133650463.eu-west-1.elb.amazonaws.com"
         evaluate_target_health = false
       }
     },

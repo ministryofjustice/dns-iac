@@ -137,30 +137,6 @@ module "judiciary_gov_uk_records" {
       ]
     },
     {
-      name = "judicialcollege.judiciary.gov.uk."
-      type = "A"
-      ttl  = 600
-      records = [
-        "92.63.137.91"
-      ]
-    },
-    {
-      name = "judicialcollege.judiciary.gov.uk."
-      type = "MX"
-      ttl  = 300
-      records = [
-        "0 ."
-      ]
-    },
-    {
-      name = "judicialcollege.judiciary.gov.uk."
-      type = "TXT"
-      ttl  = 600
-      records = [
-        "v=spf1 ip4:92.63.137.91 ip6:fe80::d6ae:52ff:fec4:bbab ~all"
-      ]
-    },
-    {
       name = "judicialconduct.judiciary.gov.uk."
       type = "NS"
       ttl  = 600
@@ -260,7 +236,7 @@ module "judiciary_gov_uk_records" {
       type = "CNAME"
       ttl  = 600
       records = [
-        "judiciary.prod.dxw.net."
+        "redirect.dxw.net"
       ]
     },
     {

@@ -49,7 +49,7 @@ module "justice_gov_uk_records" {
         "QuoVadis=7646126a-d75d-4bfd-8fc3-138170e3f362",
         "MS=ms58266631",
         "BTUhp9Uq4ukuVfeGN5jrIsf32ll79sBSGRw0qc+3XoO2ewFCNNdhMIMb+tj5xdom8y7CWGgxtthH/9mE/p8+Yg==",
-        "202010291609160qgibjze9cv3q7aqu8hn77ekywrs8f6kzt7iwcqncfc3jn00oo",
+        "2022100614445019nl5f39osxxoy14p9la8sh5vxah0exxp0ime2mh0w4tu19egv",
         "amazonses:7TpoWZygS3NuQ4e4VDNJ7yM1uQtxz7ZTVuPQ57Njtog=",
         "miro-verification=9f7733fab8b41c5d9bbbf63c043f10dcfec77dab",
         "apple-domain-verification=KiQwp8vi9tLuxYuq",
@@ -474,7 +474,7 @@ module "justice_gov_uk_records" {
       type = "A"
       alias = {
         evaluate_target_health = false
-        name                   = "civil-mediation-load-377727311.eu-west-2.elb.amazonaws.com"
+        name                   = "dualstack.civil-mediation-load-377727311.eu-west-2.elb.amazonaws.com"
         zone_id                = "ZHURV8PSTC4K8"
       }
     },
@@ -490,7 +490,7 @@ module "justice_gov_uk_records" {
       name = "www.civilmediation.justice.gov.uk."
       type = "A"
       alias = {
-        name                   = "civil-mediation-load-377727311.eu-west-2.elb.amazonaws.com"
+        name                   = "dualstack.civil-mediation-load-377727311.eu-west-2.elb.amazonaws.com"
         zone_id                = "ZHURV8PSTC4K8"
         evaluate_target_health = false
       }
@@ -704,7 +704,7 @@ module "justice_gov_uk_records" {
       type = "A"
       alias = {
         evaluate_target_health = false
-        name                   = "court-loadb-8mcola2l2by0-173012739.eu-west-2.elb.amazonaws.com"
+        name                   = "dualstack.court-loadb-8mcola2l2by0-173012739.eu-west-2.elb.amazonaws.com"
         zone_id                = "ZHURV8PSTC4K8"
       }
     },
@@ -750,7 +750,7 @@ module "justice_gov_uk_records" {
       ttl  = 300
       records = [
         "v=spf1 include:_spf.google.com -all",
-        "google-site-verification=_ddDla0QaTcjKV5-KS1pOP5mPawCieNoirKehWsPo2E",
+        "google-site-verification=Nth0cgF0QH5N62b8dNqgsit8N3okHPzips4MlRHrBM8",
         "apple-domain-verification=50f0lhf7PW4g8oXe"
       ]
     },
@@ -925,7 +925,7 @@ module "justice_gov_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
-        "gg5pxrc7crxcdq4mrxcwvqh3d1vkxjnh"
+        "2022100614445019nl5f39osxxoy14p9la8sh5vxah0exxp0ime2mh0w4tu19egv"
       ]
     },
     {
@@ -1056,7 +1056,7 @@ module "justice_gov_uk_records" {
       type = "A"
       alias = {
         evaluate_target_health = false
-        name                   = "cshr-cma-prod-web-alb-01-698927512.eu-west-2.elb.amazonaws.com"
+        name                   = "dualstack.cshr-cma-prod-web-alb-01-698927512.eu-west-2.elb.amazonaws.com"
         zone_id                = "ZHURV8PSTC4K8"
       }
     },
@@ -1105,7 +1105,7 @@ module "justice_gov_uk_records" {
       type = "A"
       alias = {
         evaluate_target_health = true
-        name                   = "cshr-cma-uat-web-alb-01-130925050.eu-west-2.elb.amazonaws.com"
+        name                   = "dualstack.cshr-cma-uat-web-alb-01-130925050.eu-west-2.elb.amazonaws.com"
         zone_id                = "ZHURV8PSTC4K8"
       }
     },
@@ -1679,7 +1679,7 @@ module "justice_gov_uk_records" {
       type = "A"
       alias = {
         evaluate_target_health = false
-        name                   = "justi-loadb-sq9lna0p02ao-206129886.eu-west-2.elb.amazonaws.com"
+        name                   = "dualstack.justi-loadb-sq9lna0p02ao-206129886.eu-west-2.elb.amazonaws.com"
         zone_id                = "ZHURV8PSTC4K8"
       }
     },
