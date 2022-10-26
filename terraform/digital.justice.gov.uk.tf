@@ -228,7 +228,7 @@ module "digital_justice_gov_uk_records" {
     {
       name = "lyncdiscover.digital.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl  = 300
       records = [
         "webdir.online.lync.com"
       ]
