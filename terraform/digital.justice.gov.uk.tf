@@ -226,7 +226,7 @@ module "digital_justice_gov_uk_records" {
       ]
     },
     {
-      name = "lyncdiscover.digital.justice.gov.uk."
+      name = "lyncdiscover.test.digital.justice.gov.uk."
       type = "CNAME"
       ttl  = 300
       records = [
