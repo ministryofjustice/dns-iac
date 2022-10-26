@@ -230,7 +230,7 @@ module "digital_justice_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "webdir.online.lync.com"
+        "webdir.online.lync.com."
       ]
     },
     {
