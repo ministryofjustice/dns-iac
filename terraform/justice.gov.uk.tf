@@ -729,7 +729,7 @@ module "justice_gov_uk_records" {
       type = "A"
       ttl  = 600
       records = [
-        "51.179.193.69"
+        "35.177.112.189"
       ]
     },
     {
@@ -759,7 +759,7 @@ module "justice_gov_uk_records" {
       type = "A"
       ttl  = 300
       records = [
-        "51.179.193.70"
+        "18.132.11.99"
       ]
     },
     {
@@ -2180,7 +2180,10 @@ module "justice_gov_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
-        "reserved for internal use"
+        "ns-101.awsdns-12.com",
+        "ns-1374.awsdns-43.org",
+        "ns-1686.awsdns-18.co.uk",
+        "ns-766.awsdns-31.net"
       ]
     },
     {
