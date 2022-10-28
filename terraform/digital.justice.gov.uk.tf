@@ -49,7 +49,6 @@ module "digital_justice_gov_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
-        "MS=ms39688150",
         "v=spf1 include:_spf.google.com include:mail.zendesk.com include:sendgrid.net include:amazonses.com include:spf.protection.outlook.com include:spf.messagelabs.com ip4:54.194.156.23 ~all",
         "teamviewer-sso-verification=a32cc5b325ca4b98ad15a722ebd63437",
         "apple-domain-verification=epvXUESI7W7LtOr4",
@@ -187,14 +186,6 @@ module "digital_justice_gov_uk_records" {
       ]
     },
     {
-      name = "_sipfederationtls._tcp.digital.justice.gov.uk."
-      type = "SRV"
-      ttl  = 3600
-      records = [
-        "100 1 5061 sipfed.online.lync.com"
-      ]
-    },
-    {
       name = "_smtp._tcp.digital.justice.gov.uk."
       type = "SRV"
       ttl  = 300
@@ -211,43 +202,11 @@ module "digital_justice_gov_uk_records" {
       ]
     },
     {
-      name = "_sip._tls.digital.justice.gov.uk."
-      type = "SRV"
-      ttl  = 3600
-      records = [
-        "100 1 443 sipdir.online.lync.com"
-      ]
-    },
-    {
       name = "_smtp._tls.digital.justice.gov.uk."
       type = "TXT"
       ttl  = 300
       records = [
         "v=TLSRPTv1;rua=mailto:tls-rua@mailcheck.service.ncsc.gov.uk"
-      ]
-    },
-    {
-      name = "autodiscover.digital.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 3600
-      records = [
-        "autodiscover.outlook.com"
-      ]
-    },
-    {
-      name = "enterpriseenrollment.digital.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 3600
-      records = [
-        "enterpriseenrollment.manage.microsoft.com"
-      ]
-    },
-    {
-      name = "enterpriseregistration.digital.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 3600
-      records = [
-        "enterpriseregistration.windows.net"
       ]
     },
     {
@@ -267,11 +226,11 @@ module "digital_justice_gov_uk_records" {
       ]
     },
     {
-      name = "lyncdiscover.digital.justice.gov.uk."
+      name = "lyncdiscover.test.digital.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl  = 300
       records = [
-        "webdir.online.lync.com"
+        "webdir.online.lync.com."
       ]
     },
     {
@@ -360,14 +319,6 @@ module "digital_justice_gov_uk_records" {
       ttl  = 300
       records = [
         "8.8.8.8"
-      ]
-    },
-    {
-      name = "sip.digital.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 3600
-      records = [
-        "sipdir.online.lync.com"
       ]
     },
     {
@@ -532,14 +483,6 @@ module "digital_justice_gov_uk_records" {
       records = [
         "auZnAusRNbOx1OFTpjE5EYTgjG76iK7qhmhEqcm6Jg/6S9nXJ7HntCo8S8X0G9+Q0BjdYyWuzw4n40UU2CgH0w==",
         "v=spf1 ip4:18.130.205.7 ~all"
-      ]
-    },
-    {
-      name = "lyncdiscover.test.digital.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "webdir.online.lync.com."
       ]
     },
     {
