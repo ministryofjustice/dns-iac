@@ -2180,10 +2180,7 @@ module "justice_gov_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
-        "ns-101.awsdns-12.com",
-        "ns-1374.awsdns-43.org",
-        "ns-1686.awsdns-18.co.uk",
-        "ns-766.awsdns-31.net"
+        "reserverd for internal use"
       ]
     },
     {
