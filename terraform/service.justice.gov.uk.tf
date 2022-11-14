@@ -330,6 +330,86 @@ module "service_justice_gov_uk_records" {
       ]
     },
     {
+      name = "crown-court-litigator-fees.service.justice.gov.uk"
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "d2cadkxrqxugqy.cloudfront.net"
+      ]
+    },
+    {
+      name = "development.crown-court-litigator-fees.service.justice.gov.uk"
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "d1ghxikls9yc1b.cloudfront.net"
+      ]
+    },
+    {
+      name = "staging.crown-court-litigator-fees.service.justice.gov.uk"
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "dcaq9asjr3g28.cloudfront.net"
+      ]
+    },
+    {
+      name = "test.crown-court-litigator-fees.service.justice.gov.uk"
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "dh6bfqpemx4av.cloudfront.net"
+      ]
+    },
+    {
+      name = "uat.crown-court-litigator-fees.service.justice.gov.uk"
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "d1qziauwetehis.cloudfront.net"
+      ]
+    },
+    {
+      name = "crown-court-remuneration.service.justice.gov.uk"
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "d3oqg3yrw3yc9x.cloudfront.net"
+      ]
+    },
+    {
+      name = "development.crown-court-remuneration.service.justice.gov.uk"
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "d2un84u5xlacrf.cloudfront.net"
+      ]
+    },
+    {
+      name = "staging.crown-court-remuneration.service.justice.gov.uk"
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "d9ejn5yx5y6y8.cloudfront.net"
+      ]
+    },
+    {
+      name = "test.crown-court-remuneration.service.justice.gov.uk"
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "d11b6vfzzycae4.cloudfront.net"
+      ]
+    },
+    {
+      name = "uat.crown-court-remuneration.service.justice.gov.uk"
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "d3gnf84r7r46aa.cloudfront.net"
+      ]
+    },
+    {
       name = "cloud-platform.service.justice.gov.uk."
       type = "NS"
       ttl  = 300
