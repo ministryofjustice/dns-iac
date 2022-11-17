@@ -17,8 +17,8 @@ module "imb_org_uk_records" {
       name = "imb.org.uk."
       type = "A"
       alias = {
-        zone_id = data.aws_elb_hosted_zone_id.eu-west-2.id
-        name = "jotwp-loadb-1mbwraz503eq6-1769122100.eu-west-2.elb.amazonaws.com."
+        zone_id                = data.aws_elb_hosted_zone_id.eu-west-2.id
+        name                   = "jotwp-loadb-1mbwraz503eq6-1769122100.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = false
       }
     },
