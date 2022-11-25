@@ -3,11 +3,11 @@ module "familyjusticecouncil_org_uk_zone" {
 
   name = "familyjusticecouncil.org.uk"
   tags = {
-    application = "Family Justice Child Arrangement Assessment and Triage/CAAT",
-    business-unit        = "HQ",
+    application            = "Family Justice Child Arrangement Assessment and Triage/CAAT",
+    business-unit          = "HQ",
     infrastructure-support = "Cloud Platforms platforms@digital.justice.gov.uk",
-    owner                = "None"
-    component = "None"
+    owner                  = "None"
+    component              = "None"
   }
 
 

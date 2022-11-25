@@ -3,11 +3,11 @@ module "victiminformationservice_org_uk_zone" {
 
   name = "victiminformationservice.org.uk"
   tags = {
-      application           = "Victims Information Service/VIS"
-      business-unit         = "HMCTS"
-      infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
-      owner                 = "HMCTS sustainingteamsupport@hmcts.net"
-      component = "None"
+    application            = "Victims Information Service/VIS"
+    business-unit          = "HMCTS"
+    infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
+    owner                  = "HMCTS sustainingteamsupport@hmcts.net"
+    component              = "None"
   }
 }
 
@@ -26,7 +26,7 @@ module "victiminformationservice_org_uk_records" {
 
 
       weighted_routing_policy = {
-         weight = 4
+        weight = 4
       }
 
       records = [
