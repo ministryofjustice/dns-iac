@@ -17,10 +17,11 @@ module "yjb_gov_uk_records" {
     {
       name = "yjb.gov.uk."
       type = "A"
-      ttl  = 300
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "yjb.gov.uk."

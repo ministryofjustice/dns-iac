@@ -16,10 +16,11 @@ module "hmprisonservice_gov_uk_records" {
     {
       name = "hmprisonservice.gov.uk."
       type = "A"
-      ttl  = 600
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "hmprisonservice.gov.uk."
@@ -61,10 +62,11 @@ module "hmprisonservice_gov_uk_records" {
     {
       name = "cms.hmprisonservice.gov.uk."
       type = "A"
-      ttl  = 600
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "extranet.hmprisonservice.gov.uk."
@@ -141,34 +143,38 @@ module "hmprisonservice_gov_uk_records" {
     {
       name = "procurement.hmprisonservice.gov.uk."
       type = "A"
-      ttl  = 600
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "staging.procurement.hmprisonservice.gov.uk."
       type = "A"
-      ttl  = 600
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "psi.hmprisonservice.gov.uk."
       type = "A"
-      ttl  = 600
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "pso.hmprisonservice.gov.uk."
       type = "A"
-      ttl  = 600
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "search.hmprisonservice.gov.uk."
@@ -181,26 +187,29 @@ module "hmprisonservice_gov_uk_records" {
     {
       name = "staging.hmprisonservice.gov.uk."
       type = "A"
-      ttl  = 600
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "web-smtp.hmprisonservice.gov.uk."
       type = "A"
-      ttl  = 600
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "www.hmprisonservice.gov.uk."
       type = "A"
-      ttl  = 600
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     }
   ]
 }

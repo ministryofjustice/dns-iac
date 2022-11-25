@@ -17,10 +17,11 @@ module "yjbpublications_justice_gov_uk_records" {
     {
       name = "yjbpublications.justice.gov.uk."
       type = "A"
-      ttl  = 300
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "yjbpublications.justice.gov.uk."
@@ -36,10 +37,11 @@ module "yjbpublications_justice_gov_uk_records" {
     {
       name = "www.yjbpublications.justice.gov.uk."
       type = "A"
-      ttl  = 300
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     }
   ]
 }
