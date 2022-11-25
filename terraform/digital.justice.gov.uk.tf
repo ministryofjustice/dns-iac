@@ -300,10 +300,11 @@ module "digital_justice_gov_uk_records" {
     {
       name = "proxy.digital.justice.gov.uk."
       type = "A"
-      ttl  = 300
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "proxywaf.digital.justice.gov.uk."
@@ -332,10 +333,11 @@ module "digital_justice_gov_uk_records" {
     {
       name = "temp.digital.justice.gov.uk."
       type = "A"
-      ttl  = 300
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "test.digital.justice.gov.uk."

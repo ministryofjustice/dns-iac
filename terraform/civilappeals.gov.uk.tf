@@ -17,10 +17,11 @@ module "civilappeals_gov_uk_records" {
     {
       name = "civilappeals.gov.uk."
       type = "A"
-      ttl  = 1800
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "civilappeals.gov.uk."
@@ -36,10 +37,11 @@ module "civilappeals_gov_uk_records" {
     {
       name = "www.civilappeals.gov.uk."
       type = "A"
-      ttl  = 1800
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     }
   ]
 }

@@ -215,10 +215,11 @@ module "dsd_io_records" {
     {
       name = "asylum-support.dsd.io.",
       type = "A",
-      ttl  = 300,
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "azure.dsd.io.",
@@ -1187,10 +1188,11 @@ module "dsd_io_records" {
     {
       name = "informationtribunal.dsd.io.",
       type = "A",
-      ttl  = 300,
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "int-prisonvisits.dsd.io.",
