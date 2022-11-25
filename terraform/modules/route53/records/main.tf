@@ -30,4 +30,12 @@ resource "aws_route53_record" "this" {
       type = each.value.failover_routing_policy.type
     }
   }
+
+  dynamic "weighted_routing_policy" {
+    for_each = length(keys(lookup(each.value, "weighted_routing_policy", {}))) == 0 ? [] : [true]
+
+    content {
+      weight = each.value.weighted_routing_policy.weight
+    }
+  }
 }
