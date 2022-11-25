@@ -17,8 +17,8 @@ module "paroleboard_gov_uk_records" {
       name = "paroleboard.gov.uk."
       type = "A"
       alias = {
-        name = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
-        zone_id = "Z32O12XQLNTSW2"
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
         evaluate_target_health = false
       }
     },
@@ -183,8 +183,8 @@ module "paroleboard_gov_uk_records" {
       name = "www.paroleboard.gov.uk."
       type = "A"
       alias = {
-        name = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
-        zone_id = "Z32O12XQLNTSW2"
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
         evaluate_target_health = false
       }
     }

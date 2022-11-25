@@ -18,8 +18,8 @@ module "yjbpublications_justice_gov_uk_records" {
       name = "yjbpublications.justice.gov.uk."
       type = "A"
       alias = {
-        name = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
-        zone_id = "Z32O12XQLNTSW2"
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
         evaluate_target_health = false
       }
     },
@@ -38,8 +38,8 @@ module "yjbpublications_justice_gov_uk_records" {
       name = "www.yjbpublications.justice.gov.uk."
       type = "A"
       alias = {
-        name = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
-        zone_id = "Z32O12XQLNTSW2"
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
         evaluate_target_health = false
       }
     }
