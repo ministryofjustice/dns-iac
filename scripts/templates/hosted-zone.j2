@@ -1,0 +1,33 @@
+module "{{ zone.HostedZone.Name | replace(".", "_") }}_zone" {
+    source = "./modules/route53/zone"
+
+    name = "{{ zone.HostedZone.Name }}"
+    {% if zone.HostedZone.Config.Comment is defined %}description = "{{ zone.HostedZone.Config.Comment }}"
+    {% endif %}
+    tags = {
+    {% for tag_set in tags %}{{ tag_set.Key|indent(2, true)  }} = "{{ tag_set.Value }}"
+    {% endfor %}}
+}
+
+module "{{ zone.HostedZone.Name | replace(".", "_") }}_records" {
+    source = "./modules/route53/records"
+
+    zone_id = module.{{ zone.HostedZone.Name | replace(".", "_") }}_zone.zone_id
+
+    records = [
+    {% for record_set in records %}    {
+      name = "{{ record_set.Name }}"
+      type = "{{ record_set.Type }}"
+    {% if record_set.TTL is defined %}  ttl = {{ record_set.TTL }}
+    {% endif %}{% if record_set.AliasTarget is defined %}
+      alias = {
+        zone_id                = "{{ record_set.AliasTarget.HostedZoneId }}"
+        name                   = "{{ record_set.AliasTarget.DNSName }}"
+        evaluate_target_health = "{{ record_set.AliasTarget.EvaluateTargetHealth }}"
+      }
+      {% else %}  records = [
+      {% for sub_record in record_set.ResourceRecords %} {% if record_set.Type != "TXT" %} "{{ sub_record.Value }}",{% else %}{{ sub_record.Value }}{% endif %}{% endfor %}
+      ]
+    },
+{% endif %}{% endfor %}  ]
+}
