@@ -80,6 +80,15 @@ module "tribunals_gov_uk_records" {
       }
     },
     {
+      name = "charity.tribunals.gov.uk."
+      type = "A"
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
+    },
+    {
       name = "consumercreditappeals.tribunals.gov.uk."
       type = "A"
       alias = {
