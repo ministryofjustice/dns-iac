@@ -85,8 +85,8 @@ module "employmenttribunals_service_gov_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
-        "N3A0PxZB6BLqD-KMHkjwxmFBPOhKpGRpHrrAbm5hvmA",
-        "tw4oWeebsDvx-aW6qgEBNf_GGE3H3s-sVgLv1tkBHPo"
+        "LjjVNSRXnTF6MieLQsleP17XwweZJOqdJAiCGJP1kZc",
+        "d194Yemi1G7bIVmaEbW6Ws-l55U41QKBWrWqxCWoWz0"
       ]
     },
     {
