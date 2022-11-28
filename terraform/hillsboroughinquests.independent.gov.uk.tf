@@ -17,8 +17,8 @@ module "hillsboroughinquests_independent_gov_uk_records" {
       name = "hillsboroughinquests.independent.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "dualstack.hills-loadb-67aj9rqzyqiu-964494793.eu-west-2.elb.amazonaws.com."
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
         evaluate_target_health = false
       }
     },
@@ -45,8 +45,8 @@ module "hillsboroughinquests_independent_gov_uk_records" {
       name = "www.hillsboroughinquests.independent.gov.uk."
       type = "A"
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "dualstack.hills-loadb-67aj9rqzyqiu-964494793.eu-west-2.elb.amazonaws.com."
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
         evaluate_target_health = false
       }
     },

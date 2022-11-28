@@ -16,10 +16,11 @@ module "magistrates_org_uk_records" {
     {
       name = "magistrates.org.uk"
       type = "A"
-      ttl  = 300
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
     {
       name = "magistrates.org.uk"
@@ -68,10 +69,11 @@ module "magistrates_org_uk_records" {
     {
       name = "www.magistrates.org.uk"
       type = "A"
-      ttl  = 600
-      records = [
-        "52.30.196.9"
-      ]
+      alias = {
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
+        zone_id                = "Z32O12XQLNTSW2"
+        evaluate_target_health = false
+      }
     },
   ]
 }
