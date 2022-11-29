@@ -32,7 +32,8 @@ print("Please run the following commands before running Terraform plan/apply")
 print("Commands:")
 print("------------------")
 print("terraform init")
-print(f"terraform import module.{safe_zone_name}_zone.aws_route53_zone.this {zone.id}")
+print(
+    f"terraform import module.{safe_zone_name}_zone.aws_route53_zone.this {zone.id}")
 
 for record in zone.get_records():
     print(
