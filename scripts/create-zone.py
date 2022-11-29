@@ -9,7 +9,7 @@ with open('scripts/templates/hosted-zone.j2') as file_:
 
 # ! -- USER ACTION -- !
 # Put the zone you want to target here
-ZONE_NAME = "ZONE NAME GOES HERE"
+ZONE_NAME = "PUT YOUR ZONE HERE"
 # ! -- USER ACTION -- !
 
 # Render the template
@@ -32,7 +32,7 @@ print("Please run the following commands before running Terraform plan/apply")
 print("Commands:")
 print("------------------")
 print("terraform init")
-print(f"terraform import module.{safe_zone_name}_zone.this {zone.id}")
+print(f"terraform import module.{safe_zone_name}_zone.aws_route53_zone.this {zone.id}")
 
 for record in zone.get_records():
     print(
