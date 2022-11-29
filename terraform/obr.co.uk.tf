@@ -1,4 +1,4 @@
-module "obr_org_uk_zone" {
+module "obr_co_uk_zone" {
   source = "./modules/route53/zone"
 
   name = "obr.co.uk"
@@ -7,10 +7,10 @@ module "obr_org_uk_zone" {
   }
 }
 
-module "obr_org_uk_records" {
+module "obr_co_uk_records" {
   source = "./modules/route53/records"
 
-  zone_id = module.obr_org_uk_zone.zone_id
+  zone_id = module.obr_co_uk_zone.zone_id
 
   records = [
     {
@@ -52,4 +52,3 @@ module "obr_org_uk_records" {
     },
   ]
 }
-
