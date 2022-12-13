@@ -1849,9 +1849,10 @@ module "justice_gov_uk_records" {
       type = "NS"
       ttl  = 600
       records = [
-        "ns1.uk.atos.net.",
-        "ns2.uk.atos.net.",
-        "ns3.uk.atos.net."
+        "ns-1134.awsdns-13.org",
+        "ns-1732.awsdns-24.co.uk",
+        "ns-242.awsdns-30.com",
+        "ns-911.awsdns-49.net"
       ]
     },
     {

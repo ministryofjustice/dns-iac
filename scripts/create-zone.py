@@ -9,7 +9,7 @@ with open('scripts/templates/hosted-zone.j2') as file_:
 
 # ! -- USER ACTION -- !
 # Put the zone you want to target here
-ZONE_NAME = "PUT YOUR ZONE HERE"
+ZONE_NAME = "ima-citizensrights.org.uk"
 # ! -- USER ACTION -- !
 
 # Render the template
