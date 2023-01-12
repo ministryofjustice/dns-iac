@@ -57,7 +57,7 @@ module "immigrationappealsonline_justice_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-dev.azurefd.net"
+        "dualstack.iacfees-d-ELBiacfe-EL2Q43CW1227-897465470.eu-west-1.elb.amazonaws.com"
       ]
     },
     {
@@ -73,7 +73,7 @@ module "immigrationappealsonline_justice_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "dualstack.iacfees-staging-alb-waf-311912251.eu-west-1.elb.amazonaws.com"
+        "dualstack.iacfees-s-ELBhmcts-DGD2EJ56UXEF-715536071.eu-west-1.elb.amazonaws.com"
       ]
     },
     {
