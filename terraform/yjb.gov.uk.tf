@@ -47,6 +47,7 @@ module "yjb_gov_uk_records" {
       type = "TXT"
       ttl  = 3600
       records = [
+        "atlassian-domain-verification=eZYa71sfUYC3GKWDAnR6IDBAD7m0PkEaKKOYkM2cjWj8or0XT0PwqvFpqTLtaNby",
         "MS=ms19252221",
         "v=spf1 ip4:194.33.196.8/32 ip4:194.33.192.8/32 ip4:5.61.115.16/28  include:spf.protection.outlook.com -all",
         "amazonses:umSaWIsothFWgBUFNjeubrOCY2aZngv3GZdQC//l9pw="

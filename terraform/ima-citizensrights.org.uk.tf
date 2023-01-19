@@ -70,6 +70,7 @@ module "ima-citizensrights_org_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
+        "atlassian-domain-verification=eZYa71sfUYC3GKWDAnR6IDBAD7m0PkEaKKOYkM2cjWj8or0XT0PwqvFpqTLtaNby",
         "MS=ms27470079",
         "v=spf1 mx ip4:194.33.196.0/24 ip4:194.33.192.0/24 include:spf.protection.outlook.com include:_spf.google.com include:spf.mandrillapp.com -all",
         "google-site-verification=nK7y7wGdCs855qx_GcyV2pqfwJSQP3E9zGi5yDJ7-O0"
