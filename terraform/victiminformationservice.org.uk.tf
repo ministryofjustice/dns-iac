@@ -62,14 +62,6 @@ module "victiminformationservice_org_uk_records" {
       ]
     },
     {
-      name = "92cb2a0a44b13108b2e0a23c8ccdb776.victiminformationservice.org.uk"
-      type = "CNAME"
-      ttl  = 10800
-      records = [
-        "9C0F33951A37F44B2FB702178678FBD897A526B9.comodoca.com"
-      ]
-    },
-    {
       name = "_763372be03a4e87a04610fa50b15adbd.victiminformationservice.org.uk"
       type = "CNAME"
       ttl  = 60
