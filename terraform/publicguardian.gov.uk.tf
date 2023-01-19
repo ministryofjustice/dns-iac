@@ -137,6 +137,7 @@ module "publicguardian_gov_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
+        "atlassian-domain-verification=eZYa71sfUYC3GKWDAnR6IDBAD7m0PkEaKKOYkM2cjWj8or0XT0PwqvFpqTLtaNby",
         "MS=ms49968440",
         "v=spf1 ip4:194.33.196.8/32 ip4:194.33.192.8/32 include:spf.protection.outlook.com -all"
       ]

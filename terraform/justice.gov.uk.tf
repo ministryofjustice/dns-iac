@@ -45,6 +45,7 @@ module "justice_gov_uk_records" {
       type = "TXT"
       ttl  = 600
       records = [
+        "atlassian-domain-verification=eZYa71sfUYC3GKWDAnR6IDBAD7m0PkEaKKOYkM2cjWj8or0XT0PwqvFpqTLtaNby",
         "v=spf1 ip4:194.33.196.0/24 ip4:194.33.192.0/24 include:spf.protection.outlook.com include:_spf.google.com include:mail-relay.staff.service.justice.gov.uk -all",
         "QuoVadis=7646126a-d75d-4bfd-8fc3-138170e3f362",
         "MS=ms58266631",
@@ -72,14 +73,6 @@ module "justice_gov_uk_records" {
       records = [
         "V9UFWT58TFN4bvzNq3kucIBHJ0LvG2tzcyO4XMcux5M=",
         "7TpoWZygS3NuQ4e4VDNJ7yM1uQtxz7ZTVuPQ57Njtog="
-      ]
-    },
-    {
-      name = "_dmarc.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 3600
-      records = [
-        "_dmarc_ttp_policy.justice.gov.uk"
       ]
     },
     {
