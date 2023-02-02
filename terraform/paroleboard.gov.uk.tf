@@ -48,7 +48,7 @@ module "paroleboard_gov_uk_records" {
       records = [
         "YcrqOH4L",
         "ms=ms20657591",
-        "v=spf1 include:spf.protection.outlook.com include:mail.zendesk.com -all"
+        "v=spf1 ip4:20.77.102.3 include:spf.protection.outlook.com include:mail.zendesk.com -all"
       ]
     },
     {
