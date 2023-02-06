@@ -42,6 +42,17 @@ module "service_justice_gov_uk_records" {
       ]
     },
     {
+      name = "mercury.service.justice.gov.uk."
+      type = "NS"
+      ttl  = 3600
+      records = [
+        "ns1-01.azure-dns.com.",
+        "ns2-01.azure-dns.net.",
+        "ns3-01.azure-dns.org.",
+        "ns4-01.azure-dns.info."
+      ]
+    },
+    {
       name = "service.justice.gov.uk."
       type = "SOA"
       ttl  = 300
