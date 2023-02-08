@@ -29,8 +29,10 @@ module "{{ name| replace(".", "_") }}_records" {
         evaluate_target_health = {{ record_set.AliasTarget.EvaluateTargetHealth | lower }}
       }
 {% else %}      records = [
-{% for sub_record in record_set.ResourceRecords %}{% if record_set.Type != "TXT" %}
+{% for sub_record in record_set.ResourceRecords %}{% if record_set.Type != "TXT" and record_set.Type != "SPF" and record_set.Type != "CAA" %}
         "{{ sub_record.Value }}"{{ ", " if not loop.last else "" }}
+{% elif record_set.Type == 'CAA' %}
+        "{{ sub_record.Value | replace("\"", "\\\"") }}"{{ ", " if not loop.last else "" }}
 {% else %}
         {{ sub_record.Value }}{{ ", " if not loop.last else "" }}
 {% endif %}{% endfor %}      ]
