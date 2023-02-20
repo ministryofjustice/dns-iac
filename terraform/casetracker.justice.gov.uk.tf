@@ -52,6 +52,22 @@ module "casetracker_justice_gov_uk_records" {
         name                   = "dualstack.civil-loadb-105un4gbv5077-2040046462.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = false
       }
+    },
+    {
+      name = "_490401529e094a46111033e0656c3ee9.casetracker.justice.gov.uk."
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "_aacbc806a088e7cdff9935f0c9958e9e.auiqqraehs.acm-validations.aws."
+      ]
+    },
+    {
+      name = "_7f22db7c9f84c2e143ff95c36e3bd4f6.staging.casetracker.justice.gov.uk."
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "_9f9bd1d8ba17edb1a1daf007a15d6b1a.wrpxpmnjfs.acm-validations.aws."
+      ]
     }
   ]
 }
