@@ -29,10 +29,10 @@ module "casetracker_justice_gov_uk_records" {
       type = "NS"
       ttl  = 14400
       records = [
-        "ns-1289.awsdns-33.org.",
-        "ns-20.awsdns-02.com.",
-        "ns-756.awsdns-30.net.",
-        "ns-2020.awsdns-60.co.uk."
+        "ns-1665.awsdns-16.co.uk.",
+        "ns-354.awsdns-44.com.",
+        "ns-950.awsdns-54.net.",
+        "ns-1424.awsdns-50.org."
       ]
     },
     {
