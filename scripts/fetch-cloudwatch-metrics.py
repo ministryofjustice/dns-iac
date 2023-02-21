@@ -38,10 +38,19 @@ def generate_metric_query(hosted_zone_id, day_offset):
 
     days_called = len(response['MetricDataResults'][0]['Values'])
     
-    print(f"The hosted zone ({hosted_zone_id}) was called at least once {days_called} days out of a possible {day_offset} days.")
+    print(f"\nThe hosted zone ({hosted_zone_id}) was called at least once {days_called} days out of a possible {day_offset} days.")
     
-def validate_inputs(id, days):
-        return False
+    ratio = day_offset / days_called
+        
+    if (ratio == 0):
+        print('A DNS query has not been made for the hosted zone and time period specified. This should be okay to decommission.\n')
+    elif (1 <= ratio <= 5):
+        print('DNS queries are made very regularly for the hosted zone and time period specified. Do not decommission!\n')
+    elif (5 < ratio < 30):
+        print('DNS queries are made somewhat regularly for the hosted zone and time period specified. Do not decommission!\n')
+    elif (ratio > 30):
+        print('DNS queries are made rarely for the hosted zone and time period specified. Consider decommissioning.\n')
+
 
 print("Starting script...")
 
@@ -52,7 +61,7 @@ if (len(sys.argv) > 3):
 else:
     hosted_zone_id = sys.argv[1]
     day_offset = int(sys.argv[2])
-    if (len(hosted_zone_id) != 21):
+    if (len(hosted_zone_id) > 32):
         print('Zone ID format incorrect!')
         sys.exit(1)
     if not (30 <= day_offset <= 180):
