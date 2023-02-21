@@ -1,16 +1,7 @@
 import os
 import boto3
 from datetime import datetime, timedelta
-import json
-
-def fetch_cloudwatch_metrics(hosted_zone_id, day_offset):
-    """Returns DNS query metrics for a specified Hosted Zone.
-       This requires authentication with AWS.
-    """
-    print(f"Fetching metrics for Hosted Zone ID: {hosted_zone_id} from the last {day_offset} days...")
-    
-    generate_metric_query(hosted_zone_id, day_offset)
-
+import sys
 
 def generate_metric_query(hosted_zone_id, day_offset):
 
@@ -45,11 +36,28 @@ def generate_metric_query(hosted_zone_id, day_offset):
         EndTime=end_time
     )
 
-    determine_action(len(response['MetricDataResults'][0]['Values']))
+    days_called = len(response['MetricDataResults'][0]['Values'])
     
-def determine_action(count):
+    print(f"The hosted zone ({hosted_zone_id}) was called at least once {days_called} days out of a possible {day_offset} days.")
     
-    print(f"The hosted zone was called at least once {count} days out of a possible 30 days.")
-    
+def validate_inputs(id, days):
+        return False
 
-fetch_cloudwatch_metrics('<INSERT ZONE ID>', 30)
+print("Starting script...")
+
+if (len(sys.argv) > 3):
+    print(f'Too many arguments provided! ({len(sys.argv) - 1})')
+    print('Format: "python3 fetch-cloudwatch-metrics.py <zone_id> <day_offset>"')
+    sys.exit(1)
+else:
+    hosted_zone_id = sys.argv[1]
+    day_offset = int(sys.argv[2])
+    if (len(hosted_zone_id) != 21):
+        print('Zone ID format incorrect!')
+        sys.exit(1)
+    if not (30 <= day_offset <= 180):
+        print('Day offset must be between 30 and 180 days.')
+        sys.exit(1)
+    generate_metric_query(hosted_zone_id, day_offset)
+    print("Finished!")
+    sys.exit()
