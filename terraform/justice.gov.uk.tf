@@ -409,12 +409,12 @@ module "justice_gov_uk_records" {
     {
       name = "casetracker.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl  = 14400
       records = [
-        "ns1-04.azure-dns.com.",
-        "ns2-04.azure-dns.net.",
-        "ns3-04.azure-dns.org.",
-        "ns4-04.azure-dns.info."
+        "ns-1665.awsdns-16.co.uk.",
+        "ns-354.awsdns-44.com.",
+        "ns-950.awsdns-54.net.",
+        "ns-1424.awsdns-50.org."
       ]
     },
     {
