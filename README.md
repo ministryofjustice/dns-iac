@@ -99,7 +99,6 @@ This repository currently manages:
 | [yjbpublications.justice.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/yjbpublications.justice.gov.uk.tf)                                   |
 | [yjils.justice.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/yjils.justice.gov.uk.tf)                                                       |
 
-
 ## Scripts
 
 ### Fetch CloudWatch Metrics
@@ -111,7 +110,7 @@ This information can the be used to help determine whether or not it's safe to d
 #### Example Usage
 
 ```
-python3 fetch-cloudwatch-metrics.py -z <Hosted Zone ID> -d 60 
+python3 fetch-cloudwatch-metrics.py -z <Hosted Zone ID> -d 60
 ```
 
 For more information on optional perameters for the script, run:
@@ -119,4 +118,3 @@ For more information on optional perameters for the script, run:
 ```
 python3 fetch-cloudwatch-metrics.py -h
 ```
-
