@@ -64,7 +64,7 @@ print("Starting script...")
 parser = argparse.ArgumentParser(
     description='Fetch CloudWatch Metrics for Hosted Zone')
 parser.add_argument(
-    "-z", "--zone", help="The Hosted Zone ID (required).", required=True, default="")
+    "-z", "--zone", help="The Hosted Zone ID (required).", required=True)
 parser.add_argument("-r", "--region", help="For specifying an AWS region (default = us-east-1).",
                     required=False, default="us-east-1")
 parser.add_argument(
