@@ -1,11 +1,11 @@
 import boto3
 import sys
 import argparse
-from botocore.exceptions import ClientError
+from botocore.exceptions import ClientError, EndpointConnectionError
 from datetime import datetime, timedelta
 
 
-def generate_metric_query(hosted_zone_id, day_offset, region):
+def generate_metric_query(hosted_zone_id: str, day_offset: int, region: str) -> None:
 
     # Creates a cloudwatch client for a specified region.
     client = boto3.client('cloudwatch', region_name=region)
@@ -42,6 +42,8 @@ def generate_metric_query(hosted_zone_id, day_offset, region):
     except (ClientError):
         sys.exit(
             "Your AWS tokens have expired, please resubmit them: https://moj.awsapps.com/start#/")
+    except (EndpointConnectionError) as e:
+        raise ValueError(f"Check you have entered a valid region name. {e}")
 
     # Determines how many days had DNS queries based on the length of the list returned.
     days_called = len(response['MetricDataResults'][0]['Values'])
