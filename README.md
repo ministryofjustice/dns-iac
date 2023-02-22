@@ -98,3 +98,25 @@ This repository currently manages:
 | [yjb.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/yjb.gov.uk.tf)                                                                           |
 | [yjbpublications.justice.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/yjbpublications.justice.gov.uk.tf)                                   |
 | [yjils.justice.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/yjils.justice.gov.uk.tf)                                                       |
+
+
+## Scripts
+
+### Fetch CloudWatch Metrics
+
+The aim of this script is to provide information on the number of DNS queries made for a particular hosted zone over a specified time period.
+
+This information can the be used to help determine whether or not it's safe to decommission a domain. It's worth noting that this information is only for **new** DNS queries for a domain, and does not account for any domain fetched from the cache on the resolver server, as this falls outside the available metrics for Route53.
+
+#### Example Usage
+
+```
+python3 fetch-cloudwatch-metrics.py -z <Hosted Zone ID> -d 60 
+```
+
+For more information on optional perameters for the script, run:
+
+```
+python3 fetch-cloudwatch-metrics.py -h
+```
+
