@@ -60,7 +60,6 @@ parser.add_argument("-z", "--zone", help = "The Hosted Zone ID (required).", req
 parser.add_argument("-r", "--region", help = "For specifying an AWS region (default = us-east-1).", required = False, default = "us-east-1")
 parser.add_argument("-d", "--days", help = "For specifying the amount of days to collect data for (default = 30).", required = False, default = 30)
 argument = parser.parse_args()
-status = False
 
 print(f"Arguments: Hosted Zone ID: {argument.zone}, Days: {argument.days}, Region: {argument.region}")
 
