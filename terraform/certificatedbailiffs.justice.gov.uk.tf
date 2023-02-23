@@ -70,11 +70,11 @@ module "certificatedbailiffs_justice_gov_uk_records" {
       }
     },
     {
-      name = "_fda38dc8340bfbcb14b65926fa4142b5.dev.certificatedbailiffs.justice.gov.uk. "
+      name = "_fda38dc8340bfbcb14b65926fa4142b5.dev.certificatedbailiffs.justice.gov.uk."
       type = "CNAME"
       ttl  = 300
       records = [
-        "_452b72db228942abc818513e8cac8e4f.htgdxnmnnj.acm-validations.aws. "
+        "_452b72db228942abc818513e8cac8e4f.htgdxnmnnj.acm-validations.aws."
       ]
     }
   ]
