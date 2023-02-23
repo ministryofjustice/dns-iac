@@ -447,10 +447,10 @@ module "justice_gov_uk_records" {
       type = "NS"
       ttl  = 600
       records = [
-        "ns1-01.azure-dns.com.",
-        "ns2-01.azure-dns.net.",
-        "ns3-01.azure-dns.org.",
-        "ns4-01.azure-dns.info."
+        "ns-1656.awsdns-15.co.uk.",
+        "ns-1430.awsdns-50.org.",
+        "ns-902.awsdns-48.net.",
+        "ns-387.awsdns-48.com."
       ]
     },
     {
