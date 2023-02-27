@@ -445,7 +445,7 @@ module "justice_gov_uk_records" {
     {
       name = "certificatedbailiffs.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl  = 60
       records = [
         "ns-1656.awsdns-15.co.uk.",
         "ns-1430.awsdns-50.org.",
