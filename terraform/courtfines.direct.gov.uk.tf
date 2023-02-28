@@ -27,10 +27,10 @@ module "courtfines_direct_gov_uk_records" {
       type = "NS"
       ttl  = 300
       records = [
-        "ns1-04.azure-dns.com.",
-        "ns2-04.azure-dns.net.",
-        "ns3-04.azure-dns.org.",
-        "ns4-04.azure-dns.info."
+        "ns-328.awsdns-41.com.",
+        "ns-1333.awsdns-38.org.",
+        "ns-1824.awsdns-36.co.uk.",
+        "ns-748.awsdns-29.net."
       ]
     },
     {
@@ -50,53 +50,31 @@ module "courtfines_direct_gov_uk_records" {
       ]
     },
     {
-      name = "afdverify.courtfines.direct.gov.uk."
+      name = "staging.courtfines.direct.gov.uk."
+      type = "A"
+      alias = {
+        zone_id                = "ZHURV8PSTC4K8"
+        name                   = "court-LoadB-QPAHTENF925I-482204730.eu-west-2.elb.amazonaws.com."
+        evaluate_target_health = true
+      }
+    },
+    {
+      name = "_b7870a480aa172a41a554c82cac0d0a9.staging.courtfines.direct.gov.uk."
       type = "CNAME"
       ttl  = 300
       records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
+        "_894e585fb8e3be7ea920b3ab9d720382.dqxlbvzbzt.acm-validations.aws."
       ]
     },
     {
       name = "dev.courtfines.direct.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "sdshmcts-dev.azurefd.net"
-      ]
+      type = "A"
+      alias = {
+        zone_id                = "ZHURV8PSTC4K8"
+        name                   = "court-LoadB-118VI6SLEQ8II-1970392396.eu-west-2.elb.amazonaws.com."
+        evaluate_target_health = true
+      }
     },
-    {
-      name = "afdverify.dev.courtfines.direct.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-dev.azurefd.net"
-      ]
-    },
-    {
-      name = "staging.courtfines.direct.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "sdshmcts-stg.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.staging.courtfines.direct.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-stg.azurefd.net"
-      ]
-    },
-    {
-      name = "waf.courtfines.direct.gov.uk."
-      type = "CNAME"
-      ttl  = 5
-      records = [
-        "sdshmcts-prod.azurefd.net"
-      ]
-    }
   ]
 }
 
