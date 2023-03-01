@@ -35,10 +35,10 @@ module "tribunalsdecisions_service_gov_uk_records" {
       type = "NS"
       ttl  = 172800
       records = [
-        "ns1-05.azure-dns.com.",
-        "ns2-05.azure-dns.net.",
-        "ns3-05.azure-dns.org.",
-        "ns4-05.azure-dns.info."
+        "ns-1380.awsdns-44.org.",
+        "ns-528.awsdns-02.net.",
+        "ns-1719.awsdns-22.co.uk.",
+        "ns-489.awsdns-61.com."
       ]
     },
     {
