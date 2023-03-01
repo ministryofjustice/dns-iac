@@ -45,14 +45,6 @@ module "immigrationappealsonline_justice_gov_uk_records" {
       ]
     },
     {
-      name = "afdverify.immigrationappealsonline.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
       name = "dev.immigrationappealsonline.justice.gov.uk."
       type = "CNAME"
       ttl  = 300
@@ -61,35 +53,11 @@ module "immigrationappealsonline_justice_gov_uk_records" {
       ]
     },
     {
-      name = "afdverify.dev.immigrationappealsonline.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-dev.azurefd.net"
-      ]
-    },
-    {
       name = "staging.immigrationappealsonline.justice.gov.uk."
       type = "CNAME"
       ttl  = 300
       records = [
         "iacfees-staging-alb-waf-311912251.eu-west-1.elb.amazonaws.com"
-      ]
-    },
-    {
-      name = "afdverify.staging.immigrationappealsonline.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-stg.azurefd.net"
-      ]
-    },
-    {
-      name = "waf.immigrationappealsonline.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 5
-      records = [
-        "sdshmcts-prod.azurefd.net"
       ]
     },
     {
