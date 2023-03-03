@@ -19,12 +19,12 @@ module "icrir_independent-inquiry_uk_records" {
       type = "NS"
       ttl  = 172800
       records = [
-        "ns-1963.awsdns-53.co.uk.", 
-        "ns-516.awsdns-00.net.", 
-        "ns-334.awsdns-41.com.", 
+        "ns-1963.awsdns-53.co.uk.",
+        "ns-516.awsdns-00.net.",
+        "ns-334.awsdns-41.com.",
         "ns-1158.awsdns-16.org."
       ]
-    }, 
+    },
     {
       name = "icrir.independent-inquiry.uk."
       type = "SOA"
