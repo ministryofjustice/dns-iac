@@ -189,30 +189,6 @@ module "ima-citizensrights_org_uk_records" {
       ]
     },
     {
-      name = "_710bc27e73968745e1c79ba48097c7f2.complaints.ima-citizensrights.org.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "E415E59A376480C605D35D084CD375C2.BC801866BBE9B59E9DB7F490711EF7AF.32c12acc9a2efc3fa896.comodoca.com."
-      ]
-    },
-    {
-      name = "_cdf7f484ea8ec896df86fa3017905681.complaints.ima-citizensrights.org.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "01FF1A252CB1C2CB5E4B227812671097.103B83CA4F18F5A4B06C8E9C3753220C.ef5c7ecb02ee6b0a33db.sectigo.com."
-      ]
-    },
-    {
-      name = "_e03a29863ef58d4a2cd9470011fe80f6.complaints.ima-citizensrights.org.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "B02185CD44D4CEB096657E442BC5C555.59288A8D79BC0DBA9DD4B4EF165C153B.328bcd967480c1e8e902.sectigo.com."
-      ]
-    },
-    {
       name = "enterpriseenrollment.ima-citizensrights.org.uk."
       type = "CNAME"
       ttl  = 300
