@@ -38,14 +38,6 @@ module "hmctsformfinder_justice_gov_uk_records" {
       ]
     },
     {
-      name = "formfinder.hmctsformfinder.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 60
-      records = [
-        "d301g2w8selu10.cloudfront.net"
-      ]
-    },
-    {
       name = "hmcts-formfinder-prod.hmctsformfinder.justice.gov.uk."
       type = "CNAME"
       ttl  = 300
