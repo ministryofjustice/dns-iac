@@ -42,6 +42,17 @@ module "service_justice_gov_uk_records" {
       ]
     },
     {
+      name = "access.platforms.service.justice.gov.uk"
+      type = "NS"
+      ttl  = 3600
+      records = [
+        "ns-674.awsdns-20.net.",
+        "ns-1192.awsdns-21.org.",
+        "ns-325.awsdns-40.com.",
+        "ns-1636.awsdns-12.co.uk."
+      ]
+    },
+    {
       name = "mercury.service.justice.gov.uk."
       type = "NS"
       ttl  = 3600
