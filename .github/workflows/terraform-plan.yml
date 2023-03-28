@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "terraform/**"
+      - ".github/workflows/terraform-plan.yml"
 
 jobs:
   terraform-plan:
@@ -22,7 +23,7 @@ jobs:
         run: |
           cd terraform
           terraform init
-          terraform plan
+          terraform plan --parallelism=50
       - name: Report failure to Slack
         if: always()
         uses: ravsamhq/notify-slack-action@v2
