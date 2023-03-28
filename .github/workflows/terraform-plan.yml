@@ -23,7 +23,7 @@ jobs:
         run: |
           cd terraform
           terraform init
-          terraform plan --parallelism=50
+          terraform plan --parallelism=100
       - name: Report failure to Slack
         if: always()
         uses: ravsamhq/notify-slack-action@v2
