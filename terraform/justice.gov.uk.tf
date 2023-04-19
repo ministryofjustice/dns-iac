@@ -2505,6 +2505,22 @@ module "justice_gov_uk_records" {
       ]
     },
     {
+      name = "email.ppud.justice.gov.uk."
+      type = "A"
+      ttl  = 300
+      records = [
+        "13.42.91.90"
+      ]
+    },
+    {
+      name = "secure-email.ppud.justice.gov.uk."
+      type = "A"
+      ttl  = 300
+      records = [
+        "3.11.130.215"
+      ]
+    },
+    {
       name = "pre-recorded-evidence.justice.gov.uk."
       type = "NS"
       ttl  = 300
