@@ -2421,8 +2421,8 @@ module "justice_gov_uk_records" {
       type = "A"
       alias = {
         evaluate_target_health = false
-        name = "ppud-alb-1480909259.eu-west-2.elb.amazonaws.com"
-        zone_id = "ZHURV8PSTC4K8"
+        name                   = "ppud-alb-1480909259.eu-west-2.elb.amazonaws.com"
+        zone_id                = "ZHURV8PSTC4K8"
       }
     },
     {
@@ -2456,7 +2456,7 @@ module "justice_gov_uk_records" {
         evaluate_target_health = false
         name                   = "wam-alb-dev-561040821.eu-west-2.elb.amazonaws.com"
         zone_id                = "ZHURV8PSTC4K8"
-     }
+      }
     },
     {
       name = "wamuat.ppud.justice.gov.uk."
