@@ -3,3 +3,4 @@
 **.tfstate**
 venv
 .vscode
+.idea/
