@@ -245,6 +245,14 @@ module "service_justice_gov_uk_records" {
       ]
     },
     {
+      name = "laa-crime.service.justice.gov.uk"
+      type = "TXT"
+      ttl  = 300
+      records = [
+        "OSSRH-90962"
+      ]
+    },
+    {
       name = "bichard7.service.justice.gov.uk."
       type = "NS"
       ttl  = 300
