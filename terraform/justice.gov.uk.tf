@@ -55,7 +55,8 @@ module "justice_gov_uk_records" {
         "miro-verification=9f7733fab8b41c5d9bbbf63c043f10dcfec77dab",
         "apple-domain-verification=KiQwp8vi9tLuxYuq",
         "docker-verification=8fa11c18-0390-42a7-b542-66b46f9ac82e",
-        "Dynatrace-site-verification=b3468c91-d00e-4550-b156-92df0139d471__5ae4ot4eoj67h6tepojhf93del"
+        "Dynatrace-site-verification=b3468c91-d00e-4550-b156-92df0139d471__5ae4ot4eoj67h6tepojhf93del",
+        "paloaltonetworks-site-verification=0b174a69a0bbb0078f1b18f4bac05c0bd943f50b2e279ea920cfe4e085ec4a48"
       ]
     },
     {
@@ -696,27 +697,13 @@ module "justice_gov_uk_records" {
     },
     {
       name = "courtfines.justice.gov.uk."
-      type = "A"
-      alias = {
-        evaluate_target_health = false
-        name                   = "dualstack.court-loadb-8mcola2l2by0-173012739.eu-west-2.elb.amazonaws.com"
-        zone_id                = "ZHURV8PSTC4K8"
-      }
-    },
-    {
-      name = "_2a1a4e48c8d67e03e4dd87b69d34149c.courtfines.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 60
+      type = "NS"
+      ttl  = 172800
       records = [
-        "_6c5fbab046ead6c93bd45423c9084efd.hkvuiqjoua.acm-validations.aws."
-      ]
-    },
-    {
-      name = "_3aac79b257286a0493e2380447480616.courtfines.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "_adad5fb8a7388fa6c39cc5b39528cd6e.hkvuiqjoua.acm-validations.aws."
+        "ns-649.awsdns-17.net.",
+        "ns-45.awsdns-05.com.",
+        "ns-1087.awsdns-07.org.",
+        "ns-1734.awsdns-24.co.uk."
       ]
     },
     {
