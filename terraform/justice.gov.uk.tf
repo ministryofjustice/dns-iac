@@ -695,31 +695,6 @@ module "justice_gov_uk_records" {
       ]
     },
     {
-      name = "courtfines.justice.gov.uk."
-      type = "A"
-      alias = {
-        evaluate_target_health = false
-        name                   = "dualstack.court-loadb-8mcola2l2by0-173012739.eu-west-2.elb.amazonaws.com"
-        zone_id                = "ZHURV8PSTC4K8"
-      }
-    },
-    {
-      name = "_2a1a4e48c8d67e03e4dd87b69d34149c.courtfines.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 60
-      records = [
-        "_6c5fbab046ead6c93bd45423c9084efd.hkvuiqjoua.acm-validations.aws."
-      ]
-    },
-    {
-      name = "_3aac79b257286a0493e2380447480616.courtfines.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "_adad5fb8a7388fa6c39cc5b39528cd6e.hkvuiqjoua.acm-validations.aws."
-      ]
-    },
-    {
       name = "courtstore.justice.gov.uk."
       type = "A"
       ttl  = 600
