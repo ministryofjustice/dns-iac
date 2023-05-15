@@ -55,7 +55,8 @@ module "justice_gov_uk_records" {
         "miro-verification=9f7733fab8b41c5d9bbbf63c043f10dcfec77dab",
         "apple-domain-verification=KiQwp8vi9tLuxYuq",
         "docker-verification=8fa11c18-0390-42a7-b542-66b46f9ac82e",
-        "Dynatrace-site-verification=b3468c91-d00e-4550-b156-92df0139d471__5ae4ot4eoj67h6tepojhf93del"
+        "Dynatrace-site-verification=b3468c91-d00e-4550-b156-92df0139d471__5ae4ot4eoj67h6tepojhf93del",
+        "paloaltonetworks-site-verification=0b174a69a0bbb0078f1b18f4bac05c0bd943f50b2e279ea920cfe4e085ec4a48"
       ]
     },
     {
