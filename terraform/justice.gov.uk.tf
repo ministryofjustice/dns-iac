@@ -695,6 +695,17 @@ module "justice_gov_uk_records" {
       ]
     },
     {
+      name = "courtfines.justice.gov.uk."
+      type = "NS"
+      ttl  = 172800
+      records = [
+        "ns-649.awsdns-17.net.",
+        "ns-45.awsdns-05.com.",
+        "ns-1087.awsdns-07.org.",
+        "ns-1734.awsdns-24.co.uk."
+      ]
+    },
+    {
       name = "courtstore.justice.gov.uk."
       type = "A"
       ttl  = 600
