@@ -21,7 +21,7 @@ module "immigrationappealsonline_justice_gov_uk_records" {
       type = "A"
       alias = {
         zone_id                = data.aws_elb_hosted_zone_id.eu-west-1.id
-        name                   = "dualstack.iacfees-p-elbhmcts-6jxi2y1j3cgc-1579084157.eu-west-1.elb.amazonaws.com."
+        name                   = "iacfees-prod-alb-waf-1928234551.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
     },
@@ -46,26 +46,28 @@ module "immigrationappealsonline_justice_gov_uk_records" {
     },
     {
       name = "dev.immigrationappealsonline.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "dualstack.iacfees-d-ELBiacfe-EL2Q43CW1227-897465470.eu-west-1.elb.amazonaws.com"
-      ]
+      type = "A"
+      alias = {
+        zone_id                = data.aws_elb_hosted_zone_id.eu-west-1.id
+        name                   = "iacfees-dev-alb-waf-1786482241.eu-west-1.elb.amazonaws.com."
+        evaluate_target_health = false
+      }
     },
     {
       name = "staging.immigrationappealsonline.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "iacfees-staging-alb-waf-311912251.eu-west-1.elb.amazonaws.com"
-      ]
+      type = "A"
+      alias = {
+        zone_id                = data.aws_elb_hosted_zone_id.eu-west-1.id
+        name                   = "iacfees-staging-alb-waf-311912251.eu-west-1.elb.amazonaws.com."
+        evaluate_target_health = false
+      }
     },
     {
       name = "www.immigrationappealsonline.justice.gov.uk."
       type = "A"
       alias = {
         zone_id                = data.aws_elb_hosted_zone_id.eu-west-1.id
-        name                   = "dualstack.iacfees-p-elbhmcts-6jxi2y1j3cgc-1579084157.eu-west-1.elb.amazonaws.com."
+        name                   = "iacfees-prod-alb-waf-1928234551.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }
