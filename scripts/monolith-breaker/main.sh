@@ -81,7 +81,6 @@ for file in $( find ./terraform -maxdepth 1 -type f -name '*.tf' ); do
 
     popd
 
-
   fi
 
 done
