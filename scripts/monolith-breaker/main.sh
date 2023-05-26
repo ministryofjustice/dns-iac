@@ -73,7 +73,13 @@ for file in $( find ./terraform -maxdepth 1 -type f -name '*.tf' ); do
 
     popd
 
-    ### TODO: apply the states
+    # Apply new state, don't apply old state because it takes AGES
+
+    pushd terraform/${baseName}
+
+    terraform apply -auto-approve
+
+    popd
 
 
   fi
