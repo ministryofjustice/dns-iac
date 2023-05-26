@@ -1,0 +1,19 @@
+terraform {
+  backend "s3" {
+    bucket         = "dns-terraform-state20211206173317424200000001"
+    key            = "TERRAFORM_STATE_KEY.tfstate"
+    dynamodb_table = "dns-terraform-state-lock"
+    region         = "eu-west-2"
+    encrypt        = true
+  }
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "eu-west-2"
+}
