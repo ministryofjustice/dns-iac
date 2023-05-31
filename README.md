@@ -17,7 +17,6 @@ This repository currently manages:
 | [blogs.justice.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/blogs.justice.gov.uk.tf)                                                       |
 | [brookhouseinvestigation.independent.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/brookhouseinvestigation.independent.gov.uk.tf)           |
 | [carestandardstribunal.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/carestandardstribunal.gov.uk.tf)                                       |
-| [ccrc.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/ccrc.gov.uk.tf)                                                                         |
 | [checklegalaid.service.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/checklegalaid.service.gov.uk.tf)                                       |
 | [cicap.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/cicap.gov.uk.tf)                                                                       |
 | [civilappeals.gov.uk](https://github.com/ministryofjustice/dns-iac/blob/main/terraform/civilappeals.gov.uk.tf)                                                         |

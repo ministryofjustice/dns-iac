@@ -29,7 +29,7 @@ module "et_dsd_io_records" {
       type = "TXT"
       ttl  = 300
       records = [
-        "F88YSIm43n98J50j3G4ktJ9bvsxn54wH5ZpU5YdrCBE"
+        "UmTGrmyusSY-0qdamcKurkVVGhgM1VWcct7mVIJiEeQ"
       ]
     },
     {

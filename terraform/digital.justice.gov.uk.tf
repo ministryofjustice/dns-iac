@@ -53,7 +53,8 @@ module "digital_justice_gov_uk_records" {
         "teamviewer-sso-verification=a32cc5b325ca4b98ad15a722ebd63437",
         "apple-domain-verification=epvXUESI7W7LtOr4",
         "miro-verification=9f7733fab8b41c5d9bbbf63c043f10dcfec77dab",
-        "docker-verification=d0dc08c9-6fa5-4dcf-921e-140e1e3dbc1f"
+        "docker-verification=d0dc08c9-6fa5-4dcf-921e-140e1e3dbc1f",
+        "airtable-verification=d9f115ea5ea3ee727cad0f6881f8f173"
       ]
     },
     {
