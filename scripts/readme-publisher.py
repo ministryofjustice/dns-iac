@@ -17,7 +17,7 @@ def get_tracked_zones(folder_path):
         FileNotFoundError: If the specified folder does not exist.
 
     """
-   
+    tracked_zones = []
 
     # Get the absolute path of the folder
     folder_path = os.path.abspath(folder_path)
