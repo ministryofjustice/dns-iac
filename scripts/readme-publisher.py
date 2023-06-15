@@ -17,7 +17,7 @@ def get_tracked_zones(folder_path):
         FileNotFoundError: If the specified folder does not exist.
 
     """
-    tracked_zones = []
+   
 
     # Get the absolute path of the folder
     folder_path = os.path.abspath(folder_path)
@@ -36,7 +36,7 @@ def get_tracked_zones(folder_path):
             tracked_zones.append(file_name)
 
     # Remove Terraform backend files
-    for file in ['versions', 's3', 'dynamodb', 'locals', '.terraform.lock', 'errored',]:
+    for file in ['versions', 's3', 'dynamodb', 'locals', '.terraform.lock']:
         tracked_zones.remove(file)
 
     return tracked_zones
@@ -99,5 +99,8 @@ folder_path = 'terraform'
 tracked_zones = get_tracked_zones(folder_path)
 aws_zones = get_list_of_aws_zones()
 untracked_zones = get_untracked_zones(aws_zones, tracked_zones)
+
+create_readme(tracked_zones, untracked_zones)
+nes = get_untracked_zones(aws_zones, tracked_zones)
 
 create_readme(tracked_zones, untracked_zones)
