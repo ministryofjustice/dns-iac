@@ -18,7 +18,7 @@ def get_tracked_zones(folder_path):
 
     """
     tracked_zones = []
-    
+
     # Get the absolute path of the folder
     folder_path = os.path.abspath(folder_path)
 
@@ -34,12 +34,13 @@ def get_tracked_zones(folder_path):
             # Remove the ".tf" extension
             file_name = os.path.splitext(file_name)[0]
             tracked_zones.append(file_name)
-            
+
     # Remove Terraform backend files
     for file in ['versions', 's3', 'dynamodb', 'locals', '.terraform.lock', 'errored',]:
         tracked_zones.remove(file)
 
     return tracked_zones
+
 
 def get_list_of_aws_zones():
     """
@@ -64,9 +65,10 @@ def get_list_of_aws_zones():
     # Paginate and filter out name
     return [zone.strip('.') for zone in iterator.search("HostedZones[].Name")]
 
+
 def get_untracked_zones(aws_zones, tracked_zones):
     """
-    
+
     Compares a list of zones from AWS Route53 and another list of zones
 
     Args:
@@ -82,15 +84,15 @@ def get_untracked_zones(aws_zones, tracked_zones):
 def create_readme(tracked_zones, untracked_zones):
     with open('scripts/templates/readme.j2') as file_:
         template = Template(file_.read(), trim_blocks=True, lstrip_blocks=True)
-    
+
     render = template.render(
         tracked_zones=tracked_zones,
         untracked_zones=untracked_zones
     )
-        
+
     with open("README.md", "w") as fh:
         fh.write(render)
-    
+
 
 # Example usage
 folder_path = 'terraform'
