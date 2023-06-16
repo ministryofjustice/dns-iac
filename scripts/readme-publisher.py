@@ -93,14 +93,10 @@ def create_readme(tracked_zones, untracked_zones):
     with open("README.md", "w") as fh:
         fh.write(render)
 
-
-# Example usage
+# Generate lists
 folder_path = 'terraform'
 tracked_zones = get_tracked_zones(folder_path)
 aws_zones = get_list_of_aws_zones()
 untracked_zones = get_untracked_zones(aws_zones, tracked_zones)
-
-create_readme(tracked_zones, untracked_zones)
-nes = get_untracked_zones(aws_zones, tracked_zones)
 
 create_readme(tracked_zones, untracked_zones)
