@@ -6,7 +6,7 @@ module "ccrc_gov_uk_zone" {
   source = "./modules/route53/zone"
 
   name        = "ccrc.gov.uk"
-  description = "Tactical Products – mail and ftp subdomains are hosted by Seiretto. MX record is used for mail forwarding at Seiretto."
+  description = "Tactical Products – mail and ftp subdomains are hosted by Seiretto. MX record is used for mail forwarding at Seiretto. "
 
   tags = {
     component = "None"
