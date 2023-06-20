@@ -2047,14 +2047,6 @@ module "service_justice_gov_uk_records" {
       ]
     },
     {
-      name = "wmt.service.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "2cf0a33f-b4b5-4296-a336-a007733ffbe5.cloudapp.net"
-      ]
-    },
-    {
       name = "youth-justice-worker-online-assessment.service.justice.gov.uk."
       type = "CNAME"
       ttl  = 300
