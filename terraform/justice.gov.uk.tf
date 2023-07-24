@@ -2423,18 +2423,20 @@ module "justice_gov_uk_records" {
     {
       name = "uat.ppud.justice.gov.uk."
       type = "A"
-      ttl  = 300
-      records = [
-        "51.247.2.120"
-      ]
+      alias = {
+        evaluate_target_health = false
+        name                   = "internal-ppud-alb-1479410725.eu-west-2.elb.amazonaws.com"
+        zone_id                = "ZHURV8PSTC4K8"
+      }
     },
     {
       name = "wam.ppud.justice.gov.uk."
       type = "A"
-      ttl  = 300
-      records = [
-        "216.35.235.66"
-      ]
+      alias = {
+        evaluate_target_health = false
+        name                   = "wam-alb-prod-533496256.eu-west-2.elb.amazonaws.com"
+        zone_id                = "ZHURV8PSTC4K8"
+      }
     },
     {
       name = "waminternaltest.ppud.justice.gov.uk."
@@ -2448,18 +2450,20 @@ module "justice_gov_uk_records" {
     {
       name = "wamuat.ppud.justice.gov.uk."
       type = "A"
-      ttl  = 300
-      records = [
-        "216.35.235.67"
-      ]
+      alias = {
+        evaluate_target_health = false
+        name                   = "wam-alb-uat-1048916145.eu-west-2.elb.amazonaws.com"
+        zone_id                = "ZHURV8PSTC4K8"
+      }
     },
     {
       name = "www.ppud.justice.gov.uk."
       type = "A"
-      ttl  = 300
-      records = [
-        "51.247.2.115"
-      ]
+      alias = {
+        evaluate_target_health = false
+        name                   = "internal-ppud-alb-108079999.eu-west-2.elb.amazonaws.com"
+        zone_id                = "ZHURV8PSTC4K8"
+      }
     },
     {
       name = "email.ppud.justice.gov.uk."
