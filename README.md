@@ -538,10 +538,6 @@ This repository currently manages the following domains:
     </tr>
     <tr>
       <td align="center">:x:</td>
-      <td>publicdefenderservice.org.uk</td>
-    </tr>
-    <tr>
-      <td align="center">:x:</td>
       <td>hmpps.org.uk</td>
     </tr>
     <tr>
