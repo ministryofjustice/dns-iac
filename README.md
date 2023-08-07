@@ -74,10 +74,6 @@ This repository currently manages the following domains:
     </tr>
     <tr>
       <td align="center">:white_check_mark:</td>
-      <td><a href="https://github.com/ministryofjustice/dns-iac/blob/main/terraform/imb.org.uk.tf">imb.org.uk</a></td>
-    </tr>
-    <tr>
-      <td align="center">:white_check_mark:</td>
       <td><a href="https://github.com/ministryofjustice/dns-iac/blob/main/terraform/cjsdigital.org.tf">cjsdigital.org</a></td>
     </tr>
     <tr>
