@@ -6,8 +6,8 @@ module "cjsdigital_org_zone" {
 
   tags = {
     Application = "MoJD VPN"
-    Owner       = "Digital Service Desk"
-    component   = "None"
+    Owner = "Digital Service Desk"
+    component = "None"
   }
 }
 
@@ -24,36 +24,36 @@ module "cjsdigital_org_records" {
       records = [
         "94.136.40.51"
       ]
-    },
+    }, 
     {
       name = "cjsdigital.org."
       type = "CAA"
       ttl  = 300
       records = [
-        "0 iodef \"mailto:certificates@digital.justice.gov.uk\"",
+        "0 iodef \"mailto:certificates@digital.justice.gov.uk\"", 
         "0 issue \";\""
       ]
-    },
+    }, 
     {
       name = "cjsdigital.org."
       type = "MX"
       ttl  = 300
       records = [
-        "10 mxa.nurvedcloud.net",
+        "10 mxa.nurvedcloud.net", 
         "10 mxb.nurvedcloud.net"
       ]
-    },
+    }, 
     {
       name = "cjsdigital.org."
       type = "NS"
       ttl  = 172800
       records = [
-        "ns-625.awsdns-14.net.",
-        "ns-1799.awsdns-32.co.uk.",
-        "ns-507.awsdns-63.com.",
+        "ns-625.awsdns-14.net.", 
+        "ns-1799.awsdns-32.co.uk.", 
+        "ns-507.awsdns-63.com.", 
         "ns-1252.awsdns-28.org."
       ]
-    },
+    }, 
     {
       name = "cjsdigital.org."
       type = "SOA"
@@ -61,7 +61,7 @@ module "cjsdigital_org_records" {
       records = [
         "ns-625.awsdns-14.net. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"
       ]
-    },
+    }, 
     {
       name = "cjsdigital.org."
       type = "SPF"
@@ -69,7 +69,15 @@ module "cjsdigital_org_records" {
       records = [
         "v=spf1 mx a ip4:109.70.150.133/32 ip4:109.70.150.134/32 -all"
       ]
-    },
+    }, 
+    {
+      name = "_asvdns-4fdf6b6c-ae95-44a4-b6f7-fbb59944a9b8.cjsdigital.org."
+      type = "TXT"
+      ttl  = 300
+      records = [
+        "asvdns_c4840f67-9812-46ca-915e-81437624185a"
+      ]
+    }, 
     {
       name = "_dmarc.cjsdigital.org."
       type = "TXT"
@@ -77,7 +85,7 @@ module "cjsdigital_org_records" {
       records = [
         "v=DMARC1;p=none;sp=none;rua=mailto:dmarc-rua@dmarc.service.gov.uk"
       ]
-    },
+    }, 
     {
       name = "_smtp._tls.cjsdigital.org."
       type = "TXT"
@@ -85,7 +93,7 @@ module "cjsdigital_org_records" {
       records = [
         "v=TLSRPTv1;rua=mailto:tls-rua@mailcheck.service.ncsc.gov.uk"
       ]
-    },
+    }, 
     {
       name = "dzc.cjsdigital.org."
       type = "TXT"
@@ -93,7 +101,7 @@ module "cjsdigital_org_records" {
       records = [
         "NLxvJDC"
       ]
-    },
+    }, 
     {
       name = "mail.cjsdigital.org."
       type = "A"
@@ -101,7 +109,7 @@ module "cjsdigital_org_records" {
       records = [
         "213.146.137.182"
       ]
-    },
+    }, 
     {
       name = "mxa.cjsdigital.org."
       type = "A"
@@ -109,7 +117,7 @@ module "cjsdigital_org_records" {
       records = [
         "81.134.202.19"
       ]
-    },
+    }, 
     {
       name = "mxb.cjsdigital.org."
       type = "A"
@@ -117,7 +125,7 @@ module "cjsdigital_org_records" {
       records = [
         "81.134.202.19"
       ]
-    },
+    }, 
     {
       name = "preview.cjsdigital.org."
       type = "A"
@@ -125,7 +133,7 @@ module "cjsdigital_org_records" {
       records = [
         "81.134.202.22"
       ]
-    },
+    }, 
     {
       name = "vpn.cjsdigital.org."
       type = "A"
@@ -133,7 +141,7 @@ module "cjsdigital_org_records" {
       records = [
         "81.134.202.20"
       ]
-    },
+    }, 
     {
       name = "webmail.cjsdigital.org."
       type = "A"
@@ -141,7 +149,7 @@ module "cjsdigital_org_records" {
       records = [
         "81.134.202.21"
       ]
-    },
+    }, 
     {
       name = "www.cjsdigital.org."
       type = "A"

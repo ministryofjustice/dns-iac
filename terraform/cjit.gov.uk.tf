@@ -1,7 +1,8 @@
 module "cjit_gov_uk_zone" {
   source = "./modules/route53/zone"
 
-  name = "cjit.gov.uk"
+  name        = "cjit.gov.uk."
+
   tags = {
     component = "None"
   }
@@ -17,41 +18,49 @@ module "cjit_gov_uk_records" {
       name = "cjit.gov.uk."
       type = "A"
       alias = {
-        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
         zone_id                = "Z32O12XQLNTSW2"
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
-    },
+    }, 
     {
       name = "cjit.gov.uk."
       type = "MX"
       ttl  = 300
       records = [
-        "0 \tcjit-gov-uk.mail.protection.outlook.com"
+        "0 	cjit-gov-uk.mail.protection.outlook.com"
       ]
-    },
+    }, 
     {
       name = "cjit.gov.uk."
       type = "NS"
       ttl  = 172800
       records = [
-        "ns-816.awsdns-38.net.",
-        "ns-391.awsdns-48.com.",
-        "ns-1979.awsdns-55.co.uk.",
+        "ns-816.awsdns-38.net.", 
+        "ns-391.awsdns-48.com.", 
+        "ns-1979.awsdns-55.co.uk.", 
         "ns-1357.awsdns-41.org."
       ]
-    },
+    }, 
+    {
+      name = "cjit.gov.uk."
+      type = "SOA"
+      ttl  = 900
+      records = [
+        "ns-816.awsdns-38.net. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"
+      ]
+    }, 
     {
       name = "cjit.gov.uk."
       type = "TXT"
       ttl  = 3600
       records = [
-        "MS=ms40613853",
-        "c4ugBTKaMjH/kPL8f3NBNwU65XxsuAzxiqPPi364nN9+uX+3Y+7wpxs5T45WETWJpNfWzlGZ6eU377mTefweRw==",
-        "v=spf1  ip4:37.26.90.115/32 ip4:51.179.211.114/32 ip4:194.176.211.112/32 ip4:194.176.211.104/32 ip4:18.132.8.248/32 ip4:3.9.15.169/32 ip4:18.135.73.34/32 include:spf.protection.outlook.com ~all",
+        "MS=ms40613853", 
+        "c4ugBTKaMjH/kPL8f3NBNwU65XxsuAzxiqPPi364nN9+uX+3Y+7wpxs5T45WETWJpNfWzlGZ6eU377mTefweRw==", 
+        "v=spf1  ip4:37.26.90.115/32 ip4:51.179.211.114/32 ip4:194.176.211.112/32 ip4:194.176.211.104/32 ip4:18.132.8.248/32 ip4:3.9.15.169/32 ip4:18.135.73.34/32 include:spf.protection.outlook.com ~all", 
         "google-site-verification=lZoKiIUUlUasDUM1byJLG0qT7AhCJqaLLTVwbqsjfeA"
       ]
-    },
+    }, 
     {
       name = "www.3000mph.cjit.gov.uk."
       type = "A"
@@ -59,7 +68,15 @@ module "cjit_gov_uk_records" {
       records = [
         "212.140.220.7"
       ]
-    },
+    }, 
+    {
+      name = "_asvdns-5fd05ab7-98a2-458e-9698-6d1632800aa2.cjit.gov.uk."
+      type = "TXT"
+      ttl  = 300
+      records = [
+        "asvdns_a187170f-f8df-4c4c-9bb5-d1f3a02677b4"
+      ]
+    }, 
     {
       name = "_dmarc.cjit.gov.uk."
       type = "CNAME"
@@ -67,7 +84,7 @@ module "cjit_gov_uk_records" {
       records = [
         "_dmarc_ttp_policy.justice.gov.uk"
       ]
-    },
+    }, 
     {
       name = "selector1._domainkey.cjit.gov.uk."
       type = "CNAME"
@@ -75,7 +92,7 @@ module "cjit_gov_uk_records" {
       records = [
         "selector1-cjit-gov-uk._domainkey.JusticeUK.onmicrosoft.com"
       ]
-    },
+    }, 
     {
       name = "selector2._domainkey.cjit.gov.uk."
       type = "CNAME"
@@ -83,7 +100,15 @@ module "cjit_gov_uk_records" {
       records = [
         "selector2-cjit-gov-uk._domainkey.JusticeUK.onmicrosoft.com"
       ]
-    },
+    }, 
+    {
+      name = "_mta-sts.cjit.gov.uk."
+      type = "TXT"
+      ttl  = 300
+      records = [
+        "v=STSv1; id=e5a42f23055b41ddc01a7ac97806ea24"
+      ]
+    }, 
     {
       name = "_smtp._tls.cjit.gov.uk."
       type = "TXT"
@@ -91,7 +116,7 @@ module "cjit_gov_uk_records" {
       records = [
         "v=TLSRPTv1;rua=mailto:tls-rua@mailcheck.service.ncsc.gov.uk"
       ]
-    },
+    }, 
     {
       name = "cjse6mail01.cjit.gov.uk."
       type = "A"
@@ -99,7 +124,7 @@ module "cjit_gov_uk_records" {
       records = [
         "212.137.70.97"
       ]
-    },
+    }, 
     {
       name = "cjse6mail02.cjit.gov.uk."
       type = "A"
@@ -107,7 +132,7 @@ module "cjit_gov_uk_records" {
       records = [
         "212.137.70.98"
       ]
-    },
+    }, 
     {
       name = "cjse6mail03.cjit.gov.uk."
       type = "A"
@@ -115,7 +140,7 @@ module "cjit_gov_uk_records" {
       records = [
         "194.176.211.103"
       ]
-    },
+    }, 
     {
       name = "cjse6mail04.cjit.gov.uk."
       type = "A"
@@ -123,7 +148,7 @@ module "cjit_gov_uk_records" {
       records = [
         "194.176.211.104"
       ]
-    },
+    }, 
     {
       name = "cjse7mail01.cjit.gov.uk."
       type = "A"
@@ -131,7 +156,7 @@ module "cjit_gov_uk_records" {
       records = [
         "212.137.70.105"
       ]
-    },
+    }, 
     {
       name = "cjse7mail02.cjit.gov.uk."
       type = "A"
@@ -139,7 +164,7 @@ module "cjit_gov_uk_records" {
       records = [
         "212.137.70.106"
       ]
-    },
+    }, 
     {
       name = "cjse7mail03.cjit.gov.uk."
       type = "A"
@@ -147,7 +172,7 @@ module "cjit_gov_uk_records" {
       records = [
         "194.176.211.111"
       ]
-    },
+    }, 
     {
       name = "cjse7mail04.cjit.gov.uk."
       type = "A"
@@ -155,7 +180,7 @@ module "cjit_gov_uk_records" {
       records = [
         "194.176.211.112"
       ]
-    },
+    }, 
     {
       name = "cjsexp1mail01.cjit.gov.uk."
       type = "A"
@@ -163,7 +188,7 @@ module "cjit_gov_uk_records" {
       records = [
         "51.179.211.114"
       ]
-    },
+    }, 
     {
       name = "cmdb.cjit.gov.uk."
       type = "A"
@@ -171,7 +196,7 @@ module "cjit_gov_uk_records" {
       records = [
         "194.176.211.97"
       ]
-    },
+    }, 
     {
       name = "cjs.dashboard.cjit.gov.uk."
       type = "A"
@@ -179,7 +204,7 @@ module "cjit_gov_uk_records" {
       records = [
         "213.146.137.164"
       ]
-    },
+    }, 
     {
       name = "dev-xhibitportalmail.cjit.gov.uk."
       type = "A"
@@ -187,7 +212,7 @@ module "cjit_gov_uk_records" {
       records = [
         "18.132.8.248"
       ]
-    },
+    }, 
     {
       name = "feedback.cjit.gov.uk."
       type = "A"
@@ -195,7 +220,7 @@ module "cjit_gov_uk_records" {
       records = [
         "212.140.220.7"
       ]
-    },
+    }, 
     {
       name = "www.legal.cjit.gov.uk."
       type = "A"
@@ -203,7 +228,24 @@ module "cjit_gov_uk_records" {
       records = [
         "212.140.220.7"
       ]
-    },
+    }, 
+    {
+      name = "mta-sts.cjit.gov.uk."
+      type = "A"
+      alias = {
+        zone_id                = "Z2FDTNDATAQYW2"
+        name                   = "dv2yrjai2m82t.cloudfront.net."
+        evaluate_target_health = true
+      }
+    }, 
+    {
+      name = "_d95c7f1c205aef4535751c17e1af2823.mta-sts.cjit.gov.uk."
+      type = "CNAME"
+      ttl  = 60
+      records = [
+        "_c0647527fe4e23a3c55e27a37640b262.rdnyqppgxp.acm-validations.aws."
+      ]
+    }, 
     {
       name = "www.openandshut.cjit.gov.uk."
       type = "A"
@@ -211,7 +253,7 @@ module "cjit_gov_uk_records" {
       records = [
         "212.140.220.7"
       ]
-    },
+    }, 
     {
       name = "td.cjit.gov.uk."
       type = "A"
@@ -219,7 +261,7 @@ module "cjit_gov_uk_records" {
       records = [
         "194.176.211.98"
       ]
-    },
+    }, 
     {
       name = "vipportal.cjit.gov.uk."
       type = "A"
@@ -227,7 +269,7 @@ module "cjit_gov_uk_records" {
       records = [
         "212.137.69.25"
       ]
-    },
+    }, 
     {
       name = "viptraining.cjit.gov.uk."
       type = "A"
@@ -235,16 +277,16 @@ module "cjit_gov_uk_records" {
       records = [
         "213.146.137.189"
       ]
-    },
+    }, 
     {
       name = "www.cjit.gov.uk."
       type = "A"
       alias = {
-        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
         zone_id                = "Z32O12XQLNTSW2"
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
-    },
+    }, 
     {
       name = "xhibitportalmail.cjit.gov.uk."
       type = "A"
@@ -254,14 +296,4 @@ module "cjit_gov_uk_records" {
       ]
     }
   ]
-}
-
-moved {
-  from = module.cjit_gov_uk.aws_route53_record.default
-  to   = module.cjit_gov_uk_records.aws_route53_record.this
-}
-
-moved {
-  from = module.cjit_gov_uk.aws_route53_zone.default
-  to   = module.cjit_gov_uk_zone.aws_route53_zone.this
 }

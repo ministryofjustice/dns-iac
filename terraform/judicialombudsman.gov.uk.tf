@@ -1,7 +1,7 @@
 module "judicialombudsman_gov_uk_zone" {
   source = "./modules/route53/zone"
 
-  name        = "judicialombudsman.gov.uk"
+  name        = "judicialombudsman.gov.uk."
   description = "Incl. Office 365 DNS Records"
 
   tags = {
@@ -19,11 +19,11 @@ module "judicialombudsman_gov_uk_records" {
       name = "judicialombudsman.gov.uk."
       type = "A"
       alias = {
-        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
         zone_id                = "Z32O12XQLNTSW2"
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
-    },
+    }, 
     {
       name = "judicialombudsman.gov.uk."
       type = "MX"
@@ -31,28 +31,44 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "0 JudicialOmbudsman-gov-uk.mail.protection.outlook.com."
       ]
-    },
+    }, 
     {
       name = "judicialombudsman.gov.uk."
       type = "NS"
       ttl  = 172800
       records = [
-        "ns-1999.awsdns-57.co.uk.",
-        "ns-948.awsdns-54.net.",
-        "ns-1195.awsdns-21.org.",
+        "ns-1999.awsdns-57.co.uk.", 
+        "ns-948.awsdns-54.net.", 
+        "ns-1195.awsdns-21.org.", 
         "ns-441.awsdns-55.com."
       ]
-    },
+    }, 
+    {
+      name = "judicialombudsman.gov.uk."
+      type = "SOA"
+      ttl  = 900
+      records = [
+        "ns-1999.awsdns-57.co.uk. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"
+      ]
+    }, 
     {
       name = "judicialombudsman.gov.uk."
       type = "TXT"
       ttl  = 3600
       records = [
-        "atlassian-domain-verification=eZYa71sfUYC3GKWDAnR6IDBAD7m0PkEaKKOYkM2cjWj8or0XT0PwqvFpqTLtaNby",
-        "MS=ms63701323",
-        "v=spf1 ip4:194.33.196.8/32 ip4:194.33.192.8/32  include:spf.protection.outlook.com -all"
+        "MS=ms63701323", 
+        "v=spf1 ip4:194.33.196.8/32 ip4:194.33.192.8/32  include:spf.protection.outlook.com -all", 
+        "atlassian-domain-verification=eZYa71sfUYC3GKWDAnR6IDBAD7m0PkEaKKOYkM2cjWj8or0XT0PwqvFpqTLtaNby"
       ]
-    },
+    }, 
+    {
+      name = "_asvdns-f18eb53a-95d7-4b71-935e-359501e3ca99.judicialombudsman.gov.uk."
+      type = "TXT"
+      ttl  = 300
+      records = [
+        "asvdns_a8c8de9e-0d43-432f-82cc-851c135cebbd"
+      ]
+    }, 
     {
       name = "_dmarc.judicialombudsman.gov.uk."
       type = "CNAME"
@@ -60,7 +76,7 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "_dmarc_ttp_policy.justice.gov.uk"
       ]
-    },
+    }, 
     {
       name = "fp01._domainkey.judicialombudsman.gov.uk."
       type = "TXT"
@@ -68,7 +84,7 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "v=DKIM1; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCN/Dnp6gO1PJVQgLljNpkkvVUH/G04C2QkC28j8ddX13V7MAvDWpCxnUfTPy8C27njUImSa8b2TwyeA0P2ONPHQhW652tSxZa0+VT2b5qRFhne3UigZEeKhix988mhlOTO+6PN4+JR7MPXSeE0iGGPWm8m4JsxeaVvwN0XC92yvQIDAQAB;"
       ]
-    },
+    }, 
     {
       name = "selector1._domainkey.judicialombudsman.gov.uk."
       type = "CNAME"
@@ -76,7 +92,7 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "selector1-JudicialOmbudsman-gov-uk._domainkey.JusticeUK.onmicrosoft.com"
       ]
-    },
+    }, 
     {
       name = "selector2._domainkey.judicialombudsman.gov.uk."
       type = "CNAME"
@@ -84,7 +100,15 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "selector2-JudicialOmbudsman-gov-uk._domainkey.JusticeUK.onmicrosoft.com"
       ]
-    },
+    }, 
+    {
+      name = "_mta-sts.judicialombudsman.gov.uk."
+      type = "TXT"
+      ttl  = 300
+      records = [
+        "v=STSv1; id=fc97333e0f757720f68cd18bcc560ec6"
+      ]
+    }, 
     {
       name = "_sipfederationtls._tcp.judicialombudsman.gov.uk."
       type = "SRV"
@@ -92,15 +116,7 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "100 1 5061 sipfed.online.lync.com"
       ]
-    },
-    {
-      name = "_smtp._tls.judicialombudsman.gov.uk."
-      type = "TXT"
-      ttl  = 300
-      records = [
-        "v=TLSRPTv1;rua=mailto:tls-rua@mailcheck.service.ncsc.gov.uk"
-      ]
-    },
+    }, 
     {
       name = "_sip._tls.judicialombudsman.gov.uk."
       type = "SRV"
@@ -108,7 +124,15 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "100 1 443 sipdir.online.lync.com"
       ]
-    },
+    }, 
+    {
+      name = "_smtp._tls.judicialombudsman.gov.uk."
+      type = "TXT"
+      ttl  = 300
+      records = [
+        "v=TLSRPTv1;rua=mailto:tls-rua@mailcheck.service.ncsc.gov.uk"
+      ]
+    }, 
     {
       name = "autodiscover.judicialombudsman.gov.uk."
       type = "CNAME"
@@ -116,7 +140,7 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "autodiscover.outlook.com"
       ]
-    },
+    }, 
     {
       name = "enterpriseenrollment.judicialombudsman.gov.uk."
       type = "CNAME"
@@ -124,7 +148,7 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "enterpriseenrollment.manage.microsoft.com"
       ]
-    },
+    }, 
     {
       name = "enterpriseregistration.judicialombudsman.gov.uk."
       type = "CNAME"
@@ -132,7 +156,7 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "enterpriseregistration.windows.net"
       ]
-    },
+    }, 
     {
       name = "lyncdiscover.judicialombudsman.gov.uk."
       type = "CNAME"
@@ -140,7 +164,7 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "webdir.online.lync.com"
       ]
-    },
+    }, 
     {
       name = "msoid.judicialombudsman.gov.uk."
       type = "CNAME"
@@ -148,7 +172,24 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "clientconfig.microsoftonline-p.net"
       ]
-    },
+    }, 
+    {
+      name = "mta-sts.judicialombudsman.gov.uk."
+      type = "A"
+      alias = {
+        zone_id                = "Z2FDTNDATAQYW2"
+        name                   = "d36409ni06s39f.cloudfront.net."
+        evaluate_target_health = true
+      }
+    }, 
+    {
+      name = "_bdc21fd8e7131252edf6170c59d09f26.mta-sts.judicialombudsman.gov.uk."
+      type = "CNAME"
+      ttl  = 60
+      records = [
+        "_d6469bb205fe17a162bc5d23575207dd.nhsllhhtvj.acm-validations.aws."
+      ]
+    }, 
     {
       name = "sip.judicialombudsman.gov.uk."
       type = "CNAME"
@@ -156,7 +197,7 @@ module "judicialombudsman_gov_uk_records" {
       records = [
         "sipdir.online.lync.com"
       ]
-    },
+    }, 
     {
       name = "www.judicialombudsman.gov.uk."
       type = "CNAME"
@@ -166,15 +207,4 @@ module "judicialombudsman_gov_uk_records" {
       ]
     }
   ]
-
-}
-
-moved {
-  from = module.judicialombudsman_gov_uk.aws_route53_record.default
-  to   = module.judicialombudsman_gov_uk_records.aws_route53_record.this
-}
-
-moved {
-  from = module.judicialombudsman_gov_uk.aws_route53_zone.default
-  to   = module.judicialombudsman_gov_uk_zone.aws_route53_zone.this
 }
