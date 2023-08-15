@@ -8,7 +8,7 @@ from lib.HostedZone import HostedZone
 # USER ACTION
 # ----------------------------------------------------
 # List of zone names to process
-ZONE_NAMES = ["zone1", "zone"]
+ZONE_NAMES = ["zone1", "zone2"]
 
 # Toggle auto-import behavior
 AUTO_IMPORT = False
@@ -36,7 +36,7 @@ def return_records_in_state(module_name):
 
 # Generate the import command for a resource
 def generate_import_commands(resource_name, resource_id):
-    return f"terraform import {resource_name} {resource_id}".replace(u"\\052", u"*")
+    return f"terraform import {resource_name} {resource_id}".replace(u"\\052", u"*").replace(u"\\043", u"#")
 
 
 # Import a resource and return the import command
