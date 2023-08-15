@@ -18,7 +18,7 @@ module "{{ name| replace(".", "_") }}_records" {
 
   records = [
 {% for record_set in records %}    {
-      name = "{{ record_set.Name }}"
+      name = "{{ record_set.Name|replace("\\052", "*")|replace("\\043", "#") }}"
       type = "{{ record_set.Type }}"
 {% if record_set.TTL is defined %}      ttl  = {{ record_set.TTL }}
     {% endif %}
@@ -34,7 +34,7 @@ module "{{ name| replace(".", "_") }}_records" {
 {% elif record_set.Type == 'CAA' %}
         "{{ sub_record.Value | replace("\"", "\\\"") }}"{{ ", " if not loop.last else "" }}
 {% else %}
-        {{ sub_record.Value|replace("\\", "\\\\")|replace("\"\"", "\\\"\\\"") }}{{ ", " if not loop.last else "" }}
+        {{ sub_record.Value|replace("\" \"", "\"\"")|replace("\\", "\\\\")|replace("\"\"", "\\\"\\\"") }}{{ ", " if not loop.last else "" }}
 {% endif %}{% endfor %}      ]
 {% endif %}
     }{{ ", " if not loop.last else "" }}

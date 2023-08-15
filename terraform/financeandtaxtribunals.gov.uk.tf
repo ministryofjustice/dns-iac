@@ -1,15 +1,15 @@
 module "financeandtaxtribunals_gov_uk_zone" {
   source = "./modules/route53/zone"
 
-  name        = "financeandtaxtribunals.gov.uk"
+  name        = "financeandtaxtribunals.gov.uk."
   description = "Tribunals decisions database"
 
   tags = {
-    application            = "Tax Tribunals"
-    business-unit          = "HMCTS"
+    owner = "HMCTS sustainingteamsupport@hmcts.net"
+    component = "None"
+    application = "Tax Tribunals"
+    business-unit = "HMCTS"
     infrastructure-support = "HMCTS sustainingteamsupport@hmcts.net"
-    owner                  = "HMCTS sustainingteamsupport@hmcts.net"
-    component              = "None"
   }
 }
 
@@ -23,11 +23,11 @@ module "financeandtaxtribunals_gov_uk_records" {
       name = "financeandtaxtribunals.gov.uk."
       type = "A"
       alias = {
-        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
         zone_id                = "Z32O12XQLNTSW2"
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
-    },
+    }, 
     {
       name = "financeandtaxtribunals.gov.uk."
       type = "MX"
@@ -35,18 +35,26 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "10 inbound-smtp.eu-west-1.amazonaws.com"
       ]
-    },
+    }, 
     {
       name = "financeandtaxtribunals.gov.uk."
       type = "NS"
       ttl  = 172800
       records = [
-        "ns-443.awsdns-55.com.",
-        "ns-1410.awsdns-48.org.",
-        "ns-1008.awsdns-62.net.",
+        "ns-443.awsdns-55.com.", 
+        "ns-1410.awsdns-48.org.", 
+        "ns-1008.awsdns-62.net.", 
         "ns-1766.awsdns-28.co.uk."
       ]
-    },
+    }, 
+    {
+      name = "financeandtaxtribunals.gov.uk."
+      type = "SOA"
+      ttl  = 900
+      records = [
+        "ns-443.awsdns-55.com. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"
+      ]
+    }, 
     {
       name = "_acme-challenge.financeandtaxtribunals.gov.uk."
       type = "TXT"
@@ -54,7 +62,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "cHlGGkGp4LqRaBdhYIGMO-7aKSQLWZyT4tLbKpHrVPs"
       ]
-    },
+    }, 
     {
       name = "_amazonses.financeandtaxtribunals.gov.uk."
       type = "TXT"
@@ -62,7 +70,15 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "/Y8ldG5+FGQeLLzD9m92oJSU0fBVSNhVvzyG2HFg8N0="
       ]
-    },
+    }, 
+    {
+      name = "_asvdns-f5cfd3d1-2f8f-469d-be47-3f605432735a.financeandtaxtribunals.gov.uk."
+      type = "TXT"
+      ttl  = 300
+      records = [
+        "asvdns_cdc140ca-3924-474c-a130-068601112b94"
+      ]
+    }, 
     {
       name = "_dmarc.financeandtaxtribunals.gov.uk."
       type = "TXT"
@@ -70,7 +86,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "v=DMARC1;p=none;sp=none;rua=mailto:dmarc-rua@dmarc.service.gov.uk"
       ]
-    },
+    }, 
     {
       name = "gjiugiuoku4g2nkjwdl2zjsgb4xctmec._domainkey.financeandtaxtribunals.gov.uk."
       type = "CNAME"
@@ -78,7 +94,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "gjiugiuoku4g2nkjwdl2zjsgb4xctmec.dkim.amazonses.com"
       ]
-    },
+    }, 
     {
       name = "n6fafodof3uhnngkluvfp4argwu7dpya._domainkey.financeandtaxtribunals.gov.uk."
       type = "CNAME"
@@ -86,7 +102,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "n6fafodof3uhnngkluvfp4argwu7dpya.dkim.amazonses.com"
       ]
-    },
+    }, 
     {
       name = "toe7765ielyjz2sirdtopbzr65mjg47v._domainkey.financeandtaxtribunals.gov.uk."
       type = "CNAME"
@@ -94,7 +110,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "toe7765ielyjz2sirdtopbzr65mjg47v.dkim.amazonses.com"
       ]
-    },
+    }, 
     {
       name = "_smtp._tls.financeandtaxtribunals.gov.uk."
       type = "TXT"
@@ -102,16 +118,16 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "v=TLSRPTv1;rua=mailto:tls-rua@mailcheck.service.ncsc.gov.uk"
       ]
-    },
+    }, 
     {
       name = "downloader-a4ae59a5.financeandtaxtribunals.gov.uk."
       type = "A"
       alias = {
-        zone_id                = data.aws_elb_hosted_zone_id.eu-west-1.id
+        zone_id                = "Z32O12XQLNTSW2"
         name                   = "tax-tribu-elbdownl-ehszr9vif021-432191533.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
-    },
+    }, 
     {
       name = "downloader.financeandtaxtribunals.gov.uk."
       type = "A"
@@ -119,7 +135,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "51.140.165.14"
       ]
-    },
+    }, 
     {
       name = "_4416e320d11c5c898a5a17f5b96495f2.downloader.financeandtaxtribunals.gov.uk."
       type = "CNAME"
@@ -127,7 +143,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "_dd3bf653ffa210f1fccce41df71c0010.acm-validations.aws."
       ]
-    },
+    }, 
     {
       name = "dssa-nle.financeandtaxtribunals.gov.uk."
       type = "A"
@@ -135,7 +151,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "51.11.150.4"
       ]
-    },
+    }, 
     {
       name = "_acme-challenge.dssa-nle.financeandtaxtribunals.gov.uk."
       type = "TXT"
@@ -143,7 +159,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "M8Yw9mhJ9wWcAaHfSNH6wBtPbElksWrpycWBJ5BCwUI"
       ]
-    },
+    }, 
     {
       name = "dssa.financeandtaxtribunals.gov.uk."
       type = "A"
@@ -151,7 +167,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "51.145.29.81"
       ]
-    },
+    }, 
     {
       name = "internal.dssa.financeandtaxtribunals.gov.uk."
       type = "A"
@@ -159,7 +175,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "10.14.0.13"
       ]
-    },
+    }, 
     {
       name = "stack.a4ae59a5.tax-tribunals-uploader-downloader-prod.financeandtaxtribunals.gov.uk."
       type = "TXT"
@@ -167,7 +183,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "a4ae59a5"
       ]
-    },
+    }, 
     {
       name = "stack.active.tax-tribunals-uploader-downloader-prod.financeandtaxtribunals.gov.uk."
       type = "TXT"
@@ -175,7 +191,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "a4ae59a5"
       ]
-    },
+    }, 
     {
       name = "deployarn.a4ae59a5.prod.tax-tribunals-uploader-downloader.financeandtaxtribunals.gov.uk."
       type = "TXT"
@@ -183,7 +199,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "arn:aws:iam::880656497252:role/tax-tribunals-uploader-downloader-CrossAccountRole-TVSUTEGJ7CI5"
       ]
-    },
+    }, 
     {
       name = "deployarn.active.prod.tax-tribunals-uploader-downloader.financeandtaxtribunals.gov.uk."
       type = "TXT"
@@ -191,7 +207,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "arn:aws:iam::880656497252:role/tax-tribunals-uploader-downloader-CrossAccountRole-TVSUTEGJ7CI5"
       ]
-    },
+    }, 
     {
       name = "stack.active.tax-tribunals-wsproxy-prod.financeandtaxtribunals.gov.uk."
       type = "TXT"
@@ -199,7 +215,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "4e3cae04"
       ]
-    },
+    }, 
     {
       name = "stack.prod3.tax-tribunals-wsproxy-prod.financeandtaxtribunals.gov.uk."
       type = "TXT"
@@ -207,7 +223,7 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "4e3cae04"
       ]
-    },
+    }, 
     {
       name = "deployarn.active.prod.tax-tribunals-wsproxy.financeandtaxtribunals.gov.uk."
       type = "TXT"
@@ -215,34 +231,24 @@ module "financeandtaxtribunals_gov_uk_records" {
       records = [
         "False"
       ]
-    },
+    }, 
     {
       name = "uploader-a4ae59a5.financeandtaxtribunals.gov.uk."
       type = "A"
       alias = {
-        zone_id                = data.aws_elb_hosted_zone_id.eu-west-1.id
+        zone_id                = "Z32O12XQLNTSW2"
         name                   = "internal-tax-tribu-elbuploa-1sgrzeyhd7rzs-1071674395.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
-    },
+    }, 
     {
       name = "www.financeandtaxtribunals.gov.uk."
       type = "A"
       alias = {
-        zone_id                = module.financeandtaxtribunals_gov_uk_zone.zone_id
+        zone_id                = "Z3HV9QD5K7DR1B"
         name                   = "financeandtaxtribunals.gov.uk."
         evaluate_target_health = false
       }
     }
   ]
-}
-
-moved {
-  from = module.financeandtaxtribunals_gov_uk.aws_route53_record.default
-  to   = module.financeandtaxtribunals_gov_uk_records.aws_route53_record.this
-}
-
-moved {
-  from = module.financeandtaxtribunals_gov_uk.aws_route53_zone.default
-  to   = module.financeandtaxtribunals_gov_uk_zone.aws_route53_zone.this
 }
