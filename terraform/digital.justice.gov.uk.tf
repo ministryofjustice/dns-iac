@@ -1,7 +1,8 @@
 module "digital_justice_gov_uk_zone" {
   source = "./modules/route53/zone"
 
-  name = "digital.justice.gov.uk"
+  name = "digital.justice.gov.uk."
+
   tags = {
     component = "None"
   }
@@ -64,6 +65,14 @@ module "digital_justice_gov_uk_records" {
       records = [
         "T7nQBpTxkkCBCwuvDRmC4BcVq+ZGK2zvMvQx3W2mqsU=",
         "BocAhooUg8CtAcH/ORD2uaDqPoOslbc/UKDP4/m0mvw="
+      ]
+    },
+    {
+      name = "_asvdns-f7702e2a-a850-4653-8070-8818eb0f0c35.digital.justice.gov.uk."
+      type = "TXT"
+      ttl  = 300
+      records = [
+        "asvdns_86fe2c46-af42-4389-9c20-1393550d2023"
       ]
     },
     {
@@ -227,14 +236,6 @@ module "digital_justice_gov_uk_records" {
       ]
     },
     {
-      name = "lyncdiscover.test.digital.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "webdir.online.lync.com."
-      ]
-    },
-    {
       name = "mam.mobile.digital.justice.gov.uk."
       type = "A"
       ttl  = 300
@@ -302,8 +303,8 @@ module "digital_justice_gov_uk_records" {
       name = "proxy.digital.justice.gov.uk."
       type = "A"
       alias = {
-        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
         zone_id                = "Z32O12XQLNTSW2"
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
     },
@@ -335,8 +336,8 @@ module "digital_justice_gov_uk_records" {
       name = "temp.digital.justice.gov.uk."
       type = "A"
       alias = {
-        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com"
         zone_id                = "Z32O12XQLNTSW2"
+        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
     },
@@ -489,6 +490,14 @@ module "digital_justice_gov_uk_records" {
       ]
     },
     {
+      name = "lyncdiscover.test.digital.justice.gov.uk."
+      type = "CNAME"
+      ttl  = 300
+      records = [
+        "webdir.online.lync.com."
+      ]
+    },
+    {
       name = "mail.test.digital.justice.gov.uk."
       type = "A"
       ttl  = 300
@@ -553,14 +562,4 @@ module "digital_justice_gov_uk_records" {
       ]
     }
   ]
-}
-
-moved {
-  from = module.digital_justice_gov_uk.aws_route53_record.default
-  to   = module.digital_justice_gov_uk_records.aws_route53_record.this
-}
-
-moved {
-  from = module.digital_justice_gov_uk.aws_route53_zone.default
-  to   = module.digital_justice_gov_uk_zone.aws_route53_zone.this
 }
