@@ -294,10 +294,6 @@ This repository currently manages the following domains:
     </tr>
     <tr>
       <td align="center">:white_check_mark:</td>
-      <td><a href="https://github.com/ministryofjustice/dns-iac/blob/main/terraform/prisonandprobationjobs.gov.uk.tf">prisonandprobationjobs.gov.uk</a></td>
-    </tr>
-    <tr>
-      <td align="center">:white_check_mark:</td>
       <td><a href="https://github.com/ministryofjustice/dns-iac/blob/main/terraform/yjils.justice.gov.uk.tf">yjils.justice.gov.uk</a></td>
     </tr>
     <tr>
