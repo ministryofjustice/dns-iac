@@ -48,13 +48,16 @@ class HostedZone:
         """Returns Records in Hosted Zone owned by this object
 
         Returns:
-            dict: Dict holding all records in Hosted Zone owned by this object
+            list: List holding all records in Hosted Zone owned by this object
         """
 
-        return self.client.list_resource_record_sets(
-            HostedZoneId=self.id,
-            MaxItems='250'
-        )['ResourceRecordSets']
+        records = []
+        paginator = self.client.get_paginator('list_resource_record_sets')
+
+        for page in paginator.paginate(HostedZoneId=self.id):
+            records.extend(page['ResourceRecordSets'])
+
+        return records
 
     def get_tags(self):
         """Returns tags for Hosted Zone owned by this object

@@ -8,7 +8,7 @@ from lib.HostedZone import HostedZone
 # USER ACTION
 # ----------------------------------------------------
 # List of zone names to process
-ZONE_NAMES = ["zone1", "zone2"]
+ZONE_NAMES = ["justice.gov.uk"]
 
 # Toggle auto-import behavior
 AUTO_IMPORT = False
