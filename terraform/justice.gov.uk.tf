@@ -1,23 +1,23 @@
 module "justice_gov_uk_zone" {
   source = "./modules/route53/zone"
-
-  name        = "justice.gov.uk."
-
+  name = "justice.gov.uk."
+  
+  
   tags = {
-    component = "None"
+    "component" = "None"
   }
 }
 
 module "justice_gov_uk_records" {
   source = "./modules/route53/records"
-
   zone_id = module.justice_gov_uk_zone.zone_id
-
+  
   records = [
     {
       name = "justice.gov.uk."
       type = "MX"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "0 justice-gov-uk.mail.protection.outlook.com."
       ]
@@ -25,7 +25,8 @@ module "justice_gov_uk_records" {
     {
       name = "justice.gov.uk."
       type = "NS"
-      ttl  = 172800
+      ttl = 172800
+      
       records = [
         "ns-160.awsdns-20.com.", 
         "ns-1534.awsdns-63.org.", 
@@ -36,7 +37,8 @@ module "justice_gov_uk_records" {
     {
       name = "justice.gov.uk."
       type = "SOA"
-      ttl  = 900
+      ttl = 900
+      
       records = [
         "ns-160.awsdns-20.com. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"
       ]
@@ -44,9 +46,10 @@ module "justice_gov_uk_records" {
     {
       name = "justice.gov.uk."
       type = "TXT"
-      ttl  = 600
+      ttl = 600
+      
       records = [
-        "v=spf1 ip4:194.33.196.0/24 ip4:194.33.192.0/24 include:spf.protection.outlook.com include:_spf.google.com include:mail-relay.staff.service.justice.gov.uk -all", 
+        "v=spf1 ip4:194.33.196.0/24 ip4:194.33.192.0/24 mx a:b.spf.service-now.com a:c.spf.service-now.com a:d.spf.service-now.com include:spf.protection.outlook.com include:_spf.google.com include:mail-relay.staff.service.justice.gov.uk -all", 
         "QuoVadis=7646126a-d75d-4bfd-8fc3-138170e3f362", 
         "MS=ms58266631", 
         "BTUhp9Uq4ukuVfeGN5jrIsf32ll79sBSGRw0qc+3XoO2ewFCNNdhMIMb+tj5xdom8y7CWGgxtthH/9mE/p8+Yg==", 
@@ -62,7 +65,8 @@ module "justice_gov_uk_records" {
     {
       name = "#civilmediation.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "92.63.139.212"
       ]
@@ -70,7 +74,8 @@ module "justice_gov_uk_records" {
     {
       name = "_amazonses.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "V9UFWT58TFN4bvzNq3kucIBHJ0LvG2tzcyO4XMcux5M=", 
         "7TpoWZygS3NuQ4e4VDNJ7yM1uQtxz7ZTVuPQ57Njtog="
@@ -79,7 +84,8 @@ module "justice_gov_uk_records" {
     {
       name = "_asvdns-ebe2abbc-32c6-428c-92c1-0406c6926248.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "asvdns_9b30dc48-4ae8-41f0-868b-a71c6ec7b65a"
       ]
@@ -87,7 +93,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc.justice.gov.uk."
       type = "TXT"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "v=DMARC1;p=reject;sp=reject;rua=mailto:dmarc-rua@dmarc.service.gov.uk"
       ]
@@ -95,7 +102,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc_legacydomain_policy.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DMARC1;p=reject;rua=mailto:dmarc-rua@dmarc.service.gov.uk"
       ]
@@ -103,7 +111,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc_ttp_policy.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DMARC1;p=reject;sp=reject;rua=mailto:dmarc-rua@dmarc.service.gov.uk"
       ]
@@ -111,7 +120,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dnsauth.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "k85gchvy2hq9nrf470ljl9bd9hb8v495"
       ]
@@ -119,7 +129,8 @@ module "justice_gov_uk_records" {
     {
       name = "dkim.co._domainkey.justice.gov.uk."
       type = "TXT"
-      ttl  = 60
+      ttl = 60
+      
       records = [
         "v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4qJi51KV7QeEoq6NT3KdI33PpanNW7emjHVt1twUB9UfKO6YeFihVHfHFfw/IVYOJ8malWOHkVHeP2DOCXg1dJYNmxER/5wnHpVaIjIU1FnoRAnLTLmgU0QqeEzhG8\"\"xd6edSMgKj+GnpTb/zja0aNyKNi4Osd8sRXwwY/Fa7n2yT4JT/XgDCjnK591+jtVcOzqPGGD1wyaZSDROc8twRBnwk1w2udWmXLWilj0H2/r4oiX6DnDIQYBK1k2px+VWm8dta5HG15C0POv90/pZPlppa51EBEjB2jWH4xWMc/XLCuwqEbtaBCxpTQR8QJJY1fM6cDcwWhJpvsbWo4OYbmwIDAQAB"
       ]
@@ -127,7 +138,8 @@ module "justice_gov_uk_records" {
     {
       name = "eat75rimokuwmhwl3jgruwwxghgmltna._domainkey.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "eat75rimokuwmhwl3jgruwwxghgmltna.dkim.amazonses.com"
       ]
@@ -135,7 +147,8 @@ module "justice_gov_uk_records" {
     {
       name = "fmk7xlvhjfqqruhiytlb6434lcykrduv._domainkey.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "fmk7xlvhjfqqruhiytlb6434lcykrduv.dkim.amazonses.com"
       ]
@@ -143,7 +156,8 @@ module "justice_gov_uk_records" {
     {
       name = "fp01._domainkey.justice.gov.uk."
       type = "TXT"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "v=DKIM1\\;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCN/Dnp6gO1PJVQgLljNpkkvVUH/G04C2QkC28j8ddX13V7MAvDWpCxnUfTPy8C27njUImSa8b2TwyeA0P2ONPHQhW652tSxZa0+VT2b5qRFhne3UigZEeKhix988mhlOTO+6PN4+JR7MPXSeE0iGGPWm8m4JsxeaVvwN0XC92yvQIDAQAB\\;"
       ]
@@ -151,7 +165,8 @@ module "justice_gov_uk_records" {
     {
       name = "google._domainkey.justice.gov.uk."
       type = "TXT"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCjKJioa9/GlQwqb42NP0GyDLggv5QbCMtLFK4lMLZARIxPaZlhrcvqw61GnNYMZHuFw43ifib/9mvd+9KKrH4jLO+vVdtlgEE1EWwZFocT0nqQCKKF5nhjiA77t8n+H7BC09u8kF8JJ5X0oqxjTpb28MsfT02EMV3VWjf94Rc0vwIDAQAB"
       ]
@@ -159,7 +174,8 @@ module "justice_gov_uk_records" {
     {
       name = "k2._domainkey.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "dkim2.mcsv.net"
       ]
@@ -167,7 +183,8 @@ module "justice_gov_uk_records" {
     {
       name = "k3._domainkey.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "dkim3.mcsv.net"
       ]
@@ -175,7 +192,8 @@ module "justice_gov_uk_records" {
     {
       name = "nogh2wrclnc7kkukcm26lowx6qdmbs3w._domainkey.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "nogh2wrclnc7kkukcm26lowx6qdmbs3w.dkim.amazonses.com"
       ]
@@ -183,7 +201,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector1._domainkey.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "selector1-justice-gov-uk._domainkey.JusticeUK.onmicrosoft.com."
       ]
@@ -191,7 +210,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector2._domainkey.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "selector2-justice-gov-uk._domainkey.JusticeUK.onmicrosoft.com."
       ]
@@ -199,7 +219,8 @@ module "justice_gov_uk_records" {
     {
       name = "u4wwsopiajlepnevuytnwa3ob34xisjv._domainkey.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "u4wwsopiajlepnevuytnwa3ob34xisjv.dkim.amazonses.com"
       ]
@@ -207,7 +228,8 @@ module "justice_gov_uk_records" {
     {
       name = "wcolxqqtrukhi3z66nvjeu3oftlzy6o6._domainkey.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "wcolxqqtrukhi3z66nvjeu3oftlzy6o6.dkim.amazonses.com"
       ]
@@ -215,7 +237,8 @@ module "justice_gov_uk_records" {
     {
       name = "zer52fvryrnfdepqqw2xl2huersvzctv._domainkey.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "zer52fvryrnfdepqqw2xl2huersvzctv.dkim.amazonses.com"
       ]
@@ -223,7 +246,8 @@ module "justice_gov_uk_records" {
     {
       name = "_github-challenge-hmcts.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "dee83991da"
       ]
@@ -231,7 +255,8 @@ module "justice_gov_uk_records" {
     {
       name = "_github-challenge-ministry-of-justice-uk-ent.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "fb8cde6f32"
       ]
@@ -239,7 +264,8 @@ module "justice_gov_uk_records" {
     {
       name = "_github-challenge-ministryofjustice.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "01fbf9c0af"
       ]
@@ -247,7 +273,8 @@ module "justice_gov_uk_records" {
     {
       name = "_github-challenge-moj-analytical-services.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "610cab0fa8"
       ]
@@ -255,7 +282,8 @@ module "justice_gov_uk_records" {
     {
       name = "_mta-sts.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=STSv1; id=c34048034e0bdb6b6bc9b2d52699588c"
       ]
@@ -263,7 +291,8 @@ module "justice_gov_uk_records" {
     {
       name = "_sipfederationtls._tcp.justice.gov.uk."
       type = "SRV"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "100 1 5061 sipfed.online.lync.com."
       ]
@@ -271,7 +300,8 @@ module "justice_gov_uk_records" {
     {
       name = "_sip._tls.justice.gov.uk."
       type = "SRV"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "100 1 443 sipdir.online.lync.com."
       ]
@@ -279,7 +309,8 @@ module "justice_gov_uk_records" {
     {
       name = "_smtp._tls.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=TLSRPTv1;rua=mailto:tls-rua@mailcheck.service.ncsc.gov.uk"
       ]
@@ -287,7 +318,8 @@ module "justice_gov_uk_records" {
     {
       name = "administrativecourtoffice.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 cluster5.eu.messagelabs.com", 
         "20 cluster5a.eu.messagelabs.com"
@@ -296,7 +328,8 @@ module "justice_gov_uk_records" {
     {
       name = "administrativecourtoffice.justice.gov.uk."
       type = "TXT"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "v=spf1 include:spf.messagelabs.com -all", 
         "C0E4N61551", 
@@ -306,7 +339,8 @@ module "justice_gov_uk_records" {
     {
       name = "adcourt._domainkey.administrativecourtoffice.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DKIM1; k=rsa; t=s; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo/yrXLY2upCZjWvrEJPSr+RXhnQDcKlsycRi1t4N+R8c+oiqSKumZpnnOaRd6rX3mgn4sb3WEmgv+9FxTDKSWF4TZvdBiLYG3/F3nHCIixTjp4bH\"\"uv4MUjLR+1knzmWK8CtEUENmrIWlxMLMXcryR9lVvyNG6pqS4pNcKWHu4f/fyq6i+LSB1QqQGXZfqi/gfsrBD4ZyCvXH+3tlNgd03HM1PNHaUKXZe+fZEEZW8v1zttsJ+mOyF494Af59xO0xCS4V+CTQGeha/4c/nI36WFz/rfFI+CtjHjq0c046VLURIex08V4fxlngtZi7buAlS6kpS57wbOkHzstI/+jyAQIDAQAB"
       ]
@@ -314,7 +348,8 @@ module "justice_gov_uk_records" {
     {
       name = "aka-hmctsformfinder.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "bouncer-cdn.production.govuk.service.gov.uk."
       ]
@@ -322,7 +357,8 @@ module "justice_gov_uk_records" {
     {
       name = "aka.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "bouncer-cdn.production.govuk.service.gov.uk"
       ]
@@ -330,7 +366,8 @@ module "justice_gov_uk_records" {
     {
       name = "_acme-challenge.aka.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "jjqyvepy7l3pvkvjz1.fastly-validations.com"
       ]
@@ -338,7 +375,8 @@ module "justice_gov_uk_records" {
     {
       name = "appleid.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "apple-domain-verification=IzxRgXTAlVnlETWV"
       ]
@@ -346,7 +384,8 @@ module "justice_gov_uk_records" {
     {
       name = "libra-prod.apps.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "51.247.3.128"
       ]
@@ -354,7 +393,8 @@ module "justice_gov_uk_records" {
     {
       name = "autodiscover.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "autodiscover.outlook.com"
       ]
@@ -362,7 +402,8 @@ module "justice_gov_uk_records" {
     {
       name = "az.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns1-09.azure-dns.com", 
         "ns2-09.azure-dns.net", 
@@ -373,25 +414,28 @@ module "justice_gov_uk_records" {
     {
       name = "hmctscourtfinder.bl.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "Z32O12XQLNTSW2"
-        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com."
+        zone_id = "Z32O12XQLNTSW2"
+        name = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "hmctsformfinder.bl.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "Z32O12XQLNTSW2"
-        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com."
+        zone_id = "Z32O12XQLNTSW2"
+        name = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "blogs.justice.gov.uk."
       type = "NS"
-      ttl  = 900
+      ttl = 900
+      
       records = [
         "ns-393.awsdns-49.com.", 
         "ns-856.awsdns-43.net.", 
@@ -402,7 +446,8 @@ module "justice_gov_uk_records" {
     {
       name = "ca.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "0 ca-justice-gov-uk.mail.protection.outlook.com"
       ]
@@ -410,7 +455,8 @@ module "justice_gov_uk_records" {
     {
       name = "ca.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 include:spf.protection.outlook.com -all"
       ]
@@ -418,7 +464,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc.ca.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "_dmarc_ttp_policy.justice.gov.uk"
       ]
@@ -426,7 +473,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector1._domainkey.ca.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "selector1-ca-justice-gov-uk._domainkey.JusticeUK.onmicrosoft.com."
       ]
@@ -434,7 +482,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector2._domainkey.ca.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "selector2-ca-justice-gov-uk._domainkey.JusticeUK.onmicrosoft.com."
       ]
@@ -442,7 +491,8 @@ module "justice_gov_uk_records" {
     {
       name = "autodiscover.ca.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "autodiscover.outlook.com."
       ]
@@ -450,7 +500,8 @@ module "justice_gov_uk_records" {
     {
       name = "careertransition.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "80.86.42.110"
       ]
@@ -458,7 +509,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.careertransition.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "80.86.42.110"
       ]
@@ -466,7 +518,8 @@ module "justice_gov_uk_records" {
     {
       name = "casetracker.justice.gov.uk."
       type = "NS"
-      ttl  = 14400
+      ttl = 14400
+      
       records = [
         "ns-950.awsdns-54.net.", 
         "ns-354.awsdns-44.com.", 
@@ -477,7 +530,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc.casetracker.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DMARC1;p=none;rua=mailto:dmarc-rua@dmarc.service.gov.uk"
       ]
@@ -485,16 +539,18 @@ module "justice_gov_uk_records" {
     {
       name = "ccmstraining.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "Z2FDTNDATAQYW2"
-        name                   = "d1ljok6fhs1ra3.cloudfront.net."
+        zone_id = "Z2FDTNDATAQYW2"
+        name = "d1ljok6fhs1ra3.cloudfront.net."
         evaluate_target_health = false
       }
     }, 
     {
       name = "_d97fb4f4ad2c4d0e83508935752915f1.ccmstraining.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "_b29507f55a1a8cfff56166f65e9f5b81.wggjkglgrm.acm-validations.aws."
       ]
@@ -502,7 +558,8 @@ module "justice_gov_uk_records" {
     {
       name = "certificatedbailiffs.justice.gov.uk."
       type = "NS"
-      ttl  = 60
+      ttl = 60
+      
       records = [
         "ns-1656.awsdns-15.co.uk.", 
         "ns-902.awsdns-48.net.", 
@@ -513,7 +570,8 @@ module "justice_gov_uk_records" {
     {
       name = "certificates.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-2033.awsdns-62.co.uk.", 
         "ns-466.awsdns-58.com.", 
@@ -524,7 +582,8 @@ module "justice_gov_uk_records" {
     {
       name = "gqfoktjhnbvi6ffqmjofiys7rslq42ye._domainkey.certificates.justice.gov.uk."
       type = "CNAME"
-      ttl  = 1800
+      ttl = 1800
+      
       records = [
         "gqfoktjhnbvi6ffqmjofiys7rslq42ye.dkim.amazonses.com"
       ]
@@ -532,7 +591,8 @@ module "justice_gov_uk_records" {
     {
       name = "mw7c6bnh4g4z47lipedqspbq4pdydivs._domainkey.certificates.justice.gov.uk."
       type = "CNAME"
-      ttl  = 1800
+      ttl = 1800
+      
       records = [
         "mw7c6bnh4g4z47lipedqspbq4pdydivs.dkim.amazonses.com"
       ]
@@ -540,7 +600,8 @@ module "justice_gov_uk_records" {
     {
       name = "yfhsqenllotvbodabclcnq5bwpommspr._domainkey.certificates.justice.gov.uk."
       type = "CNAME"
-      ttl  = 1800
+      ttl = 1800
+      
       records = [
         "yfhsqenllotvbodabclcnq5bwpommspr.dkim.amazonses.com"
       ]
@@ -548,7 +609,8 @@ module "justice_gov_uk_records" {
     {
       name = "civil-casetracker.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-1702.awsdns-20.co.uk.", 
         "ns-934.awsdns-52.net.", 
@@ -559,7 +621,8 @@ module "justice_gov_uk_records" {
     {
       name = "civil-eligibility-calculator.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-1044.awsdns-02.org.", 
         "ns-725.awsdns-26.net.", 
@@ -570,16 +633,18 @@ module "justice_gov_uk_records" {
     {
       name = "civilmediation.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "dualstack.civil-mediation-load-377727311.eu-west-2.elb.amazonaws.com."
+        zone_id = "ZHURV8PSTC4K8"
+        name = "dualstack.civil-mediation-load-377727311.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "_1b792c2153cf927328615e78010f7852.civilmediation.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "_672e46231dca8c8a2e623dbbe513ce63.ltfvzjuylp.acm-validations.aws."
       ]
@@ -587,16 +652,18 @@ module "justice_gov_uk_records" {
     {
       name = "www.civilmediation.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "dualstack.civil-mediation-load-377727311.eu-west-2.elb.amazonaws.com."
+        zone_id = "ZHURV8PSTC4K8"
+        name = "dualstack.civil-mediation-load-377727311.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "_0970bea3431bc1236acaba02e9f46366.www.civilmediation.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "_06d0edbac8d4d3afa9588239dd3d341d.ltfvzjuylp.acm-validations.aws."
       ]
@@ -604,7 +671,8 @@ module "justice_gov_uk_records" {
     {
       name = "cjscp.justice.gov.uk."
       type = "MX"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "10 mx00003.skyscapecloud.com.", 
         "10 mx00004.skyscapecloud.com."
@@ -613,7 +681,8 @@ module "justice_gov_uk_records" {
     {
       name = "cjscp.justice.gov.uk."
       type = "TXT"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "v=spf1 mx -all"
       ]
@@ -621,7 +690,8 @@ module "justice_gov_uk_records" {
     {
       name = "_asvdns-b627ab5d-4abb-4b5a-aa78-81b75bae5d31.cjscp.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "asvdns_369325c0-e247-4a15-819b-a872243759ea"
       ]
@@ -629,7 +699,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc.cjscp.justice.gov.uk."
       type = "TXT"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "v=DMARC1;p=none;rua=mailto:dmarc-rua@dmarc.service.gov.uk"
       ]
@@ -637,7 +708,8 @@ module "justice_gov_uk_records" {
     {
       name = "s1._domainkey.cjscp.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "s1.domainkey.u17380493.wl244.sendgrid.net"
       ]
@@ -645,7 +717,8 @@ module "justice_gov_uk_records" {
     {
       name = "s2._domainkey.cjscp.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "s2.domainkey.u17380493.wl244.sendgrid.net"
       ]
@@ -653,7 +726,8 @@ module "justice_gov_uk_records" {
     {
       name = "_smtp._tls.cjscp.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=TLSRPTv1;rua=mailto:tls-rua@mailcheck.service.ncsc.gov.uk"
       ]
@@ -661,7 +735,8 @@ module "justice_gov_uk_records" {
     {
       name = "confluence.cjscp.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "triadmoj.atlassian.net."
       ]
@@ -669,7 +744,8 @@ module "justice_gov_uk_records" {
     {
       name = "dev.cjscp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "83.151.216.178"
       ]
@@ -677,7 +753,8 @@ module "justice_gov_uk_records" {
     {
       name = "devbuild.cjscp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "83.151.216.178"
       ]
@@ -685,7 +762,8 @@ module "justice_gov_uk_records" {
     {
       name = "devsandbox.cjscp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "83.151.216.182"
       ]
@@ -693,7 +771,8 @@ module "justice_gov_uk_records" {
     {
       name = "em3636.cjscp.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "u17380493.wl244.sendgrid.net"
       ]
@@ -701,7 +780,8 @@ module "justice_gov_uk_records" {
     {
       name = "jira.cjscp.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "triadmoj.atlassian.net."
       ]
@@ -709,7 +789,8 @@ module "justice_gov_uk_records" {
     {
       name = "modeloffice.cjscp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "83.151.216.178"
       ]
@@ -717,7 +798,8 @@ module "justice_gov_uk_records" {
     {
       name = "preprod.cjscp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "83.151.216.179"
       ]
@@ -725,7 +807,8 @@ module "justice_gov_uk_records" {
     {
       name = "production.cjscp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "83.151.216.180"
       ]
@@ -733,7 +816,8 @@ module "justice_gov_uk_records" {
     {
       name = "support.cjscp.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "triadmoj.atlassian.net."
       ]
@@ -741,7 +825,8 @@ module "justice_gov_uk_records" {
     {
       name = "test.cjscp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "83.151.216.181"
       ]
@@ -749,7 +834,8 @@ module "justice_gov_uk_records" {
     {
       name = "wiki.cjscp.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "triadmoj.atlassian.net."
       ]
@@ -757,7 +843,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.cjscp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "83.151.216.180"
       ]
@@ -765,7 +852,8 @@ module "justice_gov_uk_records" {
     {
       name = "cjsm.justice.gov.uk."
       type = "NS"
-      ttl  = 900
+      ttl = 900
+      
       records = [
         "ns-24.awsdns-03.com.", 
         "ns-1011.awsdns-62.net.", 
@@ -776,7 +864,8 @@ module "justice_gov_uk_records" {
     {
       name = "claonlineadvice.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "81.105.223.242"
       ]
@@ -784,7 +873,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.claonlineadvice.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "89.185.223.242"
       ]
@@ -792,7 +882,8 @@ module "justice_gov_uk_records" {
     {
       name = "commissioning.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "62.208.147.100"
       ]
@@ -800,7 +891,8 @@ module "justice_gov_uk_records" {
     {
       name = "consult.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "cs-moj.delib.net."
       ]
@@ -808,7 +900,8 @@ module "justice_gov_uk_records" {
     {
       name = "contact.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "0 mail.contact.justice.gov.uk"
       ]
@@ -816,7 +909,8 @@ module "justice_gov_uk_records" {
     {
       name = "contact.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 ip4:51.143.128.114  -all"
       ]
@@ -824,7 +918,8 @@ module "justice_gov_uk_records" {
     {
       name = "mail.contact.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "51.143.128.114"
       ]
@@ -832,7 +927,8 @@ module "justice_gov_uk_records" {
     {
       name = "courtfines.justice.gov.uk."
       type = "NS"
-      ttl  = 172800
+      ttl = 172800
+      
       records = [
         "ns-649.awsdns-17.net.", 
         "ns-45.awsdns-05.com.", 
@@ -843,7 +939,8 @@ module "justice_gov_uk_records" {
     {
       name = "courtstore.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "35.177.112.189"
       ]
@@ -851,7 +948,8 @@ module "justice_gov_uk_records" {
     {
       name = "courtstore.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "1 ASPMX.L.GOOGLE.COM.", 
         "5 ALT1.ASPMX.L.GOOGLE.COM.", 
@@ -863,7 +961,8 @@ module "justice_gov_uk_records" {
     {
       name = "courtstore.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 include:_spf.google.com -all", 
         "google-site-verification=Nth0cgF0QH5N62b8dNqgsit8N3okHPzips4MlRHrBM8", 
@@ -873,7 +972,8 @@ module "justice_gov_uk_records" {
     {
       name = "_asvdns-5f2f4397-9171-4e57-a213-c2b5a0dc204e.courtstore.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "asvdns_39857ad7-a6b7-4007-9a89-1fad432f0191"
       ]
@@ -881,7 +981,8 @@ module "justice_gov_uk_records" {
     {
       name = "_b19b60bc246861f00a6be8dce4b79a84.courtstore.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "9D453B52DE49FC444073385DE203FE5E.E08BBA1C133A43E492B9F99A342B01B0.ac3306b6a88ed9f1f089.sectigo.com."
       ]
@@ -889,7 +990,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc.courtstore.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DMARC1;p=reject;sp=reject;rua=mailto:dmarc-rua@dmarc.service.gov.uk"
       ]
@@ -897,7 +999,8 @@ module "justice_gov_uk_records" {
     {
       name = "google._domainkey.courtstore.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiF+Qlzev8OpwQP3NLFCVtBnkRVSZDPpAZDAiQdXX4ECpNY88jI0xFcD+ezMHkg/HQt42pv27nZ2yh3RM88SagaXgwRRnUkRC1rNNFoxSU1U66Gr5Oe1\"\"/wpPRgzyu9hUhICJPfbphK0j40fV0w1IjHWRbQTQcHZFhViCPmk5uIGJGTHR5JyYi4V1N5gq2wZfa3Z9XVFQfBocG+ayb7B1y4N/8rPgud/a0aGBo+VJ7Fk/TPRka4lB3+JlBHwgCfGcL2nDFm1leYRdSsP5h157ngGOEtk2lmoztH6qnp7EOapezy/ZCUym/m5CYNQXSoek1B0ssNgEYFQz0tj/3FMPC+QIDAQAB"
       ]
@@ -905,7 +1008,8 @@ module "justice_gov_uk_records" {
     {
       name = "bench.courtstore.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "18.132.11.99"
       ]
@@ -913,7 +1017,8 @@ module "justice_gov_uk_records" {
     {
       name = "demo.courtstore.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "83.151.216.196"
       ]
@@ -921,7 +1026,8 @@ module "justice_gov_uk_records" {
     {
       name = "perf.courtstore.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "51.179.193.67"
       ]
@@ -929,7 +1035,8 @@ module "justice_gov_uk_records" {
     {
       name = "perf.courtstore.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "1	ASPMX.L.GOOGLE.COM.", 
         "5	ALT1.ASPMX.L.GOOGLE.COM.", 
@@ -941,7 +1048,8 @@ module "justice_gov_uk_records" {
     {
       name = "perf.courtstore.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 include:_spf.google.com -all", 
         "google-site-verification=_ddDla0QaTcjKV5-KS1pOP5mPawCieNoirKehWsPo2E"
@@ -950,7 +1058,8 @@ module "justice_gov_uk_records" {
     {
       name = "preprod.courtstore.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "51.179.193.66"
       ]
@@ -958,7 +1067,8 @@ module "justice_gov_uk_records" {
     {
       name = "bench.preprod.courtstore.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "51.179.193.67"
       ]
@@ -966,7 +1076,8 @@ module "justice_gov_uk_records" {
     {
       name = "qa.courtstore.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "83.151.216.196"
       ]
@@ -974,7 +1085,8 @@ module "justice_gov_uk_records" {
     {
       name = "staging.courtstore.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "18.170.166.172"
       ]
@@ -982,7 +1094,8 @@ module "justice_gov_uk_records" {
     {
       name = "staging.courtstore.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "1 ASPMX.L.GOOGLE.COM.", 
         "5 ALT1.ASPMX.L.GOOGLE.COM.", 
@@ -994,7 +1107,8 @@ module "justice_gov_uk_records" {
     {
       name = "bench.staging.courtstore.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "18.135.237.205"
       ]
@@ -1002,7 +1116,8 @@ module "justice_gov_uk_records" {
     {
       name = "yots.courtstore.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "194.74.130.121"
       ]
@@ -1010,7 +1125,8 @@ module "justice_gov_uk_records" {
     {
       name = "courtstorepp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "51.231.96.56"
       ]
@@ -1018,7 +1134,8 @@ module "justice_gov_uk_records" {
     {
       name = "crimeportal.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns1-01.azure-dns.com", 
         "ns2-01.azure-dns.net", 
@@ -1029,7 +1146,8 @@ module "justice_gov_uk_records" {
     {
       name = "nle.crimeportal.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "8f63c407-7450-4407-9da3-a04eaa525dcc.cloudapp.net"
       ]
@@ -1037,7 +1155,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.crimeportal.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "2de37183-b02f-4a0b-965d-0bd0de2d79fc.cloudapp.net"
       ]
@@ -1045,7 +1164,8 @@ module "justice_gov_uk_records" {
     {
       name = "criminal-justice-delivery-data-dashboards.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-830.awsdns-39.net.", 
         "ns-1144.awsdns-15.org.", 
@@ -1056,7 +1176,8 @@ module "justice_gov_uk_records" {
     {
       name = "criminal-justice-scorecard.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-537.awsdns-03.net.", 
         "ns-1184.awsdns-20.org.", 
@@ -1067,7 +1188,8 @@ module "justice_gov_uk_records" {
     {
       name = "criminal-justice-scorecard.justice.gov.uk."
       type = "TXT"
-      ttl  = 60
+      ttl = 60
+      
       records = [
         "Reserved for the Criminal Justice Scorecard project"
       ]
@@ -1075,7 +1197,8 @@ module "justice_gov_uk_records" {
     {
       name = "criminalappealoffice.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 cluster5.eu.messagelabs.com", 
         "20 cluster5a.eu.messagelabs.com"
@@ -1084,7 +1207,8 @@ module "justice_gov_uk_records" {
     {
       name = "criminalappealoffice.justice.gov.uk."
       type = "TXT"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "v=spf1 include:spf.messagelabs.com -all", 
         "C0E4N61551", 
@@ -1094,7 +1218,8 @@ module "justice_gov_uk_records" {
     {
       name = "crimcourt._domainkey.criminalappealoffice.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DKIM1; k=rsa; t=s; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoN235ryj/6Ca/yN0JR71q8gM7CCjNLOFKiq08sX2ZO9fuKGHCIJYrcfLJI0zfEKUjbB3soLt7Y4fFf3QsCWNYreutXkmVqoVvakegZhFHSiWhWf/IjQ/S5gbYEJna\"\"wpiZj9QjJXV1f1AcYHCCfWYiiyoY6VPI498vEMNyTCcqN7O4N30Xkgkg1Vij77IH38f7iod0Hpx/LpBCxW/7N9DE+hkvnDBcSLpJpVwM43LFu44TWjqir4rIX7lHXmkHSashY2dEibkfr65SJzVFsRgrTeXI//yrfjfXUQ20la61i3XbGkalJlva34ukl9Vc7vz5giSzyoJEO8d1d8+7IVdRwIDAQAB"
       ]
@@ -1102,7 +1227,8 @@ module "justice_gov_uk_records" {
     {
       name = "mail1.criminalappealoffice.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "178.248.34.43"
       ]
@@ -1110,7 +1236,8 @@ module "justice_gov_uk_records" {
     {
       name = "mail1.criminalappealoffice.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "2022100614445019nl5f39osxxoy14p9la8sh5vxah0exxp0ime2mh0w4tu19egv"
       ]
@@ -1118,7 +1245,8 @@ module "justice_gov_uk_records" {
     {
       name = "cshrcasework.justice.gov.uk."
       type = "MX"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "0 CSHRCasework-justice-gov-uk.mail.protection.outlook.com"
       ]
@@ -1126,7 +1254,8 @@ module "justice_gov_uk_records" {
     {
       name = "cshrcasework.justice.gov.uk."
       type = "TXT"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "MS=ms66139249", 
         "v=spf1 include:spf.protection.outlook.com -all", 
@@ -1137,7 +1266,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc.cshrcasework.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DMARC1; p=reject; pct=100; rua=mailto:dmarc-rua@dmarc.service.gov.uk;"
       ]
@@ -1145,7 +1275,8 @@ module "justice_gov_uk_records" {
     {
       name = "*._domainkey.cshrcasework.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DKIM1; p="
       ]
@@ -1153,7 +1284,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector1._domainkey.cshrcasework.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "selector1-CSHRCasework-justice-gov-uk._domainkey.MoJHRCasework.onmicrosoft.com"
       ]
@@ -1161,7 +1293,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector2._domainkey.cshrcasework.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "selector2-CSHRCasework-justice-gov-uk._domainkey.MoJHRCasework.onmicrosoft.com"
       ]
@@ -1169,7 +1302,8 @@ module "justice_gov_uk_records" {
     {
       name = "_mta-sts.cshrcasework.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=STSv1; id=01ca5652ab35bf19dfba6c74b0b93688"
       ]
@@ -1177,7 +1311,8 @@ module "justice_gov_uk_records" {
     {
       name = "_sipfederationtls._tcp.cshrcasework.justice.gov.uk."
       type = "SRV"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "100 1 5061 sipfed.online.lync.com"
       ]
@@ -1185,7 +1320,8 @@ module "justice_gov_uk_records" {
     {
       name = "_sip._tls.cshrcasework.justice.gov.uk."
       type = "SRV"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "100 1 443 sipdir.online.lync.com"
       ]
@@ -1193,7 +1329,8 @@ module "justice_gov_uk_records" {
     {
       name = "_smtp._tls.cshrcasework.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=TLSRPTv1;rua=mailto:tls-rua@mailcheck.service.ncsc.gov.uk"
       ]
@@ -1201,7 +1338,8 @@ module "justice_gov_uk_records" {
     {
       name = "autodiscover.cshrcasework.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "autodiscover.outlook.com"
       ]
@@ -1209,7 +1347,8 @@ module "justice_gov_uk_records" {
     {
       name = "desktop.cshrcasework.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "moj.fw-daas.com"
       ]
@@ -1217,7 +1356,8 @@ module "justice_gov_uk_records" {
     {
       name = "enterpriseenrollment.cshrcasework.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "enterpriseenrollment.manage.microsoft.com"
       ]
@@ -1225,7 +1365,8 @@ module "justice_gov_uk_records" {
     {
       name = "enterpriseregistration.cshrcasework.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "enterpriseregistration.windows.net"
       ]
@@ -1233,7 +1374,8 @@ module "justice_gov_uk_records" {
     {
       name = "lyncdiscover.cshrcasework.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "webdir.online.lync.com"
       ]
@@ -1241,16 +1383,18 @@ module "justice_gov_uk_records" {
     {
       name = "mta-sts.cshrcasework.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "Z2FDTNDATAQYW2"
-        name                   = "d1vle67b6xccyz.cloudfront.net."
+        zone_id = "Z2FDTNDATAQYW2"
+        name = "d1vle67b6xccyz.cloudfront.net."
         evaluate_target_health = true
       }
     }, 
     {
       name = "_c3e197db2fd6871349b94aaee4fe4c51.mta-sts.cshrcasework.justice.gov.uk."
       type = "CNAME"
-      ttl  = 60
+      ttl = 60
+      
       records = [
         "_471469039df6a6e4e24c985c337b70a9.zrvsvrxrgs.acm-validations.aws."
       ]
@@ -1258,7 +1402,8 @@ module "justice_gov_uk_records" {
     {
       name = "sip.cshrcasework.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "sipdir.online.lync.com"
       ]
@@ -1266,16 +1411,18 @@ module "justice_gov_uk_records" {
     {
       name = "cshrcaseworkcma.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "dualstack.cshr-cma-prod-web-alb-01-698927512.eu-west-2.elb.amazonaws.com."
+        zone_id = "ZHURV8PSTC4K8"
+        name = "dualstack.cshr-cma-prod-web-alb-01-698927512.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "cshrcaseworkcma.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 include:amazonses.com -all"
       ]
@@ -1283,7 +1430,8 @@ module "justice_gov_uk_records" {
     {
       name = "_amazonses.cshrcaseworkcma.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "Mmb+MWTjhMO4uzDIGEDFfagJGpbbN7h8BqVpAbuUDPQ="
       ]
@@ -1291,7 +1439,8 @@ module "justice_gov_uk_records" {
     {
       name = "42qrvtxqjfjkvgvvuwhnbqmj6gjiimyp._domainkey.cshrcaseworkcma.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "42qrvtxqjfjkvgvvuwhnbqmj6gjiimyp.dkim.amazonses.com"
       ]
@@ -1299,7 +1448,8 @@ module "justice_gov_uk_records" {
     {
       name = "msarjwgs5uwlhhqophtayb5zsfzhkdiz._domainkey.cshrcaseworkcma.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "msarjwgs5uwlhhqophtayb5zsfzhkdiz.dkim.amazonses.com"
       ]
@@ -1307,7 +1457,8 @@ module "justice_gov_uk_records" {
     {
       name = "tbm6oiqakgjs7zp7ufy2w3dagkonfrry._domainkey.cshrcaseworkcma.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "tbm6oiqakgjs7zp7ufy2w3dagkonfrry.dkim.amazonses.com"
       ]
@@ -1315,16 +1466,18 @@ module "justice_gov_uk_records" {
     {
       name = "uat.cshrcaseworkcma.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "dualstack.cshr-cma-uat-web-alb-01-130925050.eu-west-2.elb.amazonaws.com."
+        zone_id = "ZHURV8PSTC4K8"
+        name = "dualstack.cshr-cma-uat-web-alb-01-130925050.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = true
       }
     }, 
     {
       name = "uat.cshrcaseworkcma.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 include:amazonses.com -all"
       ]
@@ -1332,7 +1485,8 @@ module "justice_gov_uk_records" {
     {
       name = "_amazonses.uat.cshrcaseworkcma.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "uWgkqAaHV9lw72/zwF/qFViIJr2RNfyrY+ahs1SoOxc="
       ]
@@ -1340,7 +1494,8 @@ module "justice_gov_uk_records" {
     {
       name = "5axyevlb23jr5vn7z4uqemmr6llzuuy3._domainkey.uat.cshrcaseworkcma.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "5axyevlb23jr5vn7z4uqemmr6llzuuy3.dkim.amazonses.com"
       ]
@@ -1348,7 +1503,8 @@ module "justice_gov_uk_records" {
     {
       name = "oe3ypkjre4ra5oziwhkhas46xq7zomtm._domainkey.uat.cshrcaseworkcma.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "oe3ypkjre4ra5oziwhkhas46xq7zomtm.dkim.amazonses.com"
       ]
@@ -1356,7 +1512,8 @@ module "justice_gov_uk_records" {
     {
       name = "ul5ni2ujr4yk2y5txdb6rxzmj6ko3hw2._domainkey.uat.cshrcaseworkcma.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ul5ni2ujr4yk2y5txdb6rxzmj6ko3hw2.dkim.amazonses.com"
       ]
@@ -1364,7 +1521,8 @@ module "justice_gov_uk_records" {
     {
       name = "d1rs.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns1.uk.atos.net.", 
         "ns2.uk.atos.net.", 
@@ -1374,7 +1532,8 @@ module "justice_gov_uk_records" {
     {
       name = "data.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns-223.awsdns-27.com.", 
         "ns-1660.awsdns-15.co.uk.", 
@@ -1385,7 +1544,8 @@ module "justice_gov_uk_records" {
     {
       name = "design102.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "0 ."
       ]
@@ -1393,7 +1553,8 @@ module "justice_gov_uk_records" {
     {
       name = "design102.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 ip4:78.31.110.246  -all"
       ]
@@ -1401,7 +1562,8 @@ module "justice_gov_uk_records" {
     {
       name = "panacea-moj._domainkey.design102.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "Mojdkimkey.panacea-software.com"
       ]
@@ -1409,7 +1571,8 @@ module "justice_gov_uk_records" {
     {
       name = "dev.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "185.64.253.120"
       ]
@@ -1417,7 +1580,8 @@ module "justice_gov_uk_records" {
     {
       name = "devl.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-1267.awsdns-30.org.", 
         "ns-358.awsdns-44.com.", 
@@ -1428,7 +1592,8 @@ module "justice_gov_uk_records" {
     {
       name = "devl.justice.gov.uk."
       type = "TXT"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "MS=ms94518993"
       ]
@@ -1436,7 +1601,8 @@ module "justice_gov_uk_records" {
     {
       name = "digital.justice.gov.uk."
       type = "NS"
-      ttl  = 48600
+      ttl = 48600
+      
       records = [
         "ns-284.awsdns-35.com.", 
         "ns-527.awsdns-01.net.", 
@@ -1447,7 +1613,8 @@ module "justice_gov_uk_records" {
     {
       name = "drs.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "62.208.154.185"
       ]
@@ -1455,7 +1622,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.drs.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "62.208.154.185"
       ]
@@ -1463,7 +1631,8 @@ module "justice_gov_uk_records" {
     {
       name = "dzc.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.176.165"
       ]
@@ -1471,7 +1640,8 @@ module "justice_gov_uk_records" {
     {
       name = "dzc.justice.gov.uk."
       type = "TXT"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "C7ExaWUK"
       ]
@@ -1479,7 +1649,8 @@ module "justice_gov_uk_records" {
     {
       name = "enclave.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "0 enclave-justice-gov-uk.mail.protection.outlook.com."
       ]
@@ -1487,7 +1658,8 @@ module "justice_gov_uk_records" {
     {
       name = "enclave.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 include:spf.protection.outlook.com -all"
       ]
@@ -1495,7 +1667,8 @@ module "justice_gov_uk_records" {
     {
       name = "_asvdns-ae7a91db-23dc-45d6-9df9-d2c5251f1209.enclave.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "asvdns_6b25348a-9f33-43ac-915f-c158afe4611c"
       ]
@@ -1503,7 +1676,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector1._domainkey.enclave.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "selector1-enclave-justice-gov-uk._domainkey.JusticeUK.onmicrosoft.com"
       ]
@@ -1511,7 +1685,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector2._domainkey.enclave.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "selector2-enclave-justice-gov-uk._domainkey.JusticeUK.onmicrosoft.com"
       ]
@@ -1519,7 +1694,8 @@ module "justice_gov_uk_records" {
     {
       name = "enterpriseenrollment.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "enterpriseenrollment.manage.microsoft.com."
       ]
@@ -1527,7 +1703,8 @@ module "justice_gov_uk_records" {
     {
       name = "enterpriseregistration.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "enterpriseregistration.windows.net."
       ]
@@ -1535,7 +1712,8 @@ module "justice_gov_uk_records" {
     {
       name = "erupload.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "hmcts-heritage-prod.azurefd.net"
       ]
@@ -1543,7 +1721,8 @@ module "justice_gov_uk_records" {
     {
       name = "afdverify.erupload.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "afdverify.hmcts-heritage-prod.azurefd.net"
       ]
@@ -1551,7 +1730,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.erupload.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "erupload.justice.gov.uk"
       ]
@@ -1559,7 +1739,8 @@ module "justice_gov_uk_records" {
     {
       name = "eruploadtest.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "hmcts-heritage-stg.azurefd.net"
       ]
@@ -1567,7 +1748,8 @@ module "justice_gov_uk_records" {
     {
       name = "afdverify.eruploadtest.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "afdverify.hmcts-heritage-stg.azurefd.net"
       ]
@@ -1575,7 +1757,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.eruploadtest.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "hmcts-heritage-stg.azurefd.net"
       ]
@@ -1583,7 +1766,8 @@ module "justice_gov_uk_records" {
     {
       name = "esourcing.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "205.139.89.225"
       ]
@@ -1591,7 +1775,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.esourcing.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "esourcing.justice.gov.uk."
       ]
@@ -1599,7 +1784,8 @@ module "justice_gov_uk_records" {
     {
       name = "fax.justice.gov.uk."
       type = "MX"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "0 fax-justice-gov-uk.mail.protection.outlook.com"
       ]
@@ -1607,7 +1793,8 @@ module "justice_gov_uk_records" {
     {
       name = "fax.justice.gov.uk."
       type = "TXT"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "v=spf1 include:spf.protection.outlook.com ~all"
       ]
@@ -1615,7 +1802,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc.fax.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "_dmarc_ttp_policy.justice.gov.uk"
       ]
@@ -1623,7 +1811,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector1._domainkey.fax.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "selector1-fax-justice-gov-uk._domainkey.JusticeUK.onmicrosoft.com"
       ]
@@ -1631,7 +1820,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector2._domainkey.fax.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "selector2-fax-justice-gov-uk._domainkey.JusticeUK.onmicrosoft.com"
       ]
@@ -1639,7 +1829,8 @@ module "justice_gov_uk_records" {
     {
       name = "autodiscover.fax.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "autodiscover.outlook.com."
       ]
@@ -1647,7 +1838,8 @@ module "justice_gov_uk_records" {
     {
       name = "feeaccount.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "feeaccount.ito.unisys.com."
       ]
@@ -1655,7 +1847,8 @@ module "justice_gov_uk_records" {
     {
       name = "feeaccounttest.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "feeaccounttest.ito.unisys.com."
       ]
@@ -1663,7 +1856,8 @@ module "justice_gov_uk_records" {
     {
       name = "find-legal-advice.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "80.86.42.106"
       ]
@@ -1671,7 +1865,8 @@ module "justice_gov_uk_records" {
     {
       name = "find-legal-advice.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-1022.awsdns-63.net.", 
         "ns-2041.awsdns-63.co.uk.", 
@@ -1682,7 +1877,8 @@ module "justice_gov_uk_records" {
     {
       name = "g.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns-258.awsdns-32.com.", 
         "ns-930.awsdns-52.net.", 
@@ -1693,7 +1889,8 @@ module "justice_gov_uk_records" {
     {
       name = "google2d7e970fc70e33ba.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "google.com."
       ]
@@ -1701,7 +1898,8 @@ module "justice_gov_uk_records" {
     {
       name = "governance.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "195.92.125.236"
       ]
@@ -1709,7 +1907,8 @@ module "justice_gov_uk_records" {
     {
       name = "gs.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "1 ASPMX.L.GOOGLE.COM", 
         "5 ALT1.ASPMX.L.GOOGLE.COM", 
@@ -1721,7 +1920,8 @@ module "justice_gov_uk_records" {
     {
       name = "gs.justice.gov.uk."
       type = "TXT"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "google-site-verification=zTDywdx3jcS5WvIZ7jT1T7gXqfo7RPo3ZfLfJA_rIZQ"
       ]
@@ -1729,7 +1929,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc.gs.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DMARC1;p=none;rua=mailto:dmarc-rua@dmarc.service.gov.uk"
       ]
@@ -1737,16 +1938,18 @@ module "justice_gov_uk_records" {
     {
       name = "hmctscourtfinder.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "Z32O12XQLNTSW2"
-        name                   = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com."
+        zone_id = "Z32O12XQLNTSW2"
+        name = "tribunals-nginx-1184258455.eu-west-1.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "hmctsformfinder.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns-458.awsdns-57.com.", 
         "ns-575.awsdns-07.net.", 
@@ -1757,7 +1960,8 @@ module "justice_gov_uk_records" {
     {
       name = "hmctssurvey.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "0 ."
       ]
@@ -1765,7 +1969,8 @@ module "justice_gov_uk_records" {
     {
       name = "hmctssurvey.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 nclude:spf.ssmx.net ~all"
       ]
@@ -1773,7 +1978,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector._domainkey.hmctssurvey.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "HMCTSDKIM.ssmx.net"
       ]
@@ -1781,7 +1987,8 @@ module "justice_gov_uk_records" {
     {
       name = "hmiprobationeforms.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "81.171.138.201"
       ]
@@ -1789,7 +1996,8 @@ module "justice_gov_uk_records" {
     {
       name = "hmpp-azdt.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns1-08.azure-dns.com.", 
         "ns2-08.azure-dns.net.", 
@@ -1800,7 +2008,8 @@ module "justice_gov_uk_records" {
     {
       name = "hmppgw1.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns1-06.azure-dns.com.", 
         "ns2-06.azure-dns.net.", 
@@ -1811,7 +2020,8 @@ module "justice_gov_uk_records" {
     {
       name = "hmppgw2.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns1-04.azure-dns.com.", 
         "ns2-04.azure-dns.net.", 
@@ -1822,7 +2032,8 @@ module "justice_gov_uk_records" {
     {
       name = "hmpps-az-gw1.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns1-06.azure-dns.com.", 
         "ns2-06.azure-dns.net.", 
@@ -1833,7 +2044,8 @@ module "justice_gov_uk_records" {
     {
       name = "iac-fees.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-1111.awsdns-10.org.", 
         "ns-714.awsdns-25.net.", 
@@ -1844,7 +2056,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.ictcareers.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "193.113.14.4"
       ]
@@ -1852,7 +2065,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.ictstaffcareers.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "193.113.14.69"
       ]
@@ -1860,7 +2074,8 @@ module "justice_gov_uk_records" {
     {
       name = "immigrationappealsonline.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns-345.awsdns-43.com.", 
         "ns-682.awsdns-21.net.", 
@@ -1871,7 +2086,8 @@ module "justice_gov_uk_records" {
     {
       name = "in-addr.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-968.awsdns-57.net.", 
         "ns-1169.awsdns-18.org.", 
@@ -1882,7 +2098,8 @@ module "justice_gov_uk_records" {
     {
       name = "internalaudit.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "51.231.96.231"
       ]
@@ -1890,7 +2107,8 @@ module "justice_gov_uk_records" {
     {
       name = "internalaudit2.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "51.231.96.230"
       ]
@@ -1898,7 +2116,8 @@ module "justice_gov_uk_records" {
     {
       name = "intranet.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns-63.awsdns-07.com.", 
         "ns-913.awsdns-50.net.", 
@@ -1909,16 +2128,18 @@ module "justice_gov_uk_records" {
     {
       name = "jobs.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "dualstack.justi-loadb-sq9lna0p02ao-206129886.eu-west-2.elb.amazonaws.com."
+        zone_id = "ZHURV8PSTC4K8"
+        name = "dualstack.justi-loadb-sq9lna0p02ao-206129886.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "jobs.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "google-site-verification=ajvfy_2DMm2yiEMIzFgwTFjZ_MjqGZ3_mIusMQS93sY"
       ]
@@ -1926,7 +2147,8 @@ module "justice_gov_uk_records" {
     {
       name = "_32e00677b9d5518d832c3dea41eb2222.jobs.justice.gov.uk."
       type = "CNAME"
-      ttl  = 60
+      ttl = 60
+      
       records = [
         "_4f02d2a3ed7c6bb1093897f47f79399d.mzlfeqexyx.acm-validations.aws."
       ]
@@ -1934,7 +2156,8 @@ module "justice_gov_uk_records" {
     {
       name = "s1._domainkey.jobs.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "s1.domainkey.u2320754.wl005.sendgrid.net"
       ]
@@ -1942,7 +2165,8 @@ module "justice_gov_uk_records" {
     {
       name = "s2._domainkey.jobs.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "s2.domainkey.u2320754.wl005.sendgrid.net"
       ]
@@ -1950,7 +2174,8 @@ module "justice_gov_uk_records" {
     {
       name = "em2023.jobs.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "u2320754.wl005.sendgrid.net"
       ]
@@ -1958,7 +2183,8 @@ module "justice_gov_uk_records" {
     {
       name = "juror-bureau-nle.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10.25.255.202"
       ]
@@ -1966,7 +2192,8 @@ module "justice_gov_uk_records" {
     {
       name = "juror-bureau.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10.24.0.11"
       ]
@@ -1974,7 +2201,8 @@ module "justice_gov_uk_records" {
     {
       name = "juror-bureau.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns1-05.azure-dns.com", 
         "ns2-05.azure-dns.net", 
@@ -1985,7 +2213,8 @@ module "justice_gov_uk_records" {
     {
       name = "lawcommission.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "134.213.160.26"
       ]
@@ -1993,7 +2222,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.lawcommission.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "134.213.160.26"
       ]
@@ -2001,7 +2231,8 @@ module "justice_gov_uk_records" {
     {
       name = "legacy.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.177.183"
       ]
@@ -2009,7 +2240,8 @@ module "justice_gov_uk_records" {
     {
       name = "legacy_cas_acp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.176.166"
       ]
@@ -2017,7 +2249,8 @@ module "justice_gov_uk_records" {
     {
       name = "legacy_cas_bpp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.177.182"
       ]
@@ -2025,7 +2258,8 @@ module "justice_gov_uk_records" {
     {
       name = "legal-aid-checker.justice.gov.uk."
       type = "NS"
-      ttl  = 900
+      ttl = 900
+      
       records = [
         "ns-285.awsdns-35.com.", 
         "ns-759.awsdns-30.net.", 
@@ -2036,7 +2270,8 @@ module "justice_gov_uk_records" {
     {
       name = "legaladviserfinder.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "find-legal-advice.justice.gov.uk."
       ]
@@ -2044,7 +2279,8 @@ module "justice_gov_uk_records" {
     {
       name = "legalaidcalculator.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "legal-aid-checker.justice.gov.uk."
       ]
@@ -2052,7 +2288,8 @@ module "justice_gov_uk_records" {
     {
       name = "legalaidlearning.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "t12h.cloudlp.net"
       ]
@@ -2060,7 +2297,8 @@ module "justice_gov_uk_records" {
     {
       name = "legalaidtraining.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "lsc.ds.synergy-learning.com."
       ]
@@ -2068,7 +2306,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.legalaidtraining.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "legalaidtraining.justice.gov.uk."
       ]
@@ -2076,7 +2315,8 @@ module "justice_gov_uk_records" {
     {
       name = "llrs.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns-911.awsdns-49.net", 
         "ns-1732.awsdns-24.co.uk", 
@@ -2087,7 +2327,8 @@ module "justice_gov_uk_records" {
     {
       name = "locateaprison.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "85.133.48.165"
       ]
@@ -2095,7 +2336,8 @@ module "justice_gov_uk_records" {
     {
       name = "rvc-pp.lrc.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.177.175"
       ]
@@ -2103,7 +2345,8 @@ module "justice_gov_uk_records" {
     {
       name = "rvc-pp1.lrc.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.177.176"
       ]
@@ -2111,7 +2354,8 @@ module "justice_gov_uk_records" {
     {
       name = "rvc-pp2.lrc.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.177.177"
       ]
@@ -2119,7 +2363,8 @@ module "justice_gov_uk_records" {
     {
       name = "rvc.lrc.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "213.121.161.117"
       ]
@@ -2127,7 +2372,8 @@ module "justice_gov_uk_records" {
     {
       name = "rvc1.lrc.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "213.121.161.118"
       ]
@@ -2135,7 +2381,8 @@ module "justice_gov_uk_records" {
     {
       name = "rvc2.lrc.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "213.121.161.119"
       ]
@@ -2143,7 +2390,8 @@ module "justice_gov_uk_records" {
     {
       name = "lyncdiscover.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "webdir.online.lync.com."
       ]
@@ -2151,7 +2399,8 @@ module "justice_gov_uk_records" {
     {
       name = "2ma4ihuxerbnpfigizw76xlnnxmw6zdr._domainkey.magistrates-recruitment.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "2ma4ihuxerbnpfigizw76xlnnxmw6zdr.dkim.amazonses.com"
       ]
@@ -2159,7 +2408,8 @@ module "justice_gov_uk_records" {
     {
       name = "mgr3vnln72urts6bqgov55w27cx6ev7m._domainkey.magistrates-recruitment.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "mgr3vnln72urts6bqgov55w27cx6ev7m.dkim.amazonses.com"
       ]
@@ -2167,7 +2417,8 @@ module "justice_gov_uk_records" {
     {
       name = "mtcbvhuukiwezp7optr5eiwl4y3heciz._domainkey.magistrates-recruitment.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "mtcbvhuukiwezp7optr5eiwl4y3heciz.dkim.amazonses.com"
       ]
@@ -2175,7 +2426,8 @@ module "justice_gov_uk_records" {
     {
       name = "mail.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.177.182"
       ]
@@ -2183,7 +2435,8 @@ module "justice_gov_uk_records" {
     {
       name = "mail2.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "208.51.151.2"
       ]
@@ -2191,7 +2444,8 @@ module "justice_gov_uk_records" {
     {
       name = "makeaplea.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns-427.awsdns-53.com.", 
         "ns-895.awsdns-47.net.", 
@@ -2202,7 +2456,8 @@ module "justice_gov_uk_records" {
     {
       name = "mal01.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "195.27.17.254"
       ]
@@ -2210,7 +2465,8 @@ module "justice_gov_uk_records" {
     {
       name = "mal03.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "195.59.62.70"
       ]
@@ -2218,7 +2474,8 @@ module "justice_gov_uk_records" {
     {
       name = "mappa.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "31.25.189.126"
       ]
@@ -2226,7 +2483,8 @@ module "justice_gov_uk_records" {
     {
       name = "mappa.justice.gov.uk."
       type = "MX"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "5 mail.hosting.inovem.com."
       ]
@@ -2234,7 +2492,8 @@ module "justice_gov_uk_records" {
     {
       name = "mappa.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 ~all"
       ]
@@ -2242,7 +2501,8 @@ module "justice_gov_uk_records" {
     {
       name = "_asvdns-0ead356d-9a3e-4758-a5f8-b6986baf28de.mappa.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "asvdns_0eec491c-2e7e-4186-a557-3aad3eef0498"
       ]
@@ -2250,7 +2510,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc.mappa.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DMARC1;p=none;rua=mailto:dmarc-rua@dmarc.service.gov.uk"
       ]
@@ -2258,7 +2519,8 @@ module "justice_gov_uk_records" {
     {
       name = "_smtp._tls.mappa.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=TLSRPTv1;rua=mailto:tls-rua@mailcheck.service.ncsc.gov.uk"
       ]
@@ -2266,7 +2528,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.mappa.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "mappa.justice.gov.uk."
       ]
@@ -2274,7 +2537,8 @@ module "justice_gov_uk_records" {
     {
       name = "markuppp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "83.151.216.179"
       ]
@@ -2282,7 +2546,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.markuppp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "83.151.216.179"
       ]
@@ -2290,7 +2555,8 @@ module "justice_gov_uk_records" {
     {
       name = "mcnotify.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "hmcts-live-ext.azurefd.net"
       ]
@@ -2298,7 +2564,8 @@ module "justice_gov_uk_records" {
     {
       name = "mctest.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "195.59.75.157"
       ]
@@ -2306,7 +2573,8 @@ module "justice_gov_uk_records" {
     {
       name = "mercuryforms.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "10.40.42.15"
       ]
@@ -2314,7 +2582,8 @@ module "justice_gov_uk_records" {
     {
       name = "mliveconfig.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "10.40.55.11"
       ]
@@ -2322,7 +2591,8 @@ module "justice_gov_uk_records" {
     {
       name = "mliveintel.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "10.40.55.12"
       ]
@@ -2330,7 +2600,8 @@ module "justice_gov_uk_records" {
     {
       name = "mlivemid.justice.gov.uk."
       type = "A"
-      ttl  = 602
+      ttl = 602
+      
       records = [
         "10.40.55.13"
       ]
@@ -2338,7 +2609,8 @@ module "justice_gov_uk_records" {
     {
       name = "mppconfig.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "10.40.54.12"
       ]
@@ -2346,7 +2618,8 @@ module "justice_gov_uk_records" {
     {
       name = "mppintel.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "10.40.54.13"
       ]
@@ -2354,7 +2627,8 @@ module "justice_gov_uk_records" {
     {
       name = "mppmid.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "10.40.54.14"
       ]
@@ -2362,7 +2636,8 @@ module "justice_gov_uk_records" {
     {
       name = "mrs.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.177.182"
       ]
@@ -2370,7 +2645,8 @@ module "justice_gov_uk_records" {
     {
       name = "mrs1.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.177.131"
       ]
@@ -2378,7 +2654,8 @@ module "justice_gov_uk_records" {
     {
       name = "mrs2.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.176.142"
       ]
@@ -2386,7 +2663,8 @@ module "justice_gov_uk_records" {
     {
       name = "mrs3.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.177.133"
       ]
@@ -2394,7 +2672,8 @@ module "justice_gov_uk_records" {
     {
       name = "mrs4.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "157.203.176.143"
       ]
@@ -2402,7 +2681,8 @@ module "justice_gov_uk_records" {
     {
       name = "msoid.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "clientconfig.microsoftonline-p.net."
       ]
@@ -2410,16 +2690,18 @@ module "justice_gov_uk_records" {
     {
       name = "mta-sts.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "Z2FDTNDATAQYW2"
-        name                   = "d10ub3a63bvlod.cloudfront.net."
+        zone_id = "Z2FDTNDATAQYW2"
+        name = "d10ub3a63bvlod.cloudfront.net."
         evaluate_target_health = true
       }
     }, 
     {
       name = "_19c1935c338c1a473a54c55c3260a113.mta-sts.justice.gov.uk."
       type = "CNAME"
-      ttl  = 60
+      ttl = 60
+      
       records = [
         "_deaf7cf7dd6d67b9f69b147486e6a1c9.pczglchxlc.acm-validations.aws."
       ]
@@ -2427,7 +2709,8 @@ module "justice_gov_uk_records" {
     {
       name = "nac.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-2001.awsdns-58.co.uk.", 
         "ns-1446.awsdns-52.org.", 
@@ -2438,7 +2721,8 @@ module "justice_gov_uk_records" {
     {
       name = "dev.nac.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-508.awsdns-63.com.", 
         "ns-722.awsdns-26.net.", 
@@ -2449,7 +2733,8 @@ module "justice_gov_uk_records" {
     {
       name = "prep.nac.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-1494.awsdns-58.org.", 
         "ns-400.awsdns-50.com.", 
@@ -2460,7 +2745,8 @@ module "justice_gov_uk_records" {
     {
       name = "network.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "reserverd for internal use"
       ]
@@ -2468,7 +2754,8 @@ module "justice_gov_uk_records" {
     {
       name = "nicts.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "0 nicts-justice-gov-uk.mail.protection.outlook.com."
       ]
@@ -2476,7 +2763,8 @@ module "justice_gov_uk_records" {
     {
       name = "nicts.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 include:spf.protection.outlook.com -all"
       ]
@@ -2484,7 +2772,8 @@ module "justice_gov_uk_records" {
     {
       name = "_asvdns-736b1b07-bcd9-4ef2-a110-c3a88035bb1f.nicts.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "asvdns_cebbfdc4-f8c6-4522-9ccb-9a9a86d29fa2"
       ]
@@ -2492,7 +2781,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector1._domainkey.nicts.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "selector1-nicts-justice-gov-uk._domainkey.JusticeUK.onmicrosoft.com"
       ]
@@ -2500,7 +2790,8 @@ module "justice_gov_uk_records" {
     {
       name = "selector2._domainkey.nicts.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "selector2-nicts-justice-gov-uk._domainkey.JusticeUK.onmicrosoft.com"
       ]
@@ -2508,7 +2799,8 @@ module "justice_gov_uk_records" {
     {
       name = "llrs.nle.justice.gov.uk."
       type = "A"
-      ttl  = 60
+      ttl = 60
+      
       records = [
         "195.59.75.138"
       ]
@@ -2516,7 +2808,8 @@ module "justice_gov_uk_records" {
     {
       name = "nomisqc.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-1849.awsdns-39.co.uk.", 
         "ns-486.awsdns-60.com.", 
@@ -2527,7 +2820,8 @@ module "justice_gov_uk_records" {
     {
       name = "qc10.nomisqc.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "nomisqc.justice.gov.uk."
       ]
@@ -2535,7 +2829,8 @@ module "justice_gov_uk_records" {
     {
       name = "noms.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "noms.homeoffice.gov.uk."
       ]
@@ -2543,7 +2838,8 @@ module "justice_gov_uk_records" {
     {
       name = "_asvdns-1fb4a403-1fa4-4fb7-b867-57971e9f014b.noms.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "asvdns_0d95f6e5-d844-4069-a286-9e2e44b3cae1"
       ]
@@ -2551,7 +2847,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.noms.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "www.noms.homeoffice.gov.uk."
       ]
@@ -2559,7 +2856,8 @@ module "justice_gov_uk_records" {
     {
       name = "noreply.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "0 justice-gov-uk.mail.protection.outlook.com."
       ]
@@ -2567,7 +2865,8 @@ module "justice_gov_uk_records" {
     {
       name = "noreply.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 ip4:194.33.196.8/32 ip4:194.33.192.8/32 ip4:194.33.192.201/32 ip4:194.33.192.202/32 ip4:194.33.196.201/32 ip4:194.33.196.202/32 ip4:195.59.75.140/32 ip4:195.59.75.12/32 -all"
       ]
@@ -2575,7 +2874,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc.noreply.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "_dmarc_ttp_policy.justice.gov.uk"
       ]
@@ -2583,7 +2883,8 @@ module "justice_gov_uk_records" {
     {
       name = "fp01._domainkey.noreply.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DKIM1\\;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCN/Dnp6gO1PJVQgLljNpkkvVUH/G04C2QkC28j8ddX13V7MAvDWpCxnUfTPy8C27njUImSa8b2TwyeA0P2ONPHQhW652tSxZa0+VT2b5qRFhne3UigZEeKhix988mhlOTO+6PN4+JR7MPXSeE0iGGPWm8m4JsxeaVvwN0XC92yvQIDAQAB\\;"
       ]
@@ -2591,7 +2892,8 @@ module "justice_gov_uk_records" {
     {
       name = "official.justice.gov.uk."
       type = "MX"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "0 official-justice-gov-uk.mail.protection.outlook.com"
       ]
@@ -2599,7 +2901,8 @@ module "justice_gov_uk_records" {
     {
       name = "official.justice.gov.uk."
       type = "TXT"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "v=spf1 include:spf.protection.outlook.com -all", 
         "atlassian-domain-verification=eZYa71sfUYC3GKWDAnR6IDBAD7m0PkEaKKOYkM2cjWj8or0XT0PwqvFpqTLtaNby"
@@ -2608,7 +2911,8 @@ module "justice_gov_uk_records" {
     {
       name = "_asvdns-6a6085f3-b171-46b9-bdd0-7462d5e2018b.official.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "asvdns_742565c2-efd3-41d0-9d2d-d0b1a59c470c"
       ]
@@ -2616,7 +2920,8 @@ module "justice_gov_uk_records" {
     {
       name = "_sipfederationtls._tcp.official.justice.gov.uk."
       type = "SRV"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "100 1 5061 sipfed.online.lync.com"
       ]
@@ -2624,7 +2929,8 @@ module "justice_gov_uk_records" {
     {
       name = "_sip._tls.official.justice.gov.uk."
       type = "SRV"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "100 1 443 sipdir.online.lync.com"
       ]
@@ -2632,7 +2938,8 @@ module "justice_gov_uk_records" {
     {
       name = "autodiscover.official.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "autodiscover.outlook.com"
       ]
@@ -2640,7 +2947,8 @@ module "justice_gov_uk_records" {
     {
       name = "enterpriseenrollment.official.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "enterpriseenrollment.manage.microsoft.com"
       ]
@@ -2648,7 +2956,8 @@ module "justice_gov_uk_records" {
     {
       name = "enterpriseregistration.official.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "enterpriseregistration.windows.net"
       ]
@@ -2656,7 +2965,8 @@ module "justice_gov_uk_records" {
     {
       name = "lyncdiscover.official.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "webdir.online.lync.com"
       ]
@@ -2664,7 +2974,8 @@ module "justice_gov_uk_records" {
     {
       name = "sip.official.justice.gov.uk."
       type = "CNAME"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "sipdir.online.lync.com"
       ]
@@ -2672,7 +2983,8 @@ module "justice_gov_uk_records" {
     {
       name = "old.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "www.justice.gov.uk."
       ]
@@ -2680,7 +2992,8 @@ module "justice_gov_uk_records" {
     {
       name = "one3one.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "bouncer-cdn.production.govuk.service.gov.uk"
       ]
@@ -2688,7 +3001,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.one3one.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "bouncer-cdn.production.govuk.service.gov.uk"
       ]
@@ -2696,7 +3010,8 @@ module "justice_gov_uk_records" {
     {
       name = "open.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "bouncer-cdn.production.govuk.service.gov.uk"
       ]
@@ -2704,7 +3019,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.open.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "bouncer-cdn.production.govuk.service.gov.uk"
       ]
@@ -2712,7 +3028,8 @@ module "justice_gov_uk_records" {
     {
       name = "optic.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "0 optic-justice-gov-uk.mail.protection.outlook.com"
       ]
@@ -2720,7 +3037,8 @@ module "justice_gov_uk_records" {
     {
       name = "optic.justice.gov.uk."
       type = "TXT"
-      ttl  = 60
+      ttl = 60
+      
       records = [
         "amazonses:brpgA+nYWbeXbq05BWkw0znt7qzeOXcRRork8ZaTJlQ=", 
         "v=spf1 include:spf.protection.outlook.com -all"
@@ -2729,7 +3047,8 @@ module "justice_gov_uk_records" {
     {
       name = "_amazonses.optic.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "brpgA+nYWbeXbq05BWkw0znt7qzeOXcRRork8ZaTJlQ="
       ]
@@ -2737,7 +3056,8 @@ module "justice_gov_uk_records" {
     {
       name = "_asvdns-e76f185d-7489-45a7-8dac-9deb2b117dbd.optic.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "asvdns_5f1424e5-f06c-4267-922b-af94cf2ff3a1"
       ]
@@ -2745,7 +3065,8 @@ module "justice_gov_uk_records" {
     {
       name = "4wlxo7xgsbccmlyejcjro4pldynv4jnc._domainkey.optic.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "4wlxo7xgsbccmlyejcjro4pldynv4jnc.dkim.amazonses.com"
       ]
@@ -2753,7 +3074,8 @@ module "justice_gov_uk_records" {
     {
       name = "lgs2yxnfgsgfui3txt56yfesyxxqhlxv._domainkey.optic.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "lgs2yxnfgsgfui3txt56yfesyxxqhlxv.dkim.amazonses.com"
       ]
@@ -2761,7 +3083,8 @@ module "justice_gov_uk_records" {
     {
       name = "mf4qadk67hcip4pdicehyqyx3fabzjg7._domainkey.optic.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "mf4qadk67hcip4pdicehyqyx3fabzjg7.dkim.amazonses.com"
       ]
@@ -2769,7 +3092,8 @@ module "justice_gov_uk_records" {
     {
       name = "pcnotify.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "hmcts-live-ext.azurefd.net"
       ]
@@ -2777,7 +3101,8 @@ module "justice_gov_uk_records" {
     {
       name = "afdverify.pcnotify.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "afdverify.hmcts-live-ext.azurefd.net"
       ]
@@ -2785,7 +3110,8 @@ module "justice_gov_uk_records" {
     {
       name = "pctest.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "195.59.75.156"
       ]
@@ -2793,7 +3119,8 @@ module "justice_gov_uk_records" {
     {
       name = "pleuralplaques.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "213.123.61.54"
       ]
@@ -2801,7 +3128,8 @@ module "justice_gov_uk_records" {
     {
       name = "ppud.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "216.35.235.66"
       ]
@@ -2809,7 +3137,8 @@ module "justice_gov_uk_records" {
     {
       name = "_asvdns-6eec04e1-6ddd-4b7e-b87b-139a3adb8348.ppud.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "asvdns_71e19631-a469-42d9-a31a-142fa1f7bb22"
       ]
@@ -2817,7 +3146,8 @@ module "justice_gov_uk_records" {
     {
       name = "email.ppud.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "13.42.91.90"
       ]
@@ -2825,16 +3155,18 @@ module "justice_gov_uk_records" {
     {
       name = "internaltest.ppud.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "ppud-alb-1480909259.eu-west-2.elb.amazonaws.com."
+        zone_id = "ZHURV8PSTC4K8"
+        name = "ppud-alb-1480909259.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "da7smfnubppxwxgxaowqamccdqhcozpu._domainkey.internaltest.ppud.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "da7smfnubppxwxgxaowqamccdqhcozpu.dkim.amazonses.com"
       ]
@@ -2842,7 +3174,8 @@ module "justice_gov_uk_records" {
     {
       name = "pcjuq4p5sm3aixid6ygchuzdzgafb4k3._domainkey.internaltest.ppud.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "pcjuq4p5sm3aixid6ygchuzdzgafb4k3.dkim.amazonses.com"
       ]
@@ -2850,7 +3183,8 @@ module "justice_gov_uk_records" {
     {
       name = "vkssamelrhssixbcd3ljtet6ir336zjm._domainkey.internaltest.ppud.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "vkssamelrhssixbcd3ljtet6ir336zjm.dkim.amazonses.com"
       ]
@@ -2858,7 +3192,8 @@ module "justice_gov_uk_records" {
     {
       name = "noreply.internaltest.ppud.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 feedback-smtp.eu-west-2.amazonses.com"
       ]
@@ -2866,7 +3201,8 @@ module "justice_gov_uk_records" {
     {
       name = "noreply.internaltest.ppud.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 include:amazonses.com -all"
       ]
@@ -2874,7 +3210,8 @@ module "justice_gov_uk_records" {
     {
       name = "test.noreply.internaltest.ppud.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 feedback-smtp.eu-west-2.amazonses.com"
       ]
@@ -2882,7 +3219,8 @@ module "justice_gov_uk_records" {
     {
       name = "test.noreply.internaltest.ppud.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 include:amazonses.com ~all"
       ]
@@ -2890,7 +3228,8 @@ module "justice_gov_uk_records" {
     {
       name = "secure-email.ppud.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "3.11.130.215"
       ]
@@ -2898,7 +3237,8 @@ module "justice_gov_uk_records" {
     {
       name = "cjsm.secure-email.ppud.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 relay1.cjsm.secure-email.ppud.justice.gov.uk", 
         "10 relay2.cjsm.secure-email.ppud.justice.gov.uk"
@@ -2907,7 +3247,8 @@ module "justice_gov_uk_records" {
     {
       name = "cjsm.secure-email.ppud.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 ip4:18.169.26.236 ip4:3.9.111.144 ~all"
       ]
@@ -2915,7 +3256,8 @@ module "justice_gov_uk_records" {
     {
       name = "_dmarc.cjsm.secure-email.ppud.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DMARC1; p=quarantine; rua=mailto:cjsm.helpdesk@egress.com;"
       ]
@@ -2923,7 +3265,8 @@ module "justice_gov_uk_records" {
     {
       name = "s1._domainkey.cjsm.secure-email.ppud.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DKIM1;t=s;\"\"p=MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAqBp46Uo7o6UlqVbKLAQ/ZzcVu2ThvrLoWnbd11pJKKukuUBLch5J4UhB9TeMOnM99RfilzD/srAyV6ZZuOw1oST4OMYlc7zoe+QG3OGjY4JPO9vyhSQQvuDdb4\"\"1esPtaMfdeF6DhNGEux10erIvSwnxYSWQf8vM7OpvLX5S+XUA4yCMN8XspgUjtqeLaoSah7tEjjvv3hT/HDbj4WXjpkXojSynFPdQB4x368cBljG4ltPSR88MCLun/k1kII2sIadLnqSqS3IZd5EvJQrjMsgCeeXD3m\"\"KObrksp0TxkM7ASPbUAQAcnXksCMP0kqdF5dtcB14tlgZG6qD5kJNO+IIrFvjsipu126LsVceaQ6ShY5A7POW/L+V9p0dcLNxGIMh196kAG8GLDWGw+uWEeZ+K6HyTdcasQW3Y5+ukKbI1mxHjyUz6kdC6jDvYl8xse4H5yWZ/tYMbcMTvob8pMZMLWuEkSrRGJDAFrVydjSs3cC7N08tWVVO1rCXdGKhgjyeUJxj2nDlHmLsfIxv\"\"cTdLSzqdKNKl3uNGs8ewzB3VYJT8maovUl3gQIZsgMGHdHIlr2jqQ7SBFF97mxvEmra+rHpFlnXcg7X03OiZYuf5YtIWxFjUULZq99O9PMgnNMqyJVUmUQxhMgwAGWZfZteIvZVi8qlkLFLrLMuWggEW8CAwEAAQ=="
       ]
@@ -2931,7 +3274,8 @@ module "justice_gov_uk_records" {
     {
       name = "relay0.cjsm.secure-email.ppud.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10.27.9.39"
       ]
@@ -2939,7 +3283,8 @@ module "justice_gov_uk_records" {
     {
       name = "relay0.cjsm.secure-email.ppud.justice.gov.uk."
       type = "PTR"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10.27.9.39"
       ]
@@ -2947,7 +3292,8 @@ module "justice_gov_uk_records" {
     {
       name = "relay1.cjsm.secure-email.ppud.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "3.9.111.144"
       ]
@@ -2955,7 +3301,8 @@ module "justice_gov_uk_records" {
     {
       name = "relay1.cjsm.secure-email.ppud.justice.gov.uk."
       type = "PTR"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "3.9.111.144"
       ]
@@ -2963,7 +3310,8 @@ module "justice_gov_uk_records" {
     {
       name = "relay2.cjsm.secure-email.ppud.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "18.169.26.236"
       ]
@@ -2971,7 +3319,8 @@ module "justice_gov_uk_records" {
     {
       name = "relay2.cjsm.secure-email.ppud.justice.gov.uk."
       type = "PTR"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "18.169.26.236"
       ]
@@ -2979,7 +3328,8 @@ module "justice_gov_uk_records" {
     {
       name = "training.ppud.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "51.247.2.120"
       ]
@@ -2987,16 +3337,18 @@ module "justice_gov_uk_records" {
     {
       name = "uat.ppud.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "internal-ppud-alb-1479410725.eu-west-2.elb.amazonaws.com."
+        zone_id = "ZHURV8PSTC4K8"
+        name = "internal-ppud-alb-1479410725.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "bs7fgun22ztsnycpk3h3kz55apoqkmpw._domainkey.uat.ppud.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "bs7fgun22ztsnycpk3h3kz55apoqkmpw.dkim.amazonses.com"
       ]
@@ -3004,7 +3356,8 @@ module "justice_gov_uk_records" {
     {
       name = "jwq5kms72xtfzhmkfmrcnk5wyorhmfqv._domainkey.uat.ppud.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "jwq5kms72xtfzhmkfmrcnk5wyorhmfqv.dkim.amazonses.com"
       ]
@@ -3012,7 +3365,8 @@ module "justice_gov_uk_records" {
     {
       name = "lli5y5gi7j6oibymkdt3aeovvaumzmkc._domainkey.uat.ppud.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "lli5y5gi7j6oibymkdt3aeovvaumzmkc.dkim.amazonses.com"
       ]
@@ -3020,7 +3374,8 @@ module "justice_gov_uk_records" {
     {
       name = "noreply.uat.ppud.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 feedback-smtp.eu-west-2.amazonses.com"
       ]
@@ -3028,7 +3383,8 @@ module "justice_gov_uk_records" {
     {
       name = "noreply.uat.ppud.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 include:amazonses.com ~all"
       ]
@@ -3036,16 +3392,18 @@ module "justice_gov_uk_records" {
     {
       name = "wam.ppud.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "wam-alb-prod-533496256.eu-west-2.elb.amazonaws.com."
+        zone_id = "ZHURV8PSTC4K8"
+        name = "wam-alb-prod-533496256.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "_asvdns-b5e0ed15-644e-40f9-87b0-835bb538bae9.wam.ppud.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "asvdns_62bc260c-2474-45f0-81c1-9b406bbe2212"
       ]
@@ -3053,34 +3411,38 @@ module "justice_gov_uk_records" {
     {
       name = "waminternaltest.ppud.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "wam-alb-dev-561040821.eu-west-2.elb.amazonaws.com."
+        zone_id = "ZHURV8PSTC4K8"
+        name = "wam-alb-dev-561040821.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "wamuat.ppud.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "wam-alb-uat-1048916145.eu-west-2.elb.amazonaws.com."
+        zone_id = "ZHURV8PSTC4K8"
+        name = "wam-alb-uat-1048916145.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "www.ppud.justice.gov.uk."
       type = "A"
+      
       alias = {
-        zone_id                = "ZHURV8PSTC4K8"
-        name                   = "internal-ppud-alb-108079999.eu-west-2.elb.amazonaws.com."
+        zone_id = "ZHURV8PSTC4K8"
+        name = "internal-ppud-alb-108079999.eu-west-2.elb.amazonaws.com."
         evaluate_target_health = false
       }
     }, 
     {
       name = "pre-recorded-evidence.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns1-02.azure-dns.com.", 
         "ns2-02.azure-dns.net.", 
@@ -3091,7 +3453,8 @@ module "justice_gov_uk_records" {
     {
       name = "probation.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "probation.homeoffice.gov.uk."
       ]
@@ -3099,7 +3462,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.probation.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "www.probation.homeoffice.gov.uk."
       ]
@@ -3107,7 +3471,8 @@ module "justice_gov_uk_records" {
     {
       name = "procurement.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "85.133.48.156"
       ]
@@ -3115,7 +3480,8 @@ module "justice_gov_uk_records" {
     {
       name = "producttracker.justice.gov.uk."
       type = "NS"
-      ttl  = 43200
+      ttl = 43200
+      
       records = [
         "ns-58.awsdns-07.com.", 
         "ns-597.awsdns-10.net.", 
@@ -3126,7 +3492,8 @@ module "justice_gov_uk_records" {
     {
       name = "sbc1.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "194.74.1.27"
       ]
@@ -3134,7 +3501,8 @@ module "justice_gov_uk_records" {
     {
       name = "sbc2.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "194.73.190.251"
       ]
@@ -3142,7 +3510,8 @@ module "justice_gov_uk_records" {
     {
       name = "sdt.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "firewall-prod-int-palo-sdtprod.uksouth.cloudapp.azure.com"
       ]
@@ -3150,7 +3519,8 @@ module "justice_gov_uk_records" {
     {
       name = "commissioning.sdt.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "firewall-prod-int-palo-sdtcommprod.uksouth.cloudapp.azure.com"
       ]
@@ -3158,7 +3528,8 @@ module "justice_gov_uk_records" {
     {
       name = "sendmoneytoaprisoner.justice.gov.uk."
       type = "NS"
-      ttl  = 3600
+      ttl = 3600
+      
       records = [
         "ns-1741.awsdns-25.co.uk.", 
         "ns-277.awsdns-34.com.", 
@@ -3169,7 +3540,8 @@ module "justice_gov_uk_records" {
     {
       name = "sentencing.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "80.86.42.110"
       ]
@@ -3177,7 +3549,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.sentencing.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "80.86.42.110"
       ]
@@ -3185,7 +3558,8 @@ module "justice_gov_uk_records" {
     {
       name = "service.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns-187.awsdns-23.com.", 
         "ns-978.awsdns-58.net.", 
@@ -3196,7 +3570,8 @@ module "justice_gov_uk_records" {
     {
       name = "sip.justice.gov.uk."
       type = "CNAME"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "sipdir.online.lync.com."
       ]
@@ -3204,7 +3579,8 @@ module "justice_gov_uk_records" {
     {
       name = "smtp.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "194.33.196.8", 
         "194.33.192.8"
@@ -3213,7 +3589,8 @@ module "justice_gov_uk_records" {
     {
       name = "smtp01.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "194.33.192.201"
       ]
@@ -3221,7 +3598,8 @@ module "justice_gov_uk_records" {
     {
       name = "smtp02.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "194.33.192.202"
       ]
@@ -3229,7 +3607,8 @@ module "justice_gov_uk_records" {
     {
       name = "smtp03.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "194.33.196.201"
       ]
@@ -3237,7 +3616,8 @@ module "justice_gov_uk_records" {
     {
       name = "smtp04.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "194.33.196.202"
       ]
@@ -3245,7 +3625,8 @@ module "justice_gov_uk_records" {
     {
       name = "srs0001.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "62.205.109.201"
       ]
@@ -3253,7 +3634,8 @@ module "justice_gov_uk_records" {
     {
       name = "srs0002.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "62.205.109.203"
       ]
@@ -3261,7 +3643,8 @@ module "justice_gov_uk_records" {
     {
       name = "srs0003.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "212.137.36.233"
       ]
@@ -3269,7 +3652,8 @@ module "justice_gov_uk_records" {
     {
       name = "srs0004.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "212.137.36.234"
       ]
@@ -3277,7 +3661,8 @@ module "justice_gov_uk_records" {
     {
       name = "google._domainkey.courtstore.staging.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApqfF0gFxKSvqon8AyUse9ZOPILWxtEp\"\"Wvul48X42AzRXYVJDIQEAwBY4yPsMdg2DZA4v8BfkVS8XvcxpdrQ9Nn45q9kq7HOFd/Se0me\"\"Y41HJVbk8lfZ1/vEDsGmHcibHc0C0JFx/ggqeoCAcv2llGV5+qp1EdUgy\"\"XoBkKOz7IyoBjKQFQ39bVb17F4jOQ8HcbxE2sYon69nmDvB084jCToz2FYm\"\"b4q087/SqYv6p7Td6VU4Ndsfm81tV9LRJRfNA3wbiXfD6bN9HWHzWCKQpnzr9Mxz3Zwad0lIhaFYqbEux0LyyuDrFRD0x+7mTJCCnBgDJUXtp7GhHie8hUgV6/wIDAQAB"
       ]
@@ -3285,7 +3670,8 @@ module "justice_gov_uk_records" {
     {
       name = "cms-staging.court.store.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "13.42.88.61"
       ]
@@ -3293,7 +3679,8 @@ module "justice_gov_uk_records" {
     {
       name = "cms.court.store.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "51.231.76.132"
       ]
@@ -3301,7 +3688,8 @@ module "justice_gov_uk_records" {
     {
       name = "libra-staging.court.store.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "13.42.88.61"
       ]
@@ -3309,7 +3697,8 @@ module "justice_gov_uk_records" {
     {
       name = "libra.court.store.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "51.231.76.132"
       ]
@@ -3317,7 +3706,8 @@ module "justice_gov_uk_records" {
     {
       name = "staff-staging.court.store.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "18.168.187.252"
       ]
@@ -3325,7 +3715,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.staff-staging.court.store.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "18.168.187.252"
       ]
@@ -3333,7 +3724,8 @@ module "justice_gov_uk_records" {
     {
       name = "staff.court.store.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "51.231.76.135"
       ]
@@ -3341,7 +3733,8 @@ module "justice_gov_uk_records" {
     {
       name = "_39afabf80f9d881f854469a933e1ed5c.staff.court.store.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "40188DC7EAFFE4CDF630DDAA501F3337.741BAF40D1FE1A6AD69925E811C53C94.552c8bdf52e4b005b87a.sectigo.com."
       ]
@@ -3349,7 +3742,8 @@ module "justice_gov_uk_records" {
     {
       name = "sts.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns1.uk.atos.net.", 
         "ns2.uk.atos.net.", 
@@ -3359,7 +3753,8 @@ module "justice_gov_uk_records" {
     {
       name = "test.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns-590.awsdns-09.net.", 
         "ns-455.awsdns-56.com.", 
@@ -3370,7 +3765,8 @@ module "justice_gov_uk_records" {
     {
       name = "smtp.test.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "195.59.75.12", 
         "195.59.75.140"
@@ -3379,7 +3775,8 @@ module "justice_gov_uk_records" {
     {
       name = "uatclaonlineadvice.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "81.105.223.243"
       ]
@@ -3387,7 +3784,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.uatclaonlineadvice.justice.gov.uk."
       type = "A"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "81.105.223.243"
       ]
@@ -3395,7 +3793,8 @@ module "justice_gov_uk_records" {
     {
       name = "_h323cs._tcp.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 1720 px01.video.justice.gov.uk", 
         "10 10 1720 px02.video.justice.gov.uk"
@@ -3404,7 +3803,8 @@ module "justice_gov_uk_records" {
     {
       name = "_pexapp._tcp.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 443 px01.video.justice.gov.uk", 
         "10 10 443 px02.video.justice.gov.uk"
@@ -3413,7 +3813,8 @@ module "justice_gov_uk_records" {
     {
       name = "_sip._tcp.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 5060 px01.video.justice.gov.uk", 
         "10 10 5060 px02.video.justice.gov.uk"
@@ -3422,7 +3823,8 @@ module "justice_gov_uk_records" {
     {
       name = "_sipfederationtls._tcp.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 5061 sip.video.justice.gov.uk"
       ]
@@ -3430,7 +3832,8 @@ module "justice_gov_uk_records" {
     {
       name = "_sips._tcp.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 5061 px01.video.justice.gov.uk", 
         "10 10 5061 px02.video.justice.gov.uk"
@@ -3439,7 +3842,8 @@ module "justice_gov_uk_records" {
     {
       name = "_h323ls._udp.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 1719 px01.video.justice.gov.uk", 
         "10 10 1719 px02.video.justice.gov.uk"
@@ -3448,7 +3852,8 @@ module "justice_gov_uk_records" {
     {
       name = "_h323rs._udp.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 1719 px01.video.justice.gov.uk", 
         "10 10 1719 px02.video.justice.gov.uk"
@@ -3457,7 +3862,8 @@ module "justice_gov_uk_records" {
     {
       name = "meet.video.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "35.246.120.206"
       ]
@@ -3465,7 +3871,8 @@ module "justice_gov_uk_records" {
     {
       name = "_h323cs._tcp.meet.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 1720 px01.meet.video.justice.gov.uk", 
         "10 10 1720 px02.meet.video.justice.gov.uk"
@@ -3474,7 +3881,8 @@ module "justice_gov_uk_records" {
     {
       name = "_pexapp._tcp.meet.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 443 px01.meet.video.justice.gov.uk", 
         "10 10 443 px02.meet.video.justice.gov.uk"
@@ -3483,7 +3891,8 @@ module "justice_gov_uk_records" {
     {
       name = "_sip._tcp.meet.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 5060 px01.meet.video.justice.gov.uk", 
         "10 10 5060 px02.meet.video.justice.gov.uk"
@@ -3492,7 +3901,8 @@ module "justice_gov_uk_records" {
     {
       name = "_sipfederationtls._tcp.meet.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 5061 sip.meet.video.justice.gov.uk"
       ]
@@ -3500,7 +3910,8 @@ module "justice_gov_uk_records" {
     {
       name = "_sips._tcp.meet.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 5061 px01.meet.video.justice.gov.uk", 
         "10 10 5061 px02.meet.video.justice.gov.uk"
@@ -3509,7 +3920,8 @@ module "justice_gov_uk_records" {
     {
       name = "_h323ls._udp.meet.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 1719 px01.meet.video.justice.gov.uk", 
         "10 10 1719 px02.meet.video.justice.gov.uk"
@@ -3518,7 +3930,8 @@ module "justice_gov_uk_records" {
     {
       name = "_h323rs._udp.meet.video.justice.gov.uk."
       type = "SRV"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 10 1719 px01.meet.video.justice.gov.uk", 
         "10 10 1719 px02.meet.video.justice.gov.u"
@@ -3527,7 +3940,8 @@ module "justice_gov_uk_records" {
     {
       name = "join.meet.video.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "35.246.120.206"
       ]
@@ -3535,7 +3949,8 @@ module "justice_gov_uk_records" {
     {
       name = "px01.meet.video.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "35.246.64.24"
       ]
@@ -3543,7 +3958,8 @@ module "justice_gov_uk_records" {
     {
       name = "px02.meet.video.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "35.246.125.146"
       ]
@@ -3551,7 +3967,8 @@ module "justice_gov_uk_records" {
     {
       name = "sip.meet.video.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "35.246.64.24", 
         "35.246.125.146"
@@ -3560,7 +3977,8 @@ module "justice_gov_uk_records" {
     {
       name = "px01.video.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "35.246.26.18"
       ]
@@ -3568,7 +3986,8 @@ module "justice_gov_uk_records" {
     {
       name = "px02.video.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "35.246.61.112"
       ]
@@ -3576,7 +3995,8 @@ module "justice_gov_uk_records" {
     {
       name = "sip.video.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "35.246.26.18", 
         "35.246.61.112"
@@ -3585,7 +4005,8 @@ module "justice_gov_uk_records" {
     {
       name = "videoportal.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10.171.6.59", 
         "10.172.6.59"
@@ -3594,7 +4015,8 @@ module "justice_gov_uk_records" {
     {
       name = "vpn.justice.gov.uk."
       type = "NS"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "ns-1088.awsdns-08.org.", 
         "ns-388.awsdns-48.com.", 
@@ -3605,7 +4027,8 @@ module "justice_gov_uk_records" {
     {
       name = "webchat.justice.gov.uk."
       type = "NS"
-      ttl  = 900
+      ttl = 900
+      
       records = [
         "ns-25.awsdns-03.com.", 
         "ns-787.awsdns-34.net.", 
@@ -3616,7 +4039,8 @@ module "justice_gov_uk_records" {
     {
       name = "www.justice.gov.uk."
       type = "A"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "185.64.253.120"
       ]
@@ -3624,7 +4048,8 @@ module "justice_gov_uk_records" {
     {
       name = "_acme-challenge.www.justice.gov.uk."
       type = "CNAME"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "tz6w9gwqaey5j0h4oq.fastly-validations.com"
       ]
@@ -3632,7 +4057,8 @@ module "justice_gov_uk_records" {
     {
       name = "_github-challenge-ministryofjustice.www.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "80b1cb80e6"
       ]
@@ -3640,7 +4066,8 @@ module "justice_gov_uk_records" {
     {
       name = "_github-challenge-moj-analytical-services.www.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "a75165038c"
       ]
@@ -3648,7 +4075,8 @@ module "justice_gov_uk_records" {
     {
       name = "xhibit.justice.gov.uk."
       type = "NS"
-      ttl  = 600
+      ttl = 600
+      
       records = [
         "ns-5.awsdns-00.com.", 
         "ns-632.awsdns-15.net.", 
@@ -3659,7 +4087,8 @@ module "justice_gov_uk_records" {
     {
       name = "ybtj.justice.gov.uk."
       type = "NS"
-      ttl  = 900
+      ttl = 900
+      
       records = [
         "ns-126.awsdns-15.com.", 
         "ns-695.awsdns-22.net.", 
@@ -3670,7 +4099,8 @@ module "justice_gov_uk_records" {
     {
       name = "yjaf-smtp.justice.gov.uk."
       type = "MX"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "10 feedback-smtp.eu-west-2.amazonses.com"
       ]
@@ -3678,7 +4108,8 @@ module "justice_gov_uk_records" {
     {
       name = "yjaf-smtp.justice.gov.uk."
       type = "TXT"
-      ttl  = 300
+      ttl = 300
+      
       records = [
         "v=spf1 include:amazonses.com -all"
       ]
@@ -3686,7 +4117,8 @@ module "justice_gov_uk_records" {
     {
       name = "yjbpublications.justice.gov.uk."
       type = "NS"
-      ttl  = 900
+      ttl = 900
+      
       records = [
         "ns-247.awsdns-30.com.", 
         "ns-536.awsdns-03.net.", 
@@ -3697,7 +4129,8 @@ module "justice_gov_uk_records" {
     {
       name = "yjils.justice.gov.uk."
       type = "NS"
-      ttl  = 900
+      ttl = 900
+      
       records = [
         "ns-294.awsdns-36.com.", 
         "ns-526.awsdns-01.net.", 
