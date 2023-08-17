@@ -1,42 +1,65 @@
 module "{{ name | replace(".", "_") }}_zone" {
   source = "./modules/route53/zone"
-
-  name        = "{{ zone.HostedZone.Name }}"
+  name = "{{ zone.HostedZone.Name }}"
+  
   {% if zone.HostedZone.Config.Comment is defined %}
   description = "{{ zone.HostedZone.Config.Comment }}"
   {% endif %}
-
+  
   tags = {
-    {% for tag_set in tags %}{{ tag_set.Key|indent(4, true)  }} = "{{ tag_set.Value }}"
-{% endfor %}  }
+    {% for tag_set in tags %}
+    "{{ tag_set.Key }}" = "{{ tag_set.Value }}"
+    {% endfor %}
+  }
 }
 
 module "{{ name| replace(".", "_") }}_records" {
   source = "./modules/route53/records"
-
   zone_id = module.{{ name| replace(".", "_") }}_zone.zone_id
-
+  
   records = [
-{% for record_set in records %}    {
+    {% for record_set in records %}
+    {
       name = "{{ record_set.Name|replace("\\052", "*")|replace("\\043", "#") }}"
       type = "{{ record_set.Type }}"
-{% if record_set.TTL is defined %}      ttl  = {{ record_set.TTL }}
-    {% endif %}
-    {% if record_set.AliasTarget is defined %}
+      {% if record_set.MultiValueAnswer %}
+      multivalue_answer_routing_policy = true
+      {% endif %}
+      {% if record_set.Failover is defined %}
+      failover_routing_policy = {
+        type = "{{ record_set.Failover}}"
+      }
+      {% endif %}
+      {% if record_set.SetIdentifier is defined %}
+      set_identifier = "{{ record_set.SetIdentifier }}"
+      {% endif %}
+      {% if record_set.HealthCheckId is defined %}
+      health_check_id = "{{ record_set.HealthCheckId }}"
+      {% endif %}
+      {% if record_set.TTL is defined %}
+      ttl = {{ record_set.TTL }}
+      {% endif %}
+      
+      {% if record_set.AliasTarget is defined %}
       alias = {
-        zone_id                = "{{ record_set.AliasTarget.HostedZoneId }}"
-        name                   = "{{ record_set.AliasTarget.DNSName }}"
+        zone_id = "{{ record_set.AliasTarget.HostedZoneId }}"
+        name = "{{ record_set.AliasTarget.DNSName }}"
         evaluate_target_health = {{ record_set.AliasTarget.EvaluateTargetHealth | lower }}
       }
-{% else %}      records = [
-{% for sub_record in record_set.ResourceRecords %}{% if record_set.Type != "TXT" and record_set.Type != "SPF" and record_set.Type != "CAA" %}
+      {% else %}
+      records = [
+        {% for sub_record in record_set.ResourceRecords %}
+          {% if record_set.Type not in ["TXT", "SPF", "CAA"] %}
         "{{ sub_record.Value }}"{{ ", " if not loop.last else "" }}
-{% elif record_set.Type == 'CAA' %}
+          {% elif record_set.Type == 'CAA' %}
         "{{ sub_record.Value | replace("\"", "\\\"") }}"{{ ", " if not loop.last else "" }}
-{% else %}
+          {% else %}
         {{ sub_record.Value|replace("\" \"", "\"\"")|replace("\\", "\\\\")|replace("\"\"", "\\\"\\\"") }}{{ ", " if not loop.last else "" }}
-{% endif %}{% endfor %}      ]
-{% endif %}
+          {% endif %}
+        {% endfor %}
+      ]
+      {% endif %}
     }{{ ", " if not loop.last else "" }}
-{% endfor %}  ]
+    {% endfor %}
+  ]
 }

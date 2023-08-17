@@ -4,128 +4,101 @@ import subprocess
 from jinja2 import Template
 from lib.HostedZone import HostedZone
 
-
-# USER ACTION
-# ----------------------------------------------------
+# ----------------------- CONFIGURATION -----------------------
 # List of zone names to process
-ZONE_NAMES = ["justice.gov.uk"]
-
-# Toggle auto-import behavior
+ZONE_NAMES = ["zone1", "zone2"]
+# Flag to decide if records should be imported automatically
 AUTO_IMPORT = False
+# ------------------------------------------------------------
 
-# ----------------------------------------------------
-# END USER ACTION
+# Remove the trailing dot from a string if present
 
 
-# Utility function to remove trailing dot from a string
 def remove_dot(s):
     return s[:-1] if s.endswith('.') else s
 
+# Return the list of resources in the Terraform state for a specific module
 
-# Utility function to fetch Terraform state records for a module
+
 def return_records_in_state(module_name):
     cmd = f"terraform state list | grep module.{module_name}"
     result = subprocess.run(
-        cmd,
-        shell=True,
-        stderr=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        cwd="terraform")
+        cmd, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE, cwd="terraform")
     return result.stdout.decode().splitlines()
 
+# Generate the terraform import command
 
-# Generate the import command for a resource
+
 def generate_import_commands(resource_name, resource_id):
     return f"terraform import {resource_name} {resource_id}".replace(u"\\052", u"*").replace(u"\\043", u"#")
 
-
-# Import a resource and return the import command
-def import_resource(resource_name, resource_id):
-    return generate_import_commands(resource_name, resource_id)
+# Import a specific record into Terraform or print the import command
 
 
-# Create template file
+def import_or_print_record(resource_name, record_id, auto_import=AUTO_IMPORT):
+    import_cmd = generate_import_commands(resource_name, record_id)
+    if auto_import:
+        print(f"Importing {resource_name} under AUTO_IMPORT...")
+        result = subprocess.run(import_cmd, shell=True, stdout=subprocess.PIPE,
+                                cwd="terraform", stderr=subprocess.PIPE)
+        if result.returncode != 0:
+            print(
+                f"Failed to import {resource_name}. Error: {result.stderr.decode()}")
+    else:
+        print(import_cmd)
+
+
+# Load the Jinja template for hosted zones
 with open('scripts/templates/hosted-zone.j2') as file_:
     template = Template(file_.read(), trim_blocks=True, lstrip_blocks=True)
 
-
-# Loop through each zone name
+# Process each zone
 for z in ZONE_NAMES:
-    # Create a HostedZone object for the current zone name
     zone = HostedZone.createFromName(z)
 
-    # Check if the zone is valid
+    # Check if the zone name matches, if not, it could be a subdomain
     if remove_dot(zone.zone['HostedZone']['Name']) != z:
         print(
             f"Skipping {z} as lookup failed, most likely a subdomain in a zone")
         continue
 
-    # Render the template using the zone data
+    # Render the Jinja template with the zone data
     hosted_zone_render = template.render(
-        name=z,
-        zone=zone.zone,
-        tags=zone.get_tags(),
-        records=zone.get_records()
-    )
+        name=z, zone=zone.zone, tags=zone.get_tags(), records=zone.get_records())
 
     # Write the rendered template to a Terraform file
     with open(f"terraform/{z}.tf", "w") as fh:
         fh.write(hosted_zone_render)
 
-    # Generate a safe zone name by replacing dots with underscores
+    # Replace dots with underscores for Terraform resource naming
     safe_zone_name = z.replace('.', '_')
 
-    # Initialize Terraform in the target directory
+    # Initialize Terraform
     subprocess.run("terraform init", shell=True, cwd="terraform",
                    stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    # Fetch existing state records for the zone module
+    # Check if the zone is already in Terraform state
     zone_state = return_records_in_state(f"{safe_zone_name}_zone")
-
-    # Import the zone resource if not present in state
-    if not any(safe_zone_name in s for s in zone_state) and AUTO_IMPORT:
-        import_cmd = import_resource(
+    if not any(safe_zone_name in s for s in zone_state):
+        import_or_print_record(
             f"module.{safe_zone_name}_zone.aws_route53_zone.this", zone.id)
-        print(f"Importing zone for {z} under AUTO_IMPORT...")
-        result = subprocess.run(import_cmd, shell=True, stdout=subprocess.PIPE,
-                                cwd="terraform", stderr=subprocess.PIPE)
-        if result.returncode != 0:
-            print(
-                f"Failed to import zone for {z}. Error: {result.stderr.decode()}")
 
-    elif not AUTO_IMPORT:
-        print(f"For manual import (zone):")
-        print(import_resource(
-            f"module.{safe_zone_name}_zone.aws_route53_zone.this", zone.id))
-
-    # Fetch existing state records for the records module
+    # Check if the records are in Terraform state
     records_state = return_records_in_state(f"{safe_zone_name}_records")
-
-    # Loop through each record in the zone and import under AUTO_IMPORT or print manual command
     for record in zone.get_records():
+        record_id = f"{zone.id}_{record['Name']}_{record['Type']}"
 
-        # Construct two record names - the first one is for Terraform import, it needs an escaped \", the second was is for the code - likely a better way to handle this
-        safe_record_name = f"module.{safe_zone_name}_records.aws_route53_record.this[\"{record['Name']}_{record['Type']}\"]"
-        record_name = f"module.{safe_zone_name}_records.aws_route53_record.this[\\\"{record['Name']}_{record['Type']}\\\"]"
+        if 'MultiValueAnswer' in record or 'Failover' in record:
+            record_id += f"_{record['SetIdentifier']}"
 
-        # Check if the record is already in the state
-        if not any(safe_record_name in s for s in records_state) and AUTO_IMPORT:
+            # Need two record names, one to check existing state, one to run import command - probably a better way to handle this
+            record_name = f'module.{safe_zone_name}_records.aws_route53_record.this["{record["Name"]}_{record["Type"]}_{record["SetIdentifier"]}"]'
+            safe_record_name = f'module.{safe_zone_name}_records.aws_route53_record.this[\\"{record["Name"]}_{record["Type"]}_{record["SetIdentifier"]}\\"]'
+        else:
+            # Need two record names, one to check existing state, one to run import command - probably a better way to handle this
+            record_name = f'module.{safe_zone_name}_records.aws_route53_record.this["{record["Name"]}_{record["Type"]}"]'
+            safe_record_name = f'module.{safe_zone_name}_records.aws_route53_record.this[\\"{record["Name"]}_{record["Type"]}\\"]'
 
-            # Import the resource
-            import_cmd = import_resource(
-                record_name, f"{zone.id}_{record['Name']}_{record['Type']}")
-            print(f"Importing {record_name} under AUTO_IMPORT...")
-
-            # Print result and error check
-            result = subprocess.run(import_cmd, shell=True, stdout=subprocess.PIPE,
-                                    cwd="terraform", stderr=subprocess.PIPE)
-            if result.returncode != 0:
-                print(
-                    f"Failed to import {record_name}. Error: {result.stderr.decode()}")
-
-        elif not AUTO_IMPORT:
-
-            # Print instructions
-            if not any(safe_record_name in s for s in records_state):
-                print(generate_import_commands(record_name,
-                                               f"{zone.id}_{record['Name']}_{record['Type']}"))
+        # If the record isn't in the state, import or print the command
+        if not any(record_name in s for s in records_state):
+            import_or_print_record(safe_record_name, record_id)
