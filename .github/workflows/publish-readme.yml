@@ -12,7 +12,7 @@ jobs:
       id-token: write
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: arn:aws:iam::${{secrets.DSD_ACCOUNT_ID}}:role/TrustPolicy-OpsEngineering-Terraform
