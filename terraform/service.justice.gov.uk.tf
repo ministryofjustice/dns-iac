@@ -975,10 +975,10 @@ module "service_justice_gov_uk_records" {
       ttl = 300
       
       records = [
-        "ns-1494.awsdns-58.org.", 
-        "ns-196.awsdns-24.com.", 
-        "ns-957.awsdns-55.net.", 
-        "ns-1584.awsdns-06.co.uk."
+        "ns-1143.awsdns-14.org.", 
+        "ns-714.awsdns-25.net.", 
+        "ns-473.awsdns-59.com.", 
+        "ns-1775.awsdns-29.co.uk."
       ]
     }, 
     {
