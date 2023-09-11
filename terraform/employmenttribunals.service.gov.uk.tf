@@ -19,14 +19,6 @@ module "employmenttribunals_service_gov_uk_records" {
   records = [
     {
       name = "employmenttribunals.service.gov.uk."
-      type = "A"
-      ttl  = 300
-      records = [
-        "51.140.1.205"
-      ]
-    },
-    {
-      name = "employmenttribunals.service.gov.uk."
       type = "CAA"
       ttl  = 300
       records = [
@@ -85,8 +77,9 @@ module "employmenttribunals_service_gov_uk_records" {
       type = "TXT"
       ttl  = 300
       records = [
-        "6K1lwLoYeYNL-l-gCbBcRTlZgkSZpOh-xnqzFC-Cu90",
-        "sMPIif2NE147VGGg_00dAvrrnevcjTKIK76rcXdZ-Bg"
+        "8mis2nbiA1oMoHD42eICfxXzi44MGRq8Ut21FY-4xc0",
+        "blVu2p5z5_7vOeaqmUfh1Tlo8YlF5iwFPwVc3ZyKmjQ"
+
       ]
     },
     {

@@ -977,16 +977,7 @@ module "justice_gov_uk_records" {
       records = [
         "asvdns_39857ad7-a6b7-4007-9a89-1fad432f0191"
       ]
-    }, 
-    {
-      name = "_b19b60bc246861f00a6be8dce4b79a84.courtstore.justice.gov.uk."
-      type = "CNAME"
-      ttl = 300
-      
-      records = [
-        "9D453B52DE49FC444073385DE203FE5E.E08BBA1C133A43E492B9F99A342B01B0.ac3306b6a88ed9f1f089.sectigo.com."
-      ]
-    }, 
+    },
     {
       name = "_dmarc.courtstore.justice.gov.uk."
       type = "CNAME"
@@ -3729,16 +3720,7 @@ module "justice_gov_uk_records" {
       records = [
         "51.231.76.135"
       ]
-    }, 
-    {
-      name = "_39afabf80f9d881f854469a933e1ed5c.staff.court.store.justice.gov.uk."
-      type = "CNAME"
-      ttl = 300
-      
-      records = [
-        "40188DC7EAFFE4CDF630DDAA501F3337.741BAF40D1FE1A6AD69925E811C53C94.552c8bdf52e4b005b87a.sectigo.com."
-      ]
-    }, 
+    },
     {
       name = "sts.justice.gov.uk."
       type = "NS"
