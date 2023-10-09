@@ -197,22 +197,6 @@ module "paroleboard_gov_uk_records" {
       ]
     }, 
     {
-      name = "_a114e38d82c755ce883c37f350dada85.sopvpn.paroleboard.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "8FEAD41B177F6EBB9D54B20F3312F048.53860B05AAC1C736D1EB133031AFCDD1.af94ed0d6f5acc95f971.sectigo.com."
-      ]
-    }, 
-    {
-      name = "_cccbf7aa1e242b94727e9b3c150b2868.sopvpn.paroleboard.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "2C94AC273E46CCB91172724C670A3B5D.DCF82A62A4892C42C49B25DFE3AD228D.aa33b76722ce5e67f56a.sectigo.com."
-      ]
-    }, 
-    {
       name = "www.paroleboard.gov.uk."
       type = "A"
       alias = {
