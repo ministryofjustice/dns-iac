@@ -1706,16 +1706,7 @@ module "justice_gov_uk_records" {
       ttl  = 600
 
       records = [
-        "hmcts-heritage-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.erupload.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 3600
-
-      records = [
-        "afdverify.hmcts-heritage-prod.azurefd.net"
+        "hmcts-heritage-prod-fug4hfanetgdf6cz.z01.azurefd.net"
       ]
     },
     {
@@ -1733,16 +1724,7 @@ module "justice_gov_uk_records" {
       ttl  = 300
 
       records = [
-        "hmcts-heritage-stg.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.eruploadtest.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 3600
-
-      records = [
-        "afdverify.hmcts-heritage-stg.azurefd.net"
+        "hmcts-heritage-stg-augbagbfeme3eqck.z01.azurefd.net"
       ]
     },
     {
@@ -1751,7 +1733,7 @@ module "justice_gov_uk_records" {
       ttl  = 300
 
       records = [
-        "hmcts-heritage-stg.azurefd.net"
+        "hmcts-heritage-stg-augbagbfeme3eqck.z01.azurefd.net"
       ]
     },
     {
