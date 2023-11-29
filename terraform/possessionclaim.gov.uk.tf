@@ -42,14 +42,6 @@ module "possessionclaim_gov_uk_records" {
       ]
     },
     {
-      name = "afdverify.possessionclaim.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.hmcts-live-ext.azurefd.net"
-      ]
-    },
-    {
       name = "www.backend.possessionclaim.gov.uk."
       type = "A"
       ttl  = 1800
@@ -182,7 +174,7 @@ module "possessionclaim_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "hmcts-live-ext.azurefd.net"
+        "hmcts-live-ext-fpahfmgkfrf2cxff.z01.azurefd.net"
       ]
     }
   ]

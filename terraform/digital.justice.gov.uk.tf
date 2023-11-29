@@ -313,7 +313,7 @@ module "digital_justice_gov_uk_records" {
       type = "CNAME"
       ttl  = 5
       records = [
-        "sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     },
     {

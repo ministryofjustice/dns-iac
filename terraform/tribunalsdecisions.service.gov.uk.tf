@@ -110,14 +110,6 @@ module "tribunalsdecisions_service_gov_uk_records" {
       ]
     },
     {
-      name = "afdverify.tribunalsdecisions.service.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
       name = "email.tribunalsdecisions.service.gov.uk."
       type = "CNAME"
       ttl  = 300
@@ -162,7 +154,7 @@ module "tribunalsdecisions_service_gov_uk_records" {
       type = "CNAME"
       ttl  = 5
       records = [
-        "sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     }
   ]
