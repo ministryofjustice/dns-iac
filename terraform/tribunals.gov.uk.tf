@@ -58,7 +58,7 @@ module "tribunals_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     },
     {
@@ -119,15 +119,7 @@ module "tribunals_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.administrativeappeals.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     },
     {
@@ -143,15 +135,7 @@ module "tribunals_gov_uk_records" {
       type = "CNAME"
       ttl  = 60
       records = [
-        "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.carestandards.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     },
     {
@@ -167,15 +151,7 @@ module "tribunals_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.cicap.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     },
     {
@@ -199,15 +175,7 @@ module "tribunals_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.employmentappeals.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     },
     {
@@ -223,15 +191,7 @@ module "tribunals_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.financeandtax.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     },
     {
@@ -239,15 +199,7 @@ module "tribunals_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.immigrationservices.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     },
     {
@@ -255,15 +207,7 @@ module "tribunals_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.informationrights.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     },
     {
@@ -271,15 +215,7 @@ module "tribunals_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.landregistrationdivision.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     },
     {
@@ -287,15 +223,7 @@ module "tribunals_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.landschamber.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     },
     {
@@ -335,15 +263,7 @@ module "tribunals_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-prod.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.transportappeals.decisions.tribunals.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-prod.azurefd.net"
+        "sdshmcts-prod-egd0dscwgwh0bpdq.z01.azurefd.net"
       ]
     },
     {

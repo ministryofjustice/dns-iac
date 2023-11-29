@@ -234,15 +234,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-dev.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.dev.administrativeappeals.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-dev.azurefd.net"
+        "sdshmcts-dev-c4ercybwaubzbmfn.z01.azurefd.net"
       ]
     }, 
     {
@@ -250,15 +242,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-stg.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.staging.administrativeappeals.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-stg.azurefd.net"
+        "sdshmcts-stg-abfwhrf8g0btcqhe.z01.azurefd.net"
       ]
     }, 
     {
@@ -314,33 +298,17 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-dev.azurefd.net"
+        "sdshmcts-dev-c4ercybwaubzbmfn.z01.azurefd.net"
       ]
-    }, 
-    {
-      name = "afdverify.dev.carestandards.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-dev.azurefd.net"
-      ]
-    }, 
+    },
     {
       name = "staging.carestandards.dsd.io."
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-stg.azurefd.net"
+        "sdshmcts-stg-abfwhrf8g0btcqhe.z01.azurefd.net"
       ]
-    }, 
-    {
-      name = "afdverify.staging.carestandards.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-stg.azurefd.net"
-      ]
-    }, 
+    },
     {
       name = "carestandardstribunal.dsd.io."
       type = "A"
@@ -490,15 +458,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-dev.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.dev.cicap.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-dev.azurefd.net"
+        "sdshmcts-dev-c4ercybwaubzbmfn.z01.azurefd.net"
       ]
     }, 
     {
@@ -506,17 +466,10 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-stg.azurefd.net"
+        "sdshmcts-stg-abfwhrf8g0btcqhe.z01.azurefd.net"
       ]
     }, 
-    {
-      name = "afdverify.staging.cicap.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-stg.azurefd.net"
-      ]
-    }, 
+
     {
       name = "cla-admin.dsd.io."
       type = "CNAME"
@@ -1148,31 +1101,15 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-dev.azurefd.net"
+        "sdshmcts-dev-c4ercybwaubzbmfn.z01.azurefd.net"
       ]
-    }, 
-    {
-      name = "afdverify.dev.employmentappeals.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-dev.azurefd.net"
-      ]
-    }, 
+    },
     {
       name = "staging.employmentappeals.dsd.io."
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-stg.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.staging.employmentappeals.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-stg.azurefd.net"
+        "sdshmcts-stg-abfwhrf8g0btcqhe.z01.azurefd.net"
       ]
     }, 
     {
@@ -1267,15 +1204,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-dev.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.dev.financeandtax.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-dev.azurefd.net"
+        "sdshmcts-dev-c4ercybwaubzbmfn.z01.azurefd.net"
       ]
     }, 
     {
@@ -1283,15 +1212,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-stg.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.staging.financeandtax.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-stg.azurefd.net"
+        "sdshmcts-stg-abfwhrf8g0btcqhe.z01.azurefd.net"
       ]
     }, 
     {
@@ -1438,15 +1359,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-dev.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.dev.immigrationservices.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-dev.azurefd.net"
+        "sdshmcts-dev-c4ercybwaubzbmfn.z01.azurefd.net"
       ]
     }, 
     {
@@ -1454,15 +1367,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-stg.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.staging.immigrationservices.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-stg.azurefd.net"
+        "sdshmcts-stg-abfwhrf8g0btcqhe.z01.azurefd.net"
       ]
     }, 
     {
@@ -1478,15 +1383,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-dev.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.dev.informationrights.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-dev.azurefd.net"
+        "sdshmcts-dev-c4ercybwaubzbmfn.z01.azurefd.net"
       ]
     }, 
     {
@@ -1494,15 +1391,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-stg.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.staging.informationrights.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-stg.azurefd.net"
+        "sdshmcts-stg-abfwhrf8g0btcqhe.z01.azurefd.net"
       ]
     }, 
     {
@@ -1720,15 +1609,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-dev.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.dev.landregistrationdivision.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-dev.azurefd.net"
+        "sdshmcts-dev-c4ercybwaubzbmfn.z01.azurefd.net"
       ]
     }, 
     {
@@ -1736,15 +1617,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-stg.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.staging.landregistrationdivision.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-stg.azurefd.net"
+        "sdshmcts-stg-abfwhrf8g0btcqhe.z01.azurefd.net"
       ]
     }, 
     {
@@ -1752,15 +1625,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-dev.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.dev.landschamber.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-dev.azurefd.net"
+        "sdshmcts-dev-c4ercybwaubzbmfn.z01.azurefd.net"
       ]
     }, 
     {
@@ -1768,15 +1633,7 @@ module "dsd_io_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "sdshmcts-stg.azurefd.net"
-      ]
-    }, 
-    {
-      name = "afdverify.staging.landschamber.dsd.io."
-      type = "CNAME"
-      ttl  = 300
-      records = [
-        "afdverify.sdshmcts-stg.azurefd.net"
+        "sdshmcts-stg-abfwhrf8g0btcqhe.z01.azurefd.net"
       ]
     }, 
     {
