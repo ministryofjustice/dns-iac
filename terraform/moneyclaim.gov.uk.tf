@@ -40,7 +40,7 @@ module "moneyclaim_gov_uk_records" {
       type = "CNAME"
       ttl  = 300
       records = [
-        "hmcts-live-ext.azurefd.net"
+        "hmcts-live-ext-fpahfmgkfrf2cxff.z01.azurefd.net"
       ]
     }
   ]

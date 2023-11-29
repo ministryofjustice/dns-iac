@@ -2549,7 +2549,7 @@ module "justice_gov_uk_records" {
       ttl  = 600
 
       records = [
-        "hmcts-live-ext.azurefd.net"
+        "hmcts-live-ext-fpahfmgkfrf2cxff.z01.azurefd.net"
       ]
     },
     {
@@ -3086,16 +3086,7 @@ module "justice_gov_uk_records" {
       ttl  = 300
 
       records = [
-        "hmcts-live-ext.azurefd.net"
-      ]
-    },
-    {
-      name = "afdverify.pcnotify.justice.gov.uk."
-      type = "CNAME"
-      ttl  = 300
-
-      records = [
-        "afdverify.hmcts-live-ext.azurefd.net"
+        "hmcts-live-ext-fpahfmgkfrf2cxff.z01.azurefd.net"
       ]
     },
     {
