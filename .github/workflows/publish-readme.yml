@@ -2,8 +2,8 @@ name: README publish
 on: 
   workflow_dispatch:
   pull_request:
-    paths:
-      - "terraform/**"
+    branches:
+      - main
 
 jobs:
   terraform-plan:
