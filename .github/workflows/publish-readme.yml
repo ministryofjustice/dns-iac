@@ -18,7 +18,7 @@ jobs:
           role-to-assume: arn:aws:iam::${{secrets.DSD_ACCOUNT_ID}}:role/TrustPolicy-OpsEngineering-Terraform
           role-session-name: GitHubActions
           aws-region: eu-west-2
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - run: pip install -r scripts/requirements.txt
